@@ -1,581 +1,108 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>KAIROX GAMING — LATAM</title>
-
-<meta name="description" content="KAIROX GAMING — Organización de esports enfocada en Free Fire y talento LATAM.">
-
+<meta name="description" content="KAIROX GAMING — esports Free Fire en LATAM. Competición, talento y comunidad.">
 <style>
-*{
-box-sizing:border-box;
-margin:0;
-padding:0;
-}
-
-html{
-scroll-behavior:smooth;
-}
-
-body{
-background:#050505;
-color:#f5f5f5;
-font-family:Arial,Helvetica,sans-serif;
-line-height:1.6;
-}
-
-a{
-color:inherit;
-text-decoration:none;
-}
-
-.wrap{
-width:min(1150px,90%);
-margin:auto;
-}
-
-/* NAV */
-
-nav{
-position:fixed;
-top:0;
-left:0;
-width:100%;
-z-index:1000;
-background:rgba(5,5,5,.88);
-backdrop-filter:blur(15px);
-border-bottom:1px solid #222;
-}
-
-.navin{
-height:75px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-}
-
-.brand{
-font-size:18px;
-font-weight:900;
-letter-spacing:5px;
-}
-
-.links{
-display:flex;
-gap:30px;
-font-size:12px;
-letter-spacing:2px;
-font-weight:700;
-}
-
-.links a{
-transition:.25s;
-}
-
-.links a:hover{
-opacity:.55;
-}
-
-/* HERO */
-
-.hero{
-min-height:100vh;
-display:flex;
-align-items:center;
-justify-content:center;
-text-align:center;
-padding:130px 20px 90px;
-background:
-radial-gradient(circle at 50% 35%,#202020 0,#0d0d0d 35%,#050505 72%);
-}
-
-.hero-content{
-max-width:900px;
-}
-
-.hero-logo{
-width:min(330px,70vw);
-margin-bottom:30px;
-filter:brightness(1.1);
-animation:appear 1s ease;
-}
-
-.kicker{
-font-size:12px;
-letter-spacing:7px;
-color:#999;
-margin-bottom:20px;
-}
-
-h1{
-font-size:clamp(48px,9vw,105px);
-letter-spacing:12px;
-line-height:1;
-font-weight:900;
-margin-bottom:28px;
-}
-
-.hero p{
-color:#aaa;
-font-size:18px;
-margin:auto;
-max-width:650px;
-}
-
-.buttons{
-margin-top:40px;
-display:flex;
-justify-content:center;
-gap:15px;
-flex-wrap:wrap;
-}
-
-.btn{
-display:inline-block;
-border:1px solid #fff;
-padding:15px 27px;
-font-size:12px;
-font-weight:800;
-letter-spacing:2px;
-transition:.3s;
-}
-
-.btn:hover{
-background:#fff;
-color:#000;
-transform:translateY(-3px);
-}
-
-.btn.secondary{
-border-color:#444;
-color:#aaa;
-}
-
-/* SECTIONS */
-
-section{
-padding:110px 0;
-border-top:1px solid #222;
-}
-
-.number{
-font-size:11px;
-letter-spacing:4px;
-color:#777;
-margin-bottom:15px;
-}
-
-h2{
-font-size:clamp(35px,6vw,65px);
-letter-spacing:3px;
-margin-bottom:25px;
-}
-
-.lead{
-color:#999;
-max-width:750px;
-font-size:18px;
-}
-
-/* CARDS */
-
-.grid{
-display:grid;
-grid-template-columns:repeat(3,1fr);
-gap:18px;
-margin-top:45px;
-}
-
-.card{
-border:1px solid #252525;
-padding:35px;
-min-height:210px;
-background:#0a0a0a;
-transition:.3s;
-}
-
-.card:hover{
-border-color:#666;
-transform:translateY(-5px);
-}
-
-.card span{
-font-size:11px;
-letter-spacing:3px;
-color:#777;
-}
-
-.card h3{
-margin:20px 0 10px;
-font-size:24px;
-letter-spacing:1px;
-}
-
-.card p{
-color:#888;
-font-size:14px;
-}
-
-/* ROSTER */
-
-.roster{
-margin-top:45px;
-border:1px solid #252525;
-padding:60px 30px;
-text-align:center;
-background:
-linear-gradient(135deg,#080808,#111);
-}
-
-.roster-title{
-font-size:13px;
-letter-spacing:5px;
-color:#888;
-margin-bottom:15px;
-}
-
-.roster h3{
-font-size:42px;
-letter-spacing:4px;
-margin-bottom:15px;
-}
-
-.roster p{
-color:#777;
-}
-
-/* COMMUNITY */
-
-.community{
-text-align:center;
-}
-
-.community .lead{
-margin:auto;
-}
-
-.discord{
-margin-top:35px;
-}
-
-/* FOOTER */
-
-footer{
-border-top:1px solid #222;
-padding:45px 0;
-color:#666;
-font-size:12px;
-}
-
-.footerin{
-display:flex;
-justify-content:space-between;
-gap:30px;
-flex-wrap:wrap;
-}
-
-.social{
-display:flex;
-gap:22px;
-letter-spacing:2px;
-}
-
-.social a:hover{
-color:#fff;
-}
-
-/* MOBILE */
-
-@media(max-width:700px){
-
-.navin{
-height:65px;
-}
-
-.links{
-display:none;
-}
-
-.hero{
-padding-top:100px;
-}
-
-.hero-logo{
-width:240px;
-}
-
-h1{
-font-size:48px;
-letter-spacing:6px;
-}
-
-.kicker{
-letter-spacing:4px;
-}
-
-section{
-padding:80px 0;
-}
-
-.grid{
-grid-template-columns:1fr;
-}
-
-.card{
-min-height:auto;
-}
-
-.roster h3{
-font-size:30px;
-}
-}
-
-/* ANIMATION */
-
-@keyframes appear{
-from{
-opacity:0;
-transform:translateY(20px);
-}
-to{
-opacity:1;
-transform:translateY(0);
-}
-}
+:root{--black:#050505;--white:#f7f7f7;--gray:#b7b7b7;--line:rgba(0,0,0,.14)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,Arial,Helvetica,sans-serif;color:var(--black);background:linear-gradient(135deg,#fff 0%,#f5f5f5 38%,#171717 100%);background-attachment:fixed}
+a{text-decoration:none;color:inherit}.wrap{width:min(1180px,90%);margin:auto}
+nav{position:fixed;top:0;width:100%;z-index:10;background:rgba(255,255,255,.72);backdrop-filter:blur(16px);border-bottom:1px solid rgba(0,0,0,.08)}
+.navin{height:72px;display:flex;align-items:center;justify-content:space-between}
+.brand{font-size:15px;font-weight:950;letter-spacing:5px}
+.links{display:flex;gap:26px;font-size:10px;font-weight:800;letter-spacing:2px}
+.social-top{display:flex;gap:10px;margin-left:20px}
+.social-top a,.social a{display:grid;place-items:center;width:34px;height:34px;border:1px solid rgba(0,0,0,.2);border-radius:50%;transition:.2s}
+.social-top a:hover,.social a:hover{background:#050505;color:#fff;transform:translateY(-2px)}
+svg{width:16px;height:16px;fill:currentColor}
+.hero{min-height:100vh;display:grid;place-items:center;padding:120px 0 80px;position:relative;overflow:hidden}
+.hero:before{content:"";position:absolute;width:700px;height:700px;border:1px solid rgba(0,0,0,.09);border-radius:50%;right:-260px;top:-170px}
+.hero:after{content:"";position:absolute;width:520px;height:520px;border:1px solid rgba(255,255,255,.13);border-radius:50%;left:-250px;bottom:-250px}
+.hero-content{position:relative;z-index:1;text-align:center;max-width:920px}
+.logo{width:min(300px,65vw);max-height:300px;object-fit:contain;margin-bottom:24px}
+.kicker{font-size:10px;letter-spacing:5px;font-weight:800;color:#555;margin-bottom:16px}
+h1{font-size:clamp(45px,8vw,94px);line-height:.92;letter-spacing:8px;margin:0;font-weight:950}
+.tagline{font-size:clamp(18px,2.5vw,25px);margin:24px auto 34px;max-width:680px;font-weight:600}
+.buttons{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn{padding:15px 24px;border:1px solid #050505;font-size:10px;font-weight:900;letter-spacing:2px;transition:.2s}
+.btn.dark{background:#050505;color:#fff}.btn:hover{transform:translateY(-3px);box-shadow:0 12px 30px rgba(0,0,0,.14)}
+section{padding:105px 0;border-top:1px solid rgba(0,0,0,.12)}
+.eyebrow{font-size:10px;letter-spacing:4px;font-weight:900;color:#666}
+h2{font-size:clamp(35px,6vw,66px);line-height:1;margin:12px 0 22px;letter-spacing:-2px}
+.lead{max-width:760px;color:#555;font-size:17px;line-height:1.8}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:40px}
+.card{background:rgba(255,255,255,.45);border:1px solid rgba(0,0,0,.13);padding:30px;min-height:190px;backdrop-filter:blur(8px);transition:.25s}
+.card:hover{background:rgba(255,255,255,.75);transform:translateY(-5px)}
+.card small{font-size:9px;letter-spacing:3px;color:#777;font-weight:800}.card h3{font-size:23px;margin:17px 0 9px}.card p{color:#666;font-size:14px;line-height:1.7}
+.roster{margin-top:36px;padding:55px 30px;text-align:center;background:#080808;color:#fff;position:relative;overflow:hidden}
+.roster:after{content:"";position:absolute;width:420px;height:420px;border:1px solid rgba(255,255,255,.1);border-radius:50%;right:-180px;top:-210px}
+.roster h3{font-size:clamp(28px,4vw,46px);letter-spacing:3px;margin:12px 0}.roster p{color:#999;letter-spacing:3px;font-size:11px}
+.community{text-align:center}.community .lead{margin:auto}.socials{display:flex;justify-content:center;gap:12px;margin-top:32px;flex-wrap:wrap}
+.social-pill{display:flex;align-items:center;gap:9px;border:1px solid rgba(0,0,0,.22);padding:12px 16px;font-size:10px;font-weight:900;letter-spacing:1.5px;background:rgba(255,255,255,.35);transition:.2s}
+.social-pill:hover{background:#050505;color:#fff;transform:translateY(-2px)}
+footer{padding:38px 0;border-top:1px solid rgba(0,0,0,.13);background:rgba(255,255,255,.35)}
+.footerin{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;font-size:9px;letter-spacing:2px;color:#555}
+@media(max-width:760px){.links{display:none}.social-top{display:none}.cards{grid-template-columns:1fr}.hero{min-height:92vh}.logo{width:230px}h1{letter-spacing:5px}.tagline{font-size:17px}}
 </style>
 </head>
-
 <body>
-
-<nav>
-<div class="wrap navin">
+<nav><div class="wrap navin">
 <a class="brand" href="#">KAIROX</a>
-
-<div class="links">
-<a href="#kairox">KAIROX</a>
-<a href="#competitive">COMPETITIVE</a>
-<a href="#community">COMMUNITY</a>
-</div>
-</div>
-</nav>
+<div class="links"><a href="#organization">ORGANIZACIÓN</a><a href="#competitive">COMPETITIVO</a><a href="#community">COMUNIDAD</a></div>
+<div class="social-top">
+<a href="https://www.instagram.com/kairoxgaminglat/" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><path d="M7 2h10a5 5 0 0 1 5 5v10a5 5 0 0 1-5 5H7a5 5 0 0 1-5-5V7a5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3v10a3 3 0 0 0 3 3h10a3 3 0 0 0 3-3V7a3 3 0 0 0-3-3H7zm5 3.5A4.5 4.5 0 1 1 7.5 12 4.5 4.5 0 0 1 12 7.5zm0 2A2.5 2.5 0 1 0 14.5 12 2.5 2.5 0 0 0 12 9.5zM17.5 6.5A1.2 1.2 0 1 1 16.3 7.7a1.2 1.2 0 0 1 1.2-1.2z"/></svg></a>
+<a href="https://www.tiktok.com/@kairoxgaminglat" target="_blank" aria-label="TikTok"><svg viewBox="0 0 24 24"><path d="M15 2h3c.3 2 1.4 3.5 3.5 4.2V9c-1.5-.1-2.7-.5-3.7-1.2v7.1A6.1 6.1 0 1 1 12 8.8v3a3.1 3.1 0 1 0 2.8 3.1V2z"/></svg></a>
+<a href="https://youtube.com/@kairoxgaminglat" target="_blank" aria-label="YouTube"><svg viewBox="0 0 24 24"><path d="M23 12s0-4-1-5-2.1-1-4-1H6C4.1 6 2.1 6 1 7s-1 5-1 5 0 4 1 5 2.1 1 4 1h12c1.9 0 3 0 4-1s1-5 1-5zM10 15V9l5 3-5 3z"/></svg></a>
+<a href="https://x.com/kairoxgaming" target="_blank" aria-label="X"><svg viewBox="0 0 24 24"><path d="M18.2 2H22l-8.3 9.5L23.5 22h-7.4l-5.8-7.1L4.1 22H.3l8.9-10.2L.5 2H8l5.2 6.4L18.2 2zm-1.3 17.7h2.1L6.9 4.2H4.7l12.2 15.5z"/></svg></a>
+</div></div></nav>
 
 <header class="hero">
-
 <div class="hero-content">
-
-<img
-class="hero-logo"
-src="kairox-logo.png"
-alt="Kairox Gaming Logo"
->
-
-<div class="kicker">
-LATAM · FREE FIRE · ESPORTS
-</div>
-
-<h1>KAIROX<br>GAMING</h1>
-
-<p>
-La próxima generación empieza aquí.
-Competencia, talento y comunidad desde LATAM.
-</p>
-
+<img class="logo" src="kairox-logo.png" alt="Kairox Gaming">
+<div class="kicker">FREE FIRE · ESPORTS · LATAM</div>
+<h1>KAIROX GAMING</h1>
+<p class="tagline">La próxima generación empieza aquí.</p>
 <div class="buttons">
-<a
-class="btn"
-href="https://discord.gg/Dkc4D5Jrs9"
-target="_blank"
-rel="noopener"
->
-UNIRME A KAIROX
-</a>
-
-<a class="btn secondary" href="#kairox">
-CONOCER KAIROX
-</a>
+<a class="btn dark" href="https://discord.gg/Dkc4D5Jrs9" target="_blank">UNIRME A KAIROX</a>
+<a class="btn" href="#organization">CONOCER KAIROX</a>
 </div>
-
 </div>
-
 </header>
 
-<main>
+<section id="organization"><div class="wrap">
+<div class="eyebrow">01 / ORGANIZACIÓN</div><h2>MÁS QUE UN EQUIPO.</h2>
+<p class="lead">KAIROX GAMING es una organización de esports enfocada en Free Fire y en el desarrollo del talento competitivo de LATAM.</p>
+<div class="cards">
+<article class="card"><small>01 / VISIÓN</small><h3>Construir</h3><p>Una identidad competitiva sólida y una comunidad que crezca junto a la organización.</p></article>
+<article class="card"><small>02 / TALENTO</small><h3>Desarrollar</h3><p>Encontrar jugadores y creadores con disciplina, ambición y mentalidad de equipo.</p></article>
+<article class="card"><small>03 / COMUNIDAD</small><h3>Conectar</h3><p>Crear un espacio para jugar, competir, compartir contenido y formar squads.</p></article>
+</div></div></section>
 
-<section id="kairox">
-<div class="wrap">
-
-<div class="number">01 / KAIROX</div>
-
-<h2>MÁS QUE UN EQUIPO.</h2>
-
-<p class="lead">
-KAIROX GAMING es una organización de esports
-enfocada en Free Fire y en el desarrollo del talento
-competitivo de LATAM.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<span>01</span>
-<h3>VISIÓN</h3>
-<p>
-Construir una organización reconocida
-por su identidad, competitividad y comunidad.
-</p>
+<section id="competitive"><div class="wrap">
+<div class="eyebrow">02 / COMPETITIVE</div><h2>BUILT TO COMPETE.</h2>
+<p class="lead">El proyecto competitivo de Kairox está preparado para crecer desde la comunidad hasta los escenarios de Free Fire en LATAM.</p>
+<div class="cards">
+<article class="card"><small>ROSTER</small><h3>Equipo</h3><p>La plantilla oficial será anunciada próximamente.</p></article>
+<article class="card"><small>RECRUITMENT</small><h3>Tryouts</h3><p>Las próximas convocatorias se anunciarán en Discord y redes oficiales.</p></article>
+<article class="card"><small>TRAINING</small><h3>Scrims</h3><p>Preparación, estrategia y competición constante.</p></article>
 </div>
+<div class="roster"><h3>KAIROX FREE FIRE</h3><p>ROSTER ANNOUNCEMENT · COMING SOON</p></div>
+</div></section>
 
-<div class="card">
-<span>02</span>
-<h3>TALENTO</h3>
-<p>
-Encontrar y desarrollar nuevos jugadores
-preparados para competir al máximo nivel.
-</p>
+<section id="community" class="community"><div class="wrap">
+<div class="eyebrow">03 / COMMUNITY</div><h2>FORMA PARTE.</h2>
+<p class="lead">Únete a Kairox para conocer jugadores, participar en eventos y seguir cada novedad de la organización.</p>
+<a class="btn dark" style="display:inline-block;margin-top:32px" href="https://discord.gg/Dkc4D5Jrs9" target="_blank">ENTRAR AL DISCORD</a>
+<div class="socials">
+<a class="social-pill" href="https://www.instagram.com/kairoxgaminglat/" target="_blank">INSTAGRAM</a>
+<a class="social-pill" href="https://www.tiktok.com/@kairoxgaminglat" target="_blank">TIKTOK</a>
+<a class="social-pill" href="https://youtube.com/@kairoxgaminglat" target="_blank">YOUTUBE</a>
+<a class="social-pill" href="https://x.com/kairoxgaming" target="_blank">X</a>
 </div>
+</div></section>
 
-<div class="card">
-<span>03</span>
-<h3>COMUNIDAD</h3>
-<p>
-Crear un espacio donde jugadores y fans
-puedan formar parte de Kairox.
-</p>
-</div>
-
-</div>
-
-</div>
-</section>
-
-
-<section id="competitive">
-<div class="wrap">
-
-<div class="number">02 / COMPETITIVE</div>
-
-<h2>BUILT TO COMPETE.</h2>
-
-<p class="lead">
-Nuestro objetivo es competir, crecer y representar
-a Kairox en la escena competitiva de Free Fire.
-</p>
-
-<div class="grid">
-
-<div class="card">
-<span>COMPETITIVE</span>
-<h3>ROSTER</h3>
-<p>
-Próximamente conocerás a los jugadores
-que representarán a Kairox.
-</p>
-</div>
-
-<div class="card">
-<span>RECRUITMENT</span>
-<h3>TRYOUTS</h3>
-<p>
-Las próximas pruebas para nuevos talentos
-serán anunciadas en nuestra comunidad.
-</p>
-</div>
-
-<div class="card">
-<span>TRAINING</span>
-<h3>SCRIMS</h3>
-<p>
-Preparación, estrategia y competición
-constante.
-</p>
-</div>
-
-</div>
-
-<div class="roster">
-
-<div class="roster-title">
-KAIROX FREE FIRE
-</div>
-
-<h3>ROSTER ANNOUNCEMENT</h3>
-
-<p>
-COMING SOON
-</p>
-
-</div>
-
-</div>
-</section>
-
-
-<section id="community" class="community">
-<div class="wrap">
-
-<div class="number">03 / COMMUNITY</div>
-
-<h2>NO SOLO JUEGUES.</h2>
-
-<p class="lead">
-Forma parte de la comunidad Kairox.
-Noticias, eventos, tryouts y todo lo relacionado
-con nuestra organización.
-</p>
-
-<div class="discord">
-
-<a
-class="btn"
-href="https://discord.gg/Dkc4D5Jrs9"
-target="_blank"
-rel="noopener"
->
-ENTRAR AL DISCORD
-</a>
-
-</div>
-
-</div>
-</section>
-
-
-<section>
-<div class="wrap">
-
-<div class="number">04 / CONTACT</div>
-
-<h2>LET'S BUILD.</h2>
-
-<p class="lead">
-¿Quieres colaborar con Kairox Gaming?
-Muy pronto habilitaremos nuestro canal oficial
-para propuestas y negocios.
-</p>
-
-</div>
-</section>
-
-</main>
-
-
-<footer>
-<div class="wrap footerin">
-
-<div>
-© 2026 KAIROX GAMING
-</div>
-
-<div class="social">
-<a href="#">INSTAGRAM</a>
-<a href="#">TIKTOK</a>
-<a href="#">YOUTUBE</a>
-</div>
-
-</div>
-</footer>
-
-</body>
-</html>
+<footer><div class="wrap footerin"><span>KAIROX GAMING · LATAM · FREE FIRE</span><span>DISCIPLINA · PASIÓN · GLORIA</span></div></footer>
+</body></html>
