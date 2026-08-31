@@ -180,7 +180,7 @@ Inscribe a tu escuadra
 Completa los datos de tu equipo para participar en el Torneo Kairox #01.
 </p>
 
-<form action="https://formspree.io/f/xwlklend" method="POST">
+<form id="formulario-kairox" action="https://formspree.io/f/xwlklend" method="POST">
 
 <input
 type="text"
@@ -244,8 +244,27 @@ Acepto las reglas y condiciones del torneo.
 
 <button
 type="submit"
+id="boton-inscripcion"
 style="background:#111;color:#fff;border:0;padding:16px 28px;font-size:12px;font-weight:800;letter-spacing:2px;cursor:pointer;">
 ENVIAR INSCRIPCIÓN
 </button>
+
+<div
+id="mensaje-inscripcion"
+style="display:none;text-align:center;padding:35px 20px;border:1px solid #111;background:#fff;margin-top:20px;">
+
+<div style="font-size:35px;margin-bottom:15px;">🏆</div>
+
+<h3 style="font-size:28px;margin:0 0 12px;font-weight:900;">
+¡INSCRIPCIÓN RECIBIDA!
+</h3>
+
+<p style="color:#555;font-size:14px;line-height:1.7;margin:0;">
+Hemos recibido correctamente los datos de tu escuadra.
+<br>
+Revisa tu correo electrónico. Te enviaremos la confirmación de inscripción.
+</p>
+
+</div>
 
 </form>
