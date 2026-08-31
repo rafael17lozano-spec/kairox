@@ -1,117 +1,79 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>KAIROX GAMING — Torneos Free Fire</title>
-<meta name="description" content="KAIROX GAMING — Torneos oficiales de Free Fire.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KAIROX GAMING | Esports Club</title>
 <link rel="icon" href="kairox-logo.svg" type="image/svg+xml">
 <style>
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;font-family:Arial,Helvetica,sans-serif;color:#111;background:#fff}a{color:inherit;text-decoration:none}.wrap{width:min(1120px,92%);margin:auto}
-.progress{position:fixed;top:0;left:0;height:3px;width:0;background:#111;z-index:9999}
-header{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.96);border-bottom:1px solid #e8e8e8;backdrop-filter:blur(10px)}
-.nav{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:25px}.brand{display:flex;align-items:center;gap:12px;font-size:18px;font-weight:900;letter-spacing:2px}.brand img{width:38px;height:38px;object-fit:contain}
-nav{display:flex;align-items:center;gap:28px;font-size:12px;font-weight:800;letter-spacing:1.5px}nav a:hover{text-decoration:underline}
-.hero{min-height:650px;display:flex;align-items:center;background:radial-gradient(circle at 80% 30%,#f1f1f1 0,transparent 34%),linear-gradient(135deg,#fff 0%,#f5f5f5 100%)}
-.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:70px;align-items:center}.kicker,.eyebrow{font-size:11px;font-weight:900;letter-spacing:3px;margin-bottom:20px}
-h1{margin:0;font-size:clamp(48px,8vw,92px);line-height:.88;letter-spacing:-5px}.hero p{max-width:560px;color:#555;line-height:1.8;font-size:15px;margin:28px 0}.buttons{display:flex;gap:12px;flex-wrap:wrap}
-.btn{display:inline-block;padding:16px 24px;font-size:11px;font-weight:900;letter-spacing:2px;border:1px solid #111}.btn-dark{background:#111;color:#fff}.btn-light{background:#fff;color:#111}
-.hero-logo{display:flex;justify-content:center;align-items:center}.hero-logo img{width:min(390px,80%);filter:drop-shadow(0 20px 35px rgba(0,0,0,.12))}
-section{padding:100px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:30px;margin-bottom:45px}.eyebrow{margin-bottom:12px}h2{margin:0;font-size:clamp(32px,5vw,54px);letter-spacing:-2px}.section-head p{max-width:450px;color:#666;line-height:1.7;font-size:14px}
-.tournaments{background:#111;color:#fff}.tournaments .section-head p{color:#aaa}.tournament-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid #333;padding:28px;min-height:300px;display:flex;flex-direction:column;justify-content:space-between;background:#151515}.card .number{font-size:11px;color:#999;letter-spacing:2px;font-weight:900}.card h3{font-size:26px;margin:25px 0 10px}.card p{color:#aaa;line-height:1.7;font-size:13px}.tag{display:inline-block;border:1px solid #555;padding:8px 10px;font-size:9px;font-weight:900;letter-spacing:1.5px;margin-top:12px}.card .btn{border-color:#fff;color:#fff;background:transparent;text-align:center}
-.info-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.info{border:1px solid #ddd;padding:30px}.info strong{display:block;font-size:12px;letter-spacing:2px;margin-bottom:15px}.info p{margin:0;color:#666;line-height:1.7;font-size:14px}
-.form-section{background:#f5f5f5}.form-wrap{max-width:760px;margin:auto;background:#fff;padding:42px;border:1px solid #ddd}.form-wrap h2{font-size:40px;margin-bottom:12px}.form-intro{color:#666;line-height:1.7;font-size:14px;margin-bottom:30px}
-.field{width:100%;padding:15px;margin-bottom:12px;border:1px solid #ccc;font-size:14px;outline:none;background:#fff}.field:focus{border-color:#111}.check{display:block;font-size:13px;color:#555;margin:8px 0 20px;line-height:1.6}.check input{margin-right:8px}.submit{background:#111;color:#fff;border:0;padding:16px 28px;font-size:12px;font-weight:800;letter-spacing:2px;cursor:pointer}.submit:disabled{opacity:.55;cursor:wait}
-.form-message{display:none;text-align:center;padding:35px 20px;border:1px solid #111;background:#fff;margin-top:20px}.form-message.show{display:block}.form-message .trophy{font-size:36px;margin-bottom:12px}.form-message h3{font-size:28px;margin:0 0 12px}.form-message p{color:#555;font-size:14px;line-height:1.7}
-.contact{border-top:1px solid #ddd}.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px;align-items:start}.contact p{color:#666;line-height:1.8;font-size:14px}.contact-email{font-size:22px;font-weight:800;text-decoration:underline;word-break:break-word}
-footer{background:#111;color:#fff;padding:30px 0}.foot{display:flex;justify-content:space-between;align-items:center;gap:20px}.foot-brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:2px;font-size:13px}.foot-brand img{width:28px;height:28px;object-fit:contain;filter:invert(1)}footer small{color:#888;font-size:9px;letter-spacing:1.5px}
-.reveal{opacity:0;transform:translateY(20px);transition:.7s ease}.reveal.show{opacity:1;transform:none}
-@media(max-width:800px){.nav{min-height:68px}.nav nav{gap:10px;font-size:8px}.brand{font-size:14px}.brand img{width:32px;height:32px}.hero{min-height:auto;padding:80px 0}.hero-grid{grid-template-columns:1fr;gap:40px}.hero-logo{order:-1}.hero-logo img{width:190px}h1{letter-spacing:-3px}section{padding:70px 0}.section-head{display:block}.section-head p{margin-top:18px}.tournament-grid,.info-grid{grid-template-columns:1fr}.form-wrap{padding:25px 18px}.contact-grid{grid-template-columns:1fr;gap:20px}.foot{display:block}footer small{display:block;margin-top:15px}}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#080808;color:#fff;font-family:Arial,Helvetica,sans-serif}a{color:inherit;text-decoration:none}.wrap{width:min(1150px,92%);margin:auto}header{position:sticky;top:0;z-index:10;background:#080808ee;border-bottom:1px solid #222}.nav{height:72px;display:flex;align-items:center;justify-content:space-between}.brand{display:flex;align-items:center;gap:10px;font-weight:900;letter-spacing:2px}.brand img{width:36px;height:36px;filter:invert(1)}nav{display:flex;gap:20px;font-size:10px;font-weight:900;letter-spacing:1px;color:#aaa}nav a:hover{color:#fff}.hero{min-height:calc(100vh - 72px);display:flex;align-items:center;background:radial-gradient(circle at 80% 30%,#252525,transparent 35%)}.hero-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:50px;align-items:center}.mini,.eyebrow{font-size:10px;letter-spacing:3px;color:#777;font-weight:900;margin-bottom:15px}h1{font-size:clamp(60px,10vw,115px);line-height:.82;letter-spacing:-6px;margin:0}h1 span{color:#777}.hero p,.section-head p{color:#999;line-height:1.8;font-size:14px;max-width:560px;margin:28px 0}.logo{display:flex;justify-content:center}.logo img{width:min(410px,90%);filter:invert(1);opacity:.9}.btn{display:inline-block;border:1px solid #444;padding:15px 22px;font-size:10px;font-weight:900;letter-spacing:2px;margin-right:8px;margin-bottom:8px}.btn.main{background:#fff;color:#111;border-color:#fff}section{padding:100px 0;border-top:1px solid #181818}.section-head{display:flex;justify-content:space-between;align-items:end;gap:40px;margin-bottom:45px}.section-head h2{font-size:clamp(38px,6vw,65px);letter-spacing:-3px;margin:0}.section-head p{margin:0}.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.card{border:1px solid #292929;padding:28px;background:#101010;min-height:260px}.card h3{font-size:25px;margin:25px 0 10px}.card p{color:#999;line-height:1.7;font-size:13px}.light{background:#f4f4f4;color:#111}.light .card{background:#fff;border-color:#ddd}.light .card p{color:#666}.roster{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.player{height:320px;border:1px solid #292929;background:linear-gradient(#202020,#0d0d0d);padding:20px;display:flex;align-items:end}.player h3{margin:7px 0;font-size:24px}.role{font-size:9px;color:#888;letter-spacing:2px;font-weight:900}.recruit{background:#fff;color:#111}.recruit-grid{display:grid;grid-template-columns:1fr 1fr;gap:50px}.recruit p{color:#666;line-height:1.8;font-size:14px}.requirements{border-top:1px solid #ddd}.requirements div{padding:14px 0;border-bottom:1px solid #ddd;font-size:11px;font-weight:900;letter-spacing:1px}.form{background:#f4f4f4;color:#111}.formbox{max-width:760px;margin:auto;background:#fff;border:1px solid #ddd;padding:38px}.field{width:100%;padding:14px;margin-bottom:12px;border:1px solid #ccc;font-size:14px}.check{display:block;color:#555;font-size:12px;margin:8px 0 20px}.submit{background:#111;color:#fff;border:0;padding:16px 24px;font-size:10px;font-weight:900;letter-spacing:2px;cursor:pointer}.success{display:none;text-align:center;border:1px solid #111;padding:28px;margin-top:20px}.socials{display:grid;grid-template-columns:repeat(4,1fr);gap:15px}.social{border:1px solid #292929;padding:25px;min-height:130px;display:flex;flex-direction:column;justify-content:space-between}.social:hover{background:#111}.social small{color:#777;letter-spacing:2px}footer{border-top:1px solid #222;padding:30px 0;color:#777;font-size:10px}.foot{display:flex;justify-content:space-between}.progress{position:fixed;top:0;left:0;height:3px;background:#fff;width:0;z-index:99}
+@media(max-width:800px){nav{gap:8px;font-size:8px}.hero{padding:70px 0}.hero-grid,.recruit-grid{grid-template-columns:1fr}.logo{order:-1}.logo img{width:190px}section{padding:70px 0}.section-head{display:block}.grid3{grid-template-columns:1fr}.roster{grid-template-columns:1fr 1fr}.socials{grid-template-columns:1fr 1fr}.foot{display:block}}
+@media(max-width:480px){.roster,.socials{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
 <div class="progress" id="progress"></div>
 <header><div class="wrap nav">
-<a class="brand" href="#inicio"><img src="kairox-logo.svg" alt="Kairox Gaming">KAIROX GAMING</a>
-<nav><a href="#torneos">TORNEOS</a><a href="#como-participar">CÓMO PARTICIPAR</a><a href="#inscripcion">INSCRIPCIÓN</a><a href="#contacto">CONTACTO</a></nav>
+<a class="brand" href="#inicio"><img src="kairox-logo.svg" alt="">KAIROX GAMING</a>
+<nav><a href="#club">CLUB</a><a href="#historia">HISTORIA</a><a href="#roster">ROSTER</a><a href="#jugadores">JUGADORES</a><a href="#torneos">TORNEOS</a><a href="#redes">REDES</a></nav>
 </div></header>
 
-<main>
 <section class="hero" id="inicio"><div class="wrap hero-grid">
-<div class="reveal"><div class="kicker">TORNEOS OFICIALES · FREE FIRE</div><h1>KAIROX<br>GAMING</h1>
-<p>Competición, comunidad y esports. Forma tu escuadra, inscríbela y demuestra quién manda en la partida.</p>
-<div class="buttons"><a class="btn btn-dark" href="#inscripcion">INSCRIBIR ESCUADRA</a><a class="btn btn-light" href="#torneos">VER TORNEOS</a></div></div>
-<div class="hero-logo reveal"><img src="kairox-logo.svg" alt="Logo Kairox Gaming"></div>
+<div><div class="mini">ESPORTS CLUB · FREE FIRE · LATAM</div><h1>KAIROX<br><span>GAMING</span></h1><p>No somos solo un torneo. Somos un club de esports: competición, talento, comunidad y una identidad propia.</p><a class="btn main" href="#club">CONOCE EL CLUB</a><a class="btn" href="#jugadores">ÚNETE A KAIROX</a></div>
+<div class="logo"><img src="kairox-logo.svg" alt="Kairox Gaming"></div>
 </div></section>
 
-<section class="tournaments" id="torneos"><div class="wrap">
-<div class="section-head reveal"><div><div class="eyebrow">01 · COMPETICIÓN</div><h2>TORNEOS</h2></div><p>Consulta nuestros torneos de Free Fire y registra tu escuadra directamente desde la web.</p></div>
-<div class="tournament-grid">
-<article class="card reveal"><div><div class="number">KX · 001</div><h3>FREE FIRE</h3><p>Torneo por escuadras. Reúne a tus jugadores y prepárate para competir.</p><span class="tag">INSCRIPCIONES ABIERTAS</span></div><a class="btn" href="#inscripcion">INSCRIBIRSE</a></article>
-<article class="card reveal"><div><div class="number">KX · 002</div><h3>PRÓXIMAMENTE</h3><p>Nuevos torneos y formatos competitivos de Kairox Gaming serán anunciados próximamente.</p><span class="tag">PRÓXIMAMENTE</span></div><a class="btn" href="#contacto">MÁS INFORMACIÓN</a></article>
-<article class="card reveal"><div><div class="number">KX · 003</div><h3>RANKING</h3><p>Sigue la evolución de las escuadras y demuestra que tu equipo merece estar arriba.</p><span class="tag">EN DESARROLLO</span></div><a class="btn" href="#contacto">KAIROX</a></article>
+<section id="club"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">01 · IDENTIDAD</div><h2>NUESTRO CLUB</h2></div><p>Kairox Gaming es un club de esports enfocado en crecer dentro de la escena competitiva de Free Fire, desarrollar jugadores y construir comunidad.</p></div>
+<div class="grid3"><div class="card"><h3>COMPETIR</h3><p>Construimos equipos preparados para competir, mejorar y representar los colores de Kairox Gaming.</p></div><div class="card"><h3>CRECER</h3><p>Buscamos talento y damos espacio a jugadores con ambición, disciplina y ganas de evolucionar.</p></div><div class="card"><h3>COMUNIDAD</h3><p>El club también vive fuera de la partida: contenido, redes, seguidores y una comunidad propia.</p></div></div>
+</div></section>
+
+<section class="light" id="historia"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">02 · KAIROX</div><h2>NUESTRA HISTORIA</h2></div><p>La historia de Kairox Gaming se construye paso a paso junto a nuestros jugadores, resultados y comunidad.</p></div>
+<div class="grid3"><div class="card"><b>EL COMIENZO</b><h3>UNA IDEA</h3><p>Kairox nace con la intención de crear algo más grande que un equipo: una identidad competitiva.</p></div><div class="card"><b>EL CLUB</b><h3>CRECIMIENTO</h3><p>El proyecto evoluciona hacia un club con roster, reclutamiento, comunidad y presencia competitiva.</p></div><div class="card"><b>EL FUTURO</b><h3>AMBICIÓN</h3><p>Queremos crecer dentro de los esports y convertir Kairox en una marca reconocible.</p></div></div>
+</div></section>
+
+<section id="roster"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">03 · COMPETICIÓN</div><h2>ROSTER</h2></div><p>Nuestro roster competitivo. Los nombres, roles y fotografías se pueden sustituir por los jugadores oficiales cuando me los pases.</p></div>
+<div class="roster">
+<div class="player"><div><div class="role">CAPITÁN</div><h3>PLAYER 01</h3><small>FREE FIRE · KAIROX</small></div></div>
+<div class="player"><div><div class="role">PLAYER</div><h3>PLAYER 02</h3><small>FREE FIRE · KAIROX</small></div></div>
+<div class="player"><div><div class="role">PLAYER</div><h3>PLAYER 03</h3><small>FREE FIRE · KAIROX</small></div></div>
+<div class="player"><div><div class="role">PLAYER</div><h3>PLAYER 04</h3><small>FREE FIRE · KAIROX</small></div></div>
 </div></div></section>
 
-<section id="como-participar"><div class="wrap">
-<div class="section-head reveal"><div><div class="eyebrow">02 · PARTICIPA</div><h2>CÓMO PARTICIPAR</h2></div><p>El proceso es sencillo: prepara tu escuadra, completa el formulario y espera la confirmación.</p></div>
-<div class="info-grid">
-<div class="info reveal"><strong>01 · FORMA TU ESCUADRA</strong><p>Necesitas capitán y jugadores para completar la escuadra. También puedes indicar un suplente.</p></div>
-<div class="info reveal"><strong>02 · ENVÍA LA INSCRIPCIÓN</strong><p>Introduce correctamente los datos del equipo y acepta las reglas y condiciones del torneo.</p></div>
-<div class="info reveal"><strong>03 · CONFIRMACIÓN</strong><p>Recibirás la información correspondiente en el correo electrónico indicado durante la inscripción.</p></div>
+<section class="recruit" id="jugadores"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">04 · TALENTO</div><h2>BUSCAMOS JUGADORES</h2></div><p>¿Quieres representar a Kairox Gaming? Envíanos tu candidatura y cuéntanos qué puedes aportar al club.</p></div>
+<div class="recruit-grid"><div><p>Buscamos jugadores con nivel, compromiso, mentalidad competitiva y capacidad para trabajar en equipo.</p><div class="requirements"><div>EXPERIENCIA EN FREE FIRE</div><div>COMPROMISO Y CONSTANCIA</div><div>ACTITUD COMPETITIVA</div><div>TRABAJO EN EQUIPO</div></div></div>
+<div><form action="https://formspree.io/f/xwlklend" method="POST"><input type="hidden" name="tipo_solicitud" value="CANDIDATURA JUGADOR KAIROX"><input class="field" name="nombre" placeholder="Nombre / Nick" required><input class="field" type="email" name="email" placeholder="Correo electrónico" required><input class="field" name="id_free_fire" placeholder="ID de Free Fire" required><input class="field" name="rol" placeholder="Rol que juegas" required><textarea class="field" name="experiencia" placeholder="Experiencia, equipos anteriores, logros..." required></textarea><button class="submit">ENVIAR CANDIDATURA</button></form></div></div>
+</div></section>
+
+<section id="torneos"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">05 · COMPETICIÓN</div><h2>TORNEOS</h2></div><p>Los torneos forman parte de la actividad de Kairox Gaming y de nuestra comunidad competitiva.</p></div>
+<div class="grid3"><div class="card"><b>KX · 001</b><h3>FREE FIRE</h3><p>Torneo por escuadras abierto a la comunidad.</p><a class="btn" href="#inscripcion">INSCRIBIR ESCUADRA</a></div><div class="card"><b>KX · 002</b><h3>PRÓXIMAMENTE</h3><p>Nuevos formatos y eventos competitivos.</p></div><div class="card"><b>KX · 003</b><h3>RANKING</h3><p>Resultados y clasificación de nuestras competiciones.</p></div></div>
+</div></section>
+
+<section id="redes"><div class="wrap">
+<div class="section-head"><div><div class="eyebrow">06 · COMUNIDAD</div><h2>NUESTRAS REDES</h2></div><p>Síguenos para conocer el roster, novedades, resultados, contenido y próximos eventos.</p></div>
+<div class="socials">
+<a class="social" href="#" target="_blank"><strong>INSTAGRAM</strong><small>@KAIROXGAMING</small></a>
+<a class="social" href="#" target="_blank"><strong>TIKTOK</strong><small>@KAIROXGAMING</small></a>
+<a class="social" href="#" target="_blank"><strong>YOUTUBE</strong><small>KAIROX GAMING</small></a>
+<a class="social" href="#" target="_blank"><strong>DISCORD</strong><small>COMUNIDAD KAIROX</small></a>
 </div></div></section>
 
-<section class="form-section" id="inscripcion"><div class="wrap"><div class="form-wrap reveal">
-<div class="eyebrow">03 · REGISTRO</div><h2>INSCRIBE TU ESCUADRA</h2><p class="form-intro">Completa todos los campos obligatorios. La información será enviada al equipo de Kairox Gaming.</p>
+<section class="form" id="inscripcion"><div class="wrap"><div class="formbox">
+<div class="eyebrow">07 · TORNEOS</div><h2>INSCRIBE TU ESCUADRA</h2><p>Formulario oficial de inscripción a nuestros torneos de Free Fire.</p>
 <form id="formulario-kairox" action="https://formspree.io/f/xwlklend" method="POST">
-<input class="field" type="text" name="nombre_escuadra" placeholder="Nombre de la escuadra" required>
-<input class="field" type="text" name="nombre_capitan" placeholder="Nombre del capitán" required>
-<input class="field" type="email" name="correo" placeholder="Correo electrónico" required>
-<input class="field" type="text" name="id_free_fire" placeholder="ID de Free Fire del capitán" required>
-<input class="field" type="text" name="jugador_2" placeholder="Jugador 2" required>
-<input class="field" type="text" name="jugador_3" placeholder="Jugador 3" required>
-<input class="field" type="text" name="jugador_4" placeholder="Jugador 4" required>
-<input class="field" type="text" name="suplente" placeholder="Suplente (opcional)">
-<label class="check"><input type="checkbox" name="acepta_reglas" value="Sí" required>Acepto las reglas y condiciones del torneo.</label>
-<button class="submit" type="submit" id="boton-inscripcion">ENVIAR INSCRIPCIÓN</button>
-<div class="form-message" id="mensaje-inscripcion"><div class="trophy">🏆</div><h3>¡INSCRIPCIÓN RECIBIDA!</h3><p>Hemos recibido correctamente los datos de tu escuadra.<br>Revisa tu correo electrónico para cualquier confirmación o información adicional.</p></div>
-</form>
-</div></div></section>
-
-<section class="contact" id="contacto"><div class="wrap contact-grid">
-<div class="reveal"><div class="eyebrow">04 · CONTACTO</div><h2>HABLEMOS.</h2><p>¿Tienes una duda sobre un torneo, una inscripción o Kairox Gaming? Escríbenos.</p></div>
-<div class="reveal"><p>Correo oficial</p><a class="contact-email" href="mailto:torneos@kairoxgaming.com">torneos@kairoxgaming.com</a><p style="margin-top:30px"><a href="https://kairoxgaming.com" target="_blank" rel="noopener">kairoxgaming.com</a></p></div>
-</div></section>
-</main>
-
-<footer><div class="wrap foot"><div class="foot-brand"><img src="kairox-logo.svg" alt="">KAIROX GAMING</div><small>LATAM · FREE FIRE · ESPORTS · 2026</small></div></footer>
+<input class="field" name="nombre_escuadra" placeholder="Nombre de la escuadra" required><input class="field" name="nombre_capitan" placeholder="Nombre del capitán" required><input class="field" type="email" name="correo" placeholder="Correo electrónico" required><input class="field" name="id_free_fire" placeholder="ID de Free Fire del capitán" required><input class="field" name="jugador_2" placeholder="Jugador 2" required><input class="field" name="jugador_3" placeholder="Jugador 3" required><input class="field" name="jugador_4" placeholder="Jugador 4" required><input class="field" name="suplente" placeholder="Suplente (opcional)"><label class="check"><input type="checkbox" name="acepta_reglas" value="Sí" required> Acepto las reglas y condiciones del torneo.</label><button class="submit" id="send" type="submit">ENVIAR INSCRIPCIÓN</button>
+<div class="success" id="success"><h3>¡INSCRIPCIÓN RECIBIDA! 🏆</h3><p>Los datos de tu escuadra se han enviado correctamente.</p></div>
+</form></div></div></section>
+<footer><div class="wrap foot"><strong>KAIROX GAMING</strong><span>ESPORTS CLUB · FREE FIRE · LATAM · 2026</span></div></footer>
 
 <script>
-const progress=document.getElementById('progress');
-function updateProgress(){const h=document.documentElement,max=h.scrollHeight-window.innerHeight;progress.style.width=max>0?((window.scrollY/max)*100)+'%':'0%'}
-window.addEventListener('scroll',updateProgress);updateProgress();
-
-const observer=new IntersectionObserver(entries=>{entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('show');observer.unobserve(entry.target)}})},{threshold:.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-const formulario=document.getElementById('formulario-kairox');
-const boton=document.getElementById('boton-inscripcion');
-const mensaje=document.getElementById('mensaje-inscripcion');
-
-formulario.addEventListener('submit',async function(e){
-e.preventDefault();
-if(!formulario.checkValidity()){formulario.reportValidity();return}
-boton.disabled=true;boton.textContent='ENVIANDO...';
-try{
-const respuesta=await fetch(formulario.action,{method:'POST',body:new FormData(formulario),headers:{'Accept':'application/json'}});
-if(!respuesta.ok)throw new Error('No se pudo enviar');
-formulario.querySelectorAll('input,button').forEach(el=>el.style.display='none');
-mensaje.classList.add('show');
-mensaje.scrollIntoView({behavior:'smooth',block:'center'});
-}catch(error){
-boton.disabled=false;boton.textContent='ENVIAR INSCRIPCIÓN';
-alert('No se pudo enviar la inscripción. Inténtalo de nuevo.');
-}
-});
+const p=document.getElementById('progress');addEventListener('scroll',()=>{const m=document.documentElement.scrollHeight-innerHeight;p.style.width=m?(scrollY/m*100)+'%':'0%'});
+const f=document.getElementById('formulario-kairox'),b=document.getElementById('send'),s=document.getElementById('success');
+f.addEventListener('submit',async e=>{e.preventDefault();if(!f.checkValidity()){f.reportValidity();return}b.disabled=true;b.textContent='ENVIANDO...';try{const r=await fetch(f.action,{method:'POST',body:new FormData(f),headers:{Accept:'application/json'}});if(!r.ok)throw 0;f.querySelectorAll('input,button').forEach(x=>x.style.display='none');s.style.display='block'}catch(x){b.disabled=false;b.textContent='ENVIAR INSCRIPCIÓN';alert('No se pudo enviar. Inténtalo de nuevo.')}});
 </script>
 </body>
 </html>
