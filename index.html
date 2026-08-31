@@ -190,47 +190,54 @@ style="width:100%;padding:15px;margin-bottom:12px;border:1px solid #ccc;font-siz
 
 <input
 type="text"
+name="nombre_capitan"
 placeholder="Nombre del capitán"
 required
 style="width:100%;padding:15px;margin-bottom:12px;border:1px solid #ccc;font-size:14px;">
 
 <input
 type="email"
+name="correo"
 placeholder="Correo electrónico"
 required
 style="width:100%;padding:15px;margin-bottom:12px;border:1px solid #ccc;font-size:14px;">
 
 <input
 type="text"
+name="id_free_fire"
 placeholder="ID de Free Fire del capitán"
 required
 style="width:100%;padding:15px;margin-bottom:12px;border:1px solid #ccc;font-size:14px;">
 
 <input
 type="text"
+name="jugador_2"
 placeholder="Jugador 2"
 required
 style="width:100%;padding:15px;margin-bottom:12px;border:1px solid #ccc;font-size:14px;">
 
 <input
 type="text"
+name="jugador_3"
 placeholder="Jugador 3"
 required
 style="width:100%;padding:15px;margin-bottom:12px;border:1px solid #ccc;font-size:14px;">
 
 <input
 type="text"
+name="jugador_4"
 placeholder="Jugador 4"
 required
 style="width:100%;padding:15px;margin-bottom:12px;border:1px solid #ccc;font-size:14px;">
 
 <input
 type="text"
+name="suplente"
 placeholder="Suplente (opcional)"
 style="width:100%;padding:15px;margin-bottom:20px;border:1px solid #ccc;font-size:14px;">
 
 <label style="display:block;font-size:13px;color:#555;margin-bottom:20px;">
-<input type="checkbox" required>
+<input type="checkbox" name="acepta_reglas" value="Sí" required>
 Acepto las reglas y condiciones del torneo.
 </label>
 
@@ -241,21 +248,3 @@ ENVIAR INSCRIPCIÓN
 </button>
 
 </form>
-</div>
-
-
-</div>
-
-</div>
-</section>
-
-<footer><div class="wrap foot"><div class="foot-brand"><img src="kairox-logo.png" alt="">KAIROX GAMING</div><small>LATAM · FREE FIRE · ESPORTS · 2026</small></div></footer>
-
-<script>
-const progress=document.getElementById('progress');
-addEventListener('scroll',()=>{const h=document.documentElement;progress.style.width=(scrollY/(h.scrollHeight-innerHeight)*100)+'%'});
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('show')}),{threshold:.12});
-document.querySelectorAll('.reveal').forEach(e=>io.observe(e));
-</script>
-</body>
-</html>
