@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Kairox Gaming — Panel de resultados</title>
+<style>
+:root{--bg:#070707;--panel:#101010;--line:#292929;--muted:#858585;--white:#fff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Arial,sans-serif}main{max-width:1180px;margin:auto;padding:38px 20px}
+h1{font-size:42px;margin:5px 0 8px}.ey{font-size:9px;letter-spacing:2px;color:#888;font-weight:900}.sub{color:#777;font-size:12px;line-height:1.6}
+.panel{border:1px solid var(--line);background:var(--panel);padding:24px;margin-top:20px}.toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
+label{display:grid;gap:7px;color:#888;font-size:8px;letter-spacing:1.2px;font-weight:900}select,input{background:#090909;border:1px solid #333;color:#fff;padding:11px 12px;min-width:120px}
+button{background:#fff;color:#111;border:0;padding:12px 16px;font-size:8px;font-weight:900;letter-spacing:1.2px;cursor:pointer}button.secondary{background:#151515;color:#fff;border:1px solid #444}
+table{width:100%;border-collapse:collapse;margin-top:20px}th,td{padding:11px 8px;border-bottom:1px solid #242424;text-align:center;font-size:9px}th{color:#777;font-size:7px;letter-spacing:1.3px}th:nth-child(2),td:nth-child(2){text-align:left}
+.small{color:#666;font-size:9px;line-height:1.6;margin-top:12px}.msg{margin-top:14px;color:#aaa;font-size:9px}
+@media(max-width:700px){table{min-width:800px}.panel{overflow:auto}}
+</style></head>
+<body><main>
+<div class="ey">KAIROX GAMING · PRIVATE RESULTS PANEL</div>
+<h1>RESULTS<br>CONTROL.</h1>
+<p class="sub">Panel local para cargar los resultados de la Kairox Cup. Selecciona una partida, introduce posición y kills y guarda. Los puntos se calculan automáticamente.</p>
+<div class="panel">
+<div class="toolbar">
+<label>JORNADA<select id="day"><option value="1">DÍA 1</option><option value="2">DÍA 2</option><option value="3">DÍA 3</option></select></label>
+<label>PARTIDA<select id="match"></select></label>
+<button onclick="calculate()">CALCULAR PUNTOS</button>
+<button class="secondary" onclick="save()">GUARDAR RESULTADOS</button>
+<button class="secondary" onclick="exportData()">EXPORTAR JSON</button>
+<button class="secondary" onclick="resetAll()">REINICIAR</button>
+</div>
+<table><thead><tr><th>#</th><th>EQUIPO</th><th>POSICIÓN</th><th>KILLS</th><th>PUNTOS PARTIDA</th></tr></thead><tbody id="body"></tbody></table>
+<div id="msg" class="msg"></div>
+<p class="small">Sistema: 1.º 12 pts · 2.º 9 · 3.º 8 · 4.º 7 · 5.º 6 · 6.º 5 · 7.º 4 · 8.º 3 · 9.º 2 · 10.º 1 · 11.º–12.º 0 · cada kill +1.</p>
+</div>
+</main>
+<script>
+const pts={1:12,2:9,3:8,4:7,5:6,6:5,7:4,8:3,9:2,10:1,11:0,12:0};
+const defaultRows=Array.from({length:12},(_,i)=>({team:`EQUIPO ${i+1}`,short:`E${i+1}`,d1:0,d2:0,d3:0,kills:0}));
+let data=JSON.parse(localStorage.getItem('kairoxStandings')||'null')||defaultRows;
+let matchResults=JSON.parse(localStorage.getItem('kairoxMatchResults')||'{}');
+for(let i=1;i<=9;i++) document.getElementById('match').insertAdjacentHTML('beforeend',`<option value="${i}">PARTIDA ${i}</option>`);
+function key(){return `${document.getElementById('day').value}-${document.getElementById('match').value}`}
+function draw(){
+ const k=key(), r=matchResults[k]||Array.from({length:12},()=>({pos:0,kills:0}));
+ document.getElementById('body').innerHTML=data.map((t,i)=>`<tr><td>${i+1}</td><td>${t.team}</td><td><input class="pos" type="number" min="1" max="12" value="${r[i].pos||''}"></td><td><input class="kill" type="number" min="0" value="${r[i].kills||''}"></td><td class="calc">0</td></tr>`).join('');
+}
+function calculate(){
+ document.querySelectorAll('#body tr').forEach(tr=>{let p=+tr.querySelector('.pos').value||0,k=+tr.querySelector('.kill').value||0;tr.querySelector('.calc').textContent=(pts[p]||0)+k});
+ document.getElementById('msg').textContent='Puntos calculados. Pulsa GUARDAR RESULTADOS para actualizar la clasificación.';
+}
+function save(){
+ const day=+document.getElementById('day').value, k=key(), rows=[...document.querySelectorAll('#body tr')];
+ matchResults[k]=rows.map(tr=>({pos:+tr.querySelector('.pos').value||0,kills:+tr.querySelector('.kill').value||0}));
+ data=defaultRows.map((x,i)=>({...x}));
+ Object.values(matchResults).forEach((res,idx)=>{const d=Math.floor(idx/3)+1; if(d>3)return; res.forEach((r,i)=>{data[i][`d${d}`]+= (pts[r.pos]||0); data[i].kills+=r.kills;});});
+ localStorage.setItem('kairoxStandings',JSON.stringify(data));
+ localStorage.setItem('kairoxMatchResults',JSON.stringify(matchResults));
+ calculate(); document.getElementById('msg').textContent='✓ Resultados guardados. La tabla pública de este navegador ya está actualizada.';
+}
+function exportData(){
+ const blob=new Blob([JSON.stringify({standings:data,matches:matchResults},null,2)],{type:'application/json'});
+ const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='kairox-cup-resultados.json';a.click();
+}
+function resetAll(){if(confirm('¿Reiniciar todos los resultados?')){localStorage.removeItem('kairoxStandings');localStorage.removeItem('kairoxMatchResults');data=defaultRows;matchResults={};draw();}}
+document.getElementById('day').onchange=draw;document.getElementById('match').onchange=draw;draw();
+</script></body></html>
