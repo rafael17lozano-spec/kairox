@@ -113,6 +113,8 @@ body.segmented[data-view="live"] #live{display:block}
 
 /* V18 — 12 TEAM STANDINGS */
 .standings-table .team-logo{border-radius:3px}
+.standings-table img.team-logo{width:27px;height:27px;object-fit:contain;display:block;background:#111;padding:2px}
+.standings-table .team-logo-fallback{flex:0 0 27px}
 .standings-table .top-row td{background:rgba(255,255,255,.035)}
 
 @media(max-width:800px){body.segmented[data-view="club"] #club,body.segmented[data-view="club"] #historia,body.segmented[data-view="club"] #roster,body.segmented[data-view="club"] #reclutamiento, body.segmented[data-view="club"] #live{display:block}}
@@ -574,9 +576,18 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
     teams.forEach(t => { teamById[t.id] = t; });
 
     const rows = leaderboard.map(row => {
+      const team = teamById[row.team_id] || {};
       const ds = dayStats[row.team_id] || {d1:0,d2:0,d3:0};
+
+      let logoUrl = team.logo_url || "";
+      if (logoUrl && !/^https?:\\/\\//i.test(logoUrl)) {
+        logoUrl = sb.storage.from("team-logos").getPublicUrl(logoUrl).data.publicUrl;
+      }
+
       return {
-        team_name: row.team_name || teamById[row.team_id]?.name || "Equipo",
+        team_id: row.team_id,
+        team_name: row.team_name || team.name || "Equipo",
+        logo_url: logoUrl,
         d1: ds.d1,
         d2: ds.d2,
         d3: ds.d3,
@@ -593,10 +604,14 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
       const rank = i < 3 ? ["🥇","🥈","🥉"][i] : i+1;
       const shown = current === "all" ? s.total : s["d"+current];
       const initials = (s.team_name || "E").slice(0,3).toUpperCase();
+      const logo = s.logo_url
+        ? `<img class="team-logo" src="${s.logo_url}" alt="" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid';">`
+        : "";
+      const fallback = `<span class="team-logo team-logo-fallback" style="${s.logo_url ? "display:none" : ""}">${initials}</span>`;
 
       return `<tr>
         <td class="rank">${rank}</td>
-        <td><div class="team-cell"><span class="team-logo">${initials}</span>${s.team_name}</div></td>
+        <td><div class="team-cell">${logo}${fallback}<span>${s.team_name}</span></div></td>
         <td>${s.d1}</td>
         <td>${s.d2}</td>
         <td>${s.d3}</td>
