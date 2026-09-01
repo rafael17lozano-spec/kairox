@@ -580,7 +580,7 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
       const ds = dayStats[row.team_id] || {d1:0,d2:0,d3:0};
 
       let logoUrl = team.logo_url || "";
-      if (logoUrl && !/^https?:\\/\\//i.test(logoUrl)) {
+      if (logoUrl && !logoUrl.startsWith("http://") && !logoUrl.startsWith("https://")) {
         logoUrl = sb.storage.from("team-logos").getPublicUrl(logoUrl).data.publicUrl;
       }
 
