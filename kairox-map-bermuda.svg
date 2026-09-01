@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 420">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#244f68"/><stop offset="1" stop-color="#17303e"/></linearGradient></defs>
+<rect width="800" height="420" fill="#111"/><path d="M0 320 Q180 220 350 300 T800 260 V420 H0Z" fill="url(#g)" opacity=".8"/>
+<circle cx="600" cy="100" r="85" fill="#fff" opacity=".08"/><path d="M90 330 L230 160 L310 300 L430 130 L610 330Z" fill="#fff" opacity=".10"/>
+<text x="42" y="78" fill="#fff" font-family="Arial" font-size="34" font-weight="700" letter-spacing="4">BERMUDA</text>
+<text x="45" y="110" fill="#fff" opacity=".65" font-family="Arial" font-size="15" letter-spacing="3">TROPICAL ISLAND</text>
+</svg>
