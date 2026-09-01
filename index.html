@@ -102,7 +102,7 @@ body.segmented .site-section{display:none}
 body.segmented[data-view="club"] #club,
 body.segmented[data-view="club"] #historia,
 body.segmented[data-view="club"] #roster,
-body.segmented[data-view="club"] #creadores{display:block}
+body.segmented[data-view="club"] #creadores, body.segmented[data-view="club"] #live{display:block}
 body.segmented[data-view="torneos"] #torneos,
 body.segmented[data-view="torneos"] #clasificacion,
 body.segmented[data-view="torneos"] #registro-cup{display:block}
@@ -114,7 +114,7 @@ body.segmented[data-view="redes"] #redes{display:block}
 .standings-table .team-logo{border-radius:3px}
 .standings-table .top-row td{background:rgba(255,255,255,.035)}
 
-@media(max-width:800px){body.segmented[data-view="club"] #club,body.segmented[data-view="club"] #historia,body.segmented[data-view="club"] #roster,body.segmented[data-view="club"] #creadores{display:block}}
+@media(max-width:800px){body.segmented[data-view="club"] #club,body.segmented[data-view="club"] #historia,body.segmented[data-view="club"] #roster,body.segmented[data-view="club"] #creadores, body.segmented[data-view="club"] #live{display:block}}
 
 @media(max-width:800px){.standings-head{display:block}.standings-status{display:inline-block;margin-top:14px}.standings-wrap{overflow-x:auto}.standings-table{min-width:680px}.standings-toggle{display:grid;grid-template-columns:1fr 1fr 1fr}.day-btn{width:100%}}
 
@@ -182,7 +182,7 @@ body.segmented .site-section{display:none!important}
 body.segmented[data-view="club"] #club,
 body.segmented[data-view="club"] #historia,
 body.segmented[data-view="club"] #roster,
-body.segmented[data-view="club"] #creadores{display:block!important}
+body.segmented[data-view="club"] #creadores, body.segmented[data-view="club"] #live{display:block!important}
 body.segmented[data-view="torneos"] #torneos,
 body.segmented[data-view="torneos"] #clasificacion,
 body.segmented[data-view="torneos"] #registro-cup{display:block!important}
@@ -194,13 +194,41 @@ body.segmented[data-view="club"] #reclutamiento{display:none!important}
   body.segmented[data-view="club"] #club,
   body.segmented[data-view="club"] #historia,
   body.segmented[data-view="club"] #roster,
-  body.segmented[data-view="club"] #creadores{display:block!important}
+  body.segmented[data-view="club"] #creadores, body.segmented[data-view="club"] #live{display:block!important}
   body.segmented[data-view="torneos"] #torneos,
   body.segmented[data-view="torneos"] #clasificacion,
   body.segmented[data-view="torneos"] #registro-cup{display:block!important}
   body.segmented[data-view="tienda"] #tienda,
   body.segmented[data-view="redes"] #redes{display:block!important}
 }
+
+/* V23 — LIVE STREAM HUB */
+.live-nav{
+  display:inline-flex!important;align-items:center;gap:7px;
+  color:#fff!important;font-weight:900!important;
+}
+.live-dot{
+  width:7px;height:7px;border-radius:50%;background:#ff2b2b;
+  display:inline-block;box-shadow:0 0 0 3px rgba(255,43,43,.12),0 0 12px rgba(255,43,43,.75);
+  animation:livePulse 1.4s infinite;
+}
+.live-camera{font-size:13px;line-height:1}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+.live-hub{margin-top:30px}
+.live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.live-card{
+  border:1px solid #292929;background:rgba(8,8,8,.78);padding:24px;
+  position:relative;overflow:hidden;transition:.2s;
+}
+.live-card:hover{border-color:#555;transform:translateY(-2px)}
+.live-card:after{content:"";position:absolute;right:-35px;bottom:-45px;width:150px;height:150px;background:url('kairox-eagle.svg') center/contain no-repeat;opacity:.025}
+.live-badge{display:inline-flex;align-items:center;gap:7px;border:1px solid #3a3a3a;padding:7px 9px;font-size:7px;letter-spacing:1.8px;font-weight:900}
+.live-card h3{font-size:23px;margin:18px 0 5px}.live-card .role{color:#777;font-size:8px;letter-spacing:1.5px}
+.live-card p{color:#888;font-size:11px;line-height:1.65;margin:15px 0 18px}
+.stream-links{display:flex;gap:7px;flex-wrap:wrap}.stream-links a{border:1px solid #444;padding:9px 11px;color:#fff;text-decoration:none;font-size:7px;letter-spacing:1.2px;font-weight:900}
+.stream-links a:hover{background:#fff;color:#111}
+.live-empty{border:1px dashed #333;padding:28px;color:#666;font-size:10px;line-height:1.7}
+@media(max-width:800px){.live-grid{grid-template-columns:1fr}.live-nav{padding:9px 5px!important}.stream-links a{padding:11px 12px}}
 </style>
 </head>
 <body>
@@ -212,13 +240,59 @@ body.segmented[data-view="club"] #reclutamiento{display:none!important}
 <div class="nav-item"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">TORNEOS</a><div class="dropdown"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">Kairox Cup</a><a data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">Inscripciones</a></div></div>
 <div class="nav-item"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">TIENDA</a><div class="dropdown"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">Jersey 2026</a></div></div>
 <div class="nav-item"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">REDES</a><div class="dropdown"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Instagram</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">TikTok</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">YouTube</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">X</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Contacto</a></div></div>
-</nav></div></header>
+<a href="#live" class="live-nav" data-live-nav="true" data-route-target="live" data-route-view="club"><span class="live-camera">▣</span><span class="live-dot"></span> LIVE</a></nav></div></header>
 <section class="hero" id="inicio"><div class="eagle-glow"></div><div class="hero-eagle"><img alt="" aria-hidden="true" src="kairox-eagle.svg"/></div><div class="wrap hero-grid"><div>
 <div class="eyebrow">ESPORTS CLUB · FREE FIRE · LATAM · EAGLE IDENTITY</div><h1>KAIROX<br/><span>NEW ERA</span></h1>
 <p class="hero-copy">Más que un equipo. Somos un club de esports que une competición, talento, creadores y comunidad. Esta es nuestra nueva era.</p><div class="eagle-line">SÍMBOLO DEL CLUB · FUERZA · VISIÓN · ALTURA</div>
 <div class="actions"><a aria-label="Abrir club" class="btn btn-main btn-conecticion" data-route-target="club" data-route-view="club" href="#club">ENTRAR AL CLUB</a><a aria-label="Abrir torneos" class="btn" data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">VER COMPETICIÓN</a></div>
 </div><div class="hero-mark"><img alt="Kairox Gaming" src="kairox-logo.png"/></div></div></section>
-<section class="site-section" id="club"><div class="eagle-back-label">EAGLE</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 · CLUB</div><h2>MORE THAN<br/>A TEAM.</h2></div><p>Kairox Gaming nace con una idea clara: construir un club reconocible dentro de los esports, desarrollar talento y crear una comunidad que quiera formar parte del camino.</p></div>
+<section class="site-section" id="club">
+<div id="live" class="live-hub route-focus">
+  <div class="section-head">
+    <div><div class="eyebrow">LIVE · KAIROX CUP</div><h2>WATCH<br>THE FLOCK.</h2></div>
+    <p>Durante la Kairox Cup podrás encontrar aquí a los creadores que estén retransmitiendo las partidas, junto con sus redes y plataforma de streaming.</p>
+  </div>
+  <div class="live-grid">
+    <article class="live-card">
+      <span class="live-badge"><span class="live-dot"></span> LIVE · PRÓXIMAMENTE</span>
+      <h3>CREADOR 1</h3>
+      <div class="role">CREADOR / STREAMER</div>
+      <p>Su canal aparecerá aquí cuando esté retransmitiendo una jornada de la Kairox Cup.</p>
+      <div class="stream-links">
+        <a href="#" aria-label="Instagram del creador 1">INSTAGRAM</a>
+        <a href="#" aria-label="TikTok del creador 1">TIKTOK</a>
+        <a href="#" aria-label="Canal de streaming del creador 1">STREAM</a>
+      </div>
+    </article>
+    <article class="live-card">
+      <span class="live-badge"><span class="live-dot"></span> LIVE · PRÓXIMAMENTE</span>
+      <h3>CREADOR 2</h3>
+      <div class="role">CREADOR / STREAMER</div>
+      <p>Su canal aparecerá aquí cuando esté retransmitiendo una jornada de la Kairox Cup.</p>
+      <div class="stream-links">
+        <a href="#" aria-label="Instagram del creador 2">INSTAGRAM</a>
+        <a href="#" aria-label="TikTok del creador 2">TIKTOK</a>
+        <a href="#" aria-label="Canal de streaming del creador 2">STREAM</a>
+      </div>
+    </article>
+    <article class="live-card">
+      <span class="live-badge"><span class="live-dot"></span> LIVE · PRÓXIMAMENTE</span>
+      <h3>CREADOR 3</h3>
+      <div class="role">CREADOR / STREAMER</div>
+      <p>Su canal aparecerá aquí cuando esté retransmitiendo una jornada de la Kairox Cup.</p>
+      <div class="stream-links">
+        <a href="#" aria-label="Instagram del creador 3">INSTAGRAM</a>
+        <a href="#" aria-label="TikTok del creador 3">TIKTOK</a>
+        <a href="#" aria-label="Canal de streaming del creador 3">STREAM</a>
+      </div>
+    </article>
+  </div>
+  <div class="live-empty" style="margin-top:14px">
+    <strong style="color:#fff">¿Todavía no hay un directo?</strong><br>
+    Cuando los creadores estén confirmados, sustituiremos estos espacios por sus nombres, fotos/logos, redes y enlaces directos a Twitch, YouTube u otra plataforma de streaming.
+  </div>
+</div>
+<div class="eagle-back-label">EAGLE</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 · CLUB</div><h2>MORE THAN<br/>A TEAM.</h2></div><p>Kairox Gaming nace con una idea clara: construir un club reconocible dentro de los esports, desarrollar talento y crear una comunidad que quiera formar parte del camino.</p></div>
 <div class="metrics"><div class="metric"><b>01</b><span>CLUB</span></div><div class="metric"><b>FF</b><span>FREE FIRE</span></div><div class="metric"><b>LATAM</b><span>COMUNIDAD</span></div><div class="metric"><b>2026</b><span>NEW ERA</span></div></div>
 <div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a aria-label="Abrir tienda" class="btn" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" data-route-target="historia" data-route-view="club" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" data-route-target="roster" data-route-view="club" href="#roster">VER ROSTER</a></article></div><div class="eagle-quote">“VOLAMOS MÁS ALTO. <span>COMPETIMOS JUNTOS.</span>”</div></div></section>
 <section class="site-section light" id="historia"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 · HISTORIA</div><h2>THE<br/>JOURNEY.</h2></div><p>La historia real de Kairox crecerá con el club. Esta estructura queda preparada para añadir fechas, hitos, títulos y momentos importantes.</p></div>
@@ -410,7 +484,7 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
 
   window.addEventListener('popstate',()=>{
     const target=(location.hash||'').slice(1);
-    const view=(target==='historia'||target==='roster'||target==='creadores'||target==='club'||target==='reclutamiento')?'club':
+    const view=(target==='historia'||target==='roster'||target==='creadores'||target==='club'||target==='reclutamiento'||target==='live')?'club':
       (target==='tienda'?'tienda':(target==='redes'?'redes':'torneos'));
     route(target || view, view, false);
   });
@@ -425,5 +499,22 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
     window.scrollTo(0,0);
   }
 })();
-</script></body>
+</script>
+<script data-live-route-handler>
+(function(){
+  const live=document.querySelector('[data-live-nav="true"]');
+  if(!live)return;
+  live.addEventListener('click',function(e){
+    e.preventDefault();
+    document.body.classList.add('segmented');
+    document.body.dataset.view='club';
+    document.querySelectorAll('[data-segment]').forEach(c=>c.classList.toggle('segment-nav-active',c.dataset.segment==='club'));
+    const el=document.getElementById('live');
+    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
+    history.pushState({view:'club',target:'live'},'', '#live');
+  });
+})();
+</script>
+
+</body>
 </html>
