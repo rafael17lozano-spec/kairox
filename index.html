@@ -524,20 +524,14 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
 </script>
 <script>
 (function(){
- const rows=[
-  {team:"EQUIPO 1",short:"E1",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 2",short:"E2",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 3",short:"E3",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 4",short:"E4",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 5",short:"E5",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 6",short:"E6",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 7",short:"E7",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 8",short:"E8",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 9",short:"E9",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 10",short:"E10",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 11",short:"E11",d1:0,d2:0,d3:0,kills:0},
-  {team:"EQUIPO 12",short:"E12",d1:0,d2:0,d3:0,kills:0}
- ];
+ const rows=JSON.parse(localStorage.getItem('kairoxStandings')||'null')||[
+{team:"EQUIPO 1",short:"E1",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 2",short:"E2",d1:0,d2:0,d3:0,kills:0},
+{team:"EQUIPO 3",short:"E3",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 4",short:"E4",d1:0,d2:0,d3:0,kills:0},
+{team:"EQUIPO 5",short:"E5",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 6",short:"E6",d1:0,d2:0,d3:0,kills:0},
+{team:"EQUIPO 7",short:"E7",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 8",short:"E8",d1:0,d2:0,d3:0,kills:0},
+{team:"EQUIPO 9",short:"E9",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 10",short:"E10",d1:0,d2:0,d3:0,kills:0},
+{team:"EQUIPO 11",short:"E11",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 12",short:"E12",d1:0,d2:0,d3:0,kills:0}
+];
  const body=document.getElementById("standings-body"), buttons=document.querySelectorAll(".day-btn");
  if(!body)return;
  function render(day){
@@ -601,5 +595,12 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
   window.addEventListener('hashchange',loadHash);
   loadHash();
 })();
+</script><!-- Panel de resultados: admin.html -->
+<script id="kairox-standings-update">
+window.addEventListener('storage',function(e){
+ if(e.key==='kairoxStandings' && typeof render==='function'){
+   try{ rows.splice(0,rows.length,...JSON.parse(e.newValue||'[]')); render('all'); }catch(_){}
+ }
+});
 </script></body>
 </html>
