@@ -95,6 +95,26 @@ img{max-width:100%;height:auto}
 .standings-table{width:100%;border-collapse:collapse}.standings-table th,.standings-table td{padding:15px 12px;border-bottom:1px solid #242424;text-align:center;font-size:10px}.standings-table th{color:#666;font-size:8px;letter-spacing:1.5px}.standings-table th:nth-child(2),.standings-table td:nth-child(2){text-align:left}.standings-table td{font-weight:700}.standings-table tr:last-child td{border-bottom:0}.rank{font-size:18px}.team-cell{display:flex;align-items:center;gap:10px}.team-logo{width:27px;height:27px;border:1px solid #333;display:grid;place-items:center;font-size:8px;color:#777;background:#111}.total{font-size:15px!important}.provisional-note{padding:15px 25px;color:#666;font-size:9px;letter-spacing:.5px;border-top:1px solid #292929}
 .standings-toggle{margin-top:24px;display:flex;gap:9px;flex-wrap:wrap}.day-btn{cursor:pointer;border:1px solid #444;background:#111;color:#aaa;padding:13px 17px;font-size:8px;letter-spacing:1.7px;font-weight:900}.day-btn.active,.day-btn:hover{background:#fff;color:#111;border-color:#fff}
 .light .standings-wrap{background:#fff;border-color:#ddd}.light .standings-head,.light .standings-table th,.light .standings-table td,.light .provisional-note{border-color:#ddd}.light .standings-status{border-color:#ccc;color:#666}.light .team-logo{background:#f4f4f4;border-color:#ddd}.light .day-btn{background:#fff;color:#666;border-color:#ccc}.light .day-btn.active{background:#111;color:#fff;border-color:#111}
+
+/* V17 — SEGMENTED SECTIONS */
+body.segmented .site-section{display:none}
+body.segmented[data-view="club"] #club,
+body.segmented[data-view="club"] #historia,
+body.segmented[data-view="club"] #roster,
+body.segmented[data-view="club"] #creadores{display:block}
+body.segmented[data-view="torneos"] #torneos,
+body.segmented[data-view="torneos"] #clasificacion,
+body.segmented[data-view="torneos"] #registro-cup{display:block}
+body.segmented[data-view="tienda"] #tienda{display:block}
+body.segmented[data-view="redes"] #redes{display:block}
+.segment-nav-active{color:#fff!important}
+
+/* V18 — 12 TEAM STANDINGS */
+.standings-table .team-logo{border-radius:3px}
+.standings-table .top-row td{background:rgba(255,255,255,.035)}
+
+@media(max-width:800px){body.segmented[data-view="club"] #club,body.segmented[data-view="club"] #historia,body.segmented[data-view="club"] #roster,body.segmented[data-view="club"] #creadores{display:block}}
+
 @media(max-width:800px){.standings-head{display:block}.standings-status{display:inline-block;margin-top:14px}.standings-wrap{overflow-x:auto}.standings-table{min-width:680px}.standings-toggle{display:grid;grid-template-columns:1fr 1fr 1fr}.day-btn{width:100%}}
 
 @media(max-width:800px){.prizes{grid-template-columns:1fr}}
@@ -150,26 +170,26 @@ img{max-width:100%;height:auto}
 <header><div class="wrap nav">
 <a class="brand" href="#inicio"><img src="kairox-logo.png" alt="">KAIROX GAMING</a>
 <nav class="menu">
-<div class="nav-item"><a href="#club">CLUB</a><div class="dropdown"><a href="#club">Nuestro club</a><a href="#historia">Nuestra historia</a><a href="#roster">Jugadores</a><a href="#creadores">Creadores</a><a href="#reclutamiento">Únete a Kairox</a></div></div>
-<div class="nav-item"><a href="#torneos">TORNEOS</a><div class="dropdown"><a href="#torneos">Kairox Cup</a><a href="#inscripcion">Inscripciones</a></div></div>
-<div class="nav-item"><a href="#tienda">TIENDA</a><div class="dropdown"><a href="#tienda">Jersey 2026</a></div></div>
-<div class="nav-item"><a href="#redes">REDES</a><div class="dropdown"><a href="#redes">Instagram</a><a href="#redes">TikTok</a><a href="#redes">YouTube</a><a href="#redes">X</a><a href="#redes">Contacto</a></div></div>
+<div class="nav-item"><a href="#" data-segment="club" aria-label="Abrir club">CLUB</a><div class="dropdown"><a href="#" data-segment="club" aria-label="Abrir club">Nuestro club</a><a href="#historia">Nuestra historia</a><a href="#roster">Jugadores</a><a href="#creadores">Creadores</a><a href="#reclutamiento">Únete a Kairox</a></div></div>
+<div class="nav-item"><a href="#" data-segment="torneos" aria-label="Abrir torneos">TORNEOS</a><div class="dropdown"><a href="#" data-segment="torneos" aria-label="Abrir torneos">Kairox Cup</a><a href="#inscripcion">Inscripciones</a></div></div>
+<div class="nav-item"><a href="#" data-segment="tienda" aria-label="Abrir tienda">TIENDA</a><div class="dropdown"><a href="#" data-segment="tienda" aria-label="Abrir tienda">Jersey 2026</a></div></div>
+<div class="nav-item"><a href="#" data-segment="redes" aria-label="Abrir redes">REDES</a><div class="dropdown"><a href="#" data-segment="redes" aria-label="Abrir redes">Instagram</a><a href="#" data-segment="redes" aria-label="Abrir redes">TikTok</a><a href="#" data-segment="redes" aria-label="Abrir redes">YouTube</a><a href="#" data-segment="redes" aria-label="Abrir redes">X</a><a href="#" data-segment="redes" aria-label="Abrir redes">Contacto</a></div></div>
 </nav></div></header>
 
 <section class="hero" id="inicio"><div class="eagle-glow"></div><div class="hero-eagle"><img src="kairox-eagle.svg" alt="" aria-hidden="true"></div><div class="wrap hero-grid"><div>
 <div class="eyebrow">ESPORTS CLUB · FREE FIRE · LATAM · EAGLE IDENTITY</div><h1>KAIROX<br><span>NEW ERA</span></h1>
 <p class="hero-copy">Más que un equipo. Somos un club de esports que une competición, talento, creadores y comunidad. Esta es nuestra nueva era.</p><div class="eagle-line">SÍMBOLO DEL CLUB · FUERZA · VISIÓN · ALTURA</div>
-<div class="actions"><a class="btn btn-main" href="#club">ENTRAR AL CLUB</a><a class="btn" href="#torneos">VER COMPETICIÓN</a></div>
+<div class="actions"><a class="btn btn-main" href="#" data-segment="club" aria-label="Abrir club">ENTRAR AL CLUB</a><a class="btn" href="#" data-segment="torneos" aria-label="Abrir torneos">VER COMPETICIÓN</a></div>
 </div><div class="hero-mark"><img src="kairox-logo.png" alt="Kairox Gaming"></div></div></section>
 
-<section id="club"><div class="eagle-back-label">EAGLE</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 · CLUB</div><h2>MORE THAN<br>A TEAM.</h2></div><p>Kairox Gaming nace con una idea clara: construir un club reconocible dentro de los esports, desarrollar talento y crear una comunidad que quiera formar parte del camino.</p></div>
+<section id="club" class="site-section"><div class="eagle-back-label">EAGLE</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 · CLUB</div><h2>MORE THAN<br>A TEAM.</h2></div><p>Kairox Gaming nace con una idea clara: construir un club reconocible dentro de los esports, desarrollar talento y crear una comunidad que quiera formar parte del camino.</p></div>
 <div class="metrics"><div class="metric"><b>01</b><span>CLUB</span></div><div class="metric"><b>FF</b><span>FREE FIRE</span></div><div class="metric"><b>LATAM</b><span>COMUNIDAD</span></div><div class="metric"><b>2026</b><span>NEW ERA</span></div></div>
-<div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a class="btn" href="#tienda">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" href="#roster">VER ROSTER</a></article></div><div class="eagle-quote">“VOLAMOS MÁS ALTO. <span>COMPETIMOS JUNTOS.</span>”</div></div></section>
+<div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a class="btn" href="#" data-segment="tienda" aria-label="Abrir tienda">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" href="#roster">VER ROSTER</a></article></div><div class="eagle-quote">“VOLAMOS MÁS ALTO. <span>COMPETIMOS JUNTOS.</span>”</div></div></section>
 
-<section class="light" id="historia"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 · HISTORIA</div><h2>THE<br>JOURNEY.</h2></div><p>La historia real de Kairox crecerá con el club. Esta estructura queda preparada para añadir fechas, hitos, títulos y momentos importantes.</p></div>
+<section class="site-section light" id="historia"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 · HISTORIA</div><h2>THE<br>JOURNEY.</h2></div><p>La historia real de Kairox crecerá con el club. Esta estructura queda preparada para añadir fechas, hitos, títulos y momentos importantes.</p></div>
 <div class="timeline"><article><b>CAPÍTULO 01</b><h3>EL COMIENZO</h3><p>El nacimiento de Kairox y la visión de crear una identidad propia dentro de Free Fire.</p></article><article><b>CAPÍTULO 02</b><h3>LA NUEVA ERA</h3><p>El club toma forma: roster, staff, creadores, torneos y una comunidad alrededor de la marca.</p></article><article><b>CAPÍTULO 03</b><h3>EL FUTURO</h3><p>Competir más arriba, crecer juntos y convertir Kairox en un nombre reconocible en los esports.</p></article></div></div></section>
 
-<section id="roster"><div class="eagle-back-label">ROSTER</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">03 · COMPETITIVE</div><h2>THE NEXT<br>PLAYERS.</h2></div><p>Nuestro roster competitivo todavía está por formar. Kairox está buscando jugadores que quieran formar parte de nuestra nueva era.</p></div>
+<section id="roster" class="site-section"><div class="eagle-back-label">ROSTER</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">03 · COMPETITIVE</div><h2>THE NEXT<br>PLAYERS.</h2></div><p>Nuestro roster competitivo todavía está por formar. Kairox está buscando jugadores que quieran formar parte de nuestra nueva era.</p></div>
 <div style="border:1px solid #292929;background:rgba(10,10,10,.78);backdrop-filter:blur(8px);padding:55px;text-align:center;min-height:300px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden">
 <div style="position:absolute;inset:0;background:url('kairox-eagle.svg') center/520px auto no-repeat;opacity:.025"></div>
 <div style="position:relative;z-index:1"><div style="font-size:65px;font-weight:900;color:#222;line-height:1">KX</div>
@@ -178,13 +198,13 @@ img{max-width:100%;height:auto}
 <a class="btn btn-main" href="#reclutamiento">QUIERO FORMAR PARTE →</a></div>
 </div></div></section>
 
-<section class="light" id="creadores"><div class="wrap"><div class="section-head"><div><div class="eyebrow">04 · CREATORS</div><h2>CREATORS.</h2></div><p>El contenido también compite por nuestra atención. Aquí mostraremos a quienes representan Kairox fuera de los servidores.</p></div><div class="creators"><article class="creator"><div class="eyebrow">CREATOR 01</div><h3>PRÓXIMAMENTE</h3><span>PERFIL KAIROX</span></article><article class="creator"><div class="eyebrow">CREATOR 02</div><h3>PRÓXIMAMENTE</h3><span>PERFIL KAIROX</span></article><article class="creator"><div class="eyebrow">CREATOR 03</div><h3>PRÓXIMAMENTE</h3><span>PERFIL KAIROX</span></article></div></div></section>
+<section class="site-section light" id="creadores"><div class="wrap"><div class="section-head"><div><div class="eyebrow">04 · CREATORS</div><h2>CREATORS.</h2></div><p>El contenido también compite por nuestra atención. Aquí mostraremos a quienes representan Kairox fuera de los servidores.</p></div><div class="creators"><article class="creator"><div class="eyebrow">CREATOR 01</div><h3>PRÓXIMAMENTE</h3><span>PERFIL KAIROX</span></article><article class="creator"><div class="eyebrow">CREATOR 02</div><h3>PRÓXIMAMENTE</h3><span>PERFIL KAIROX</span></article><article class="creator"><div class="eyebrow">CREATOR 03</div><h3>PRÓXIMAMENTE</h3><span>PERFIL KAIROX</span></article></div></div></section>
 
 <section class="scene"><div class="scene-title"><span class="scene-eagle"></span> THE COMPETITIVE SCENE <span class="scene-eagle"></span></div><div class="marquee"><div class="track"><span>FREE FIRE</span><i>◆</i><span>FFWS</span><i>◆</i><span>WORLD SERIES</span><i>◆</i><span>FREE FIRE ESPORTS</span><i>◆</i><span>LATAM</span><i>◆</i><span>EMEA</span><i>◆</i><span>FREE FIRE</span><i>◆</i><span>FFWS</span><i>◆</i><span>WORLD SERIES</span><i>◆</i><span>FREE FIRE ESPORTS</span><i>◆</i><span>LATAM</span><i>◆</i><span>EMEA</span><i>◆</i></div></div></section>
 
 <section class="recruit" id="reclutamiento"><div class="wrap"><div class="section-head"><div><div class="eyebrow">05 · TALENTO</div><h2>JOIN<br>KAIROX.</h2></div><p>Players, coach y manager: buscamos personas que quieran crecer con el proyecto.</p></div><div class="recruit-grid"><div><p class="recruit-copy"><b>PLAYER · COACH · MANAGER</b><br>Si tienes talento, experiencia o una visión que pueda aportar al club, queremos conocerte.</p><div class="requirements"><div>COMPROMISO</div><div>MENTALIDAD COMPETITIVA</div><div>TRABAJO EN EQUIPO</div><div>GANAS DE CRECER</div></div></div><form action="https://formspree.io/f/xwlklend" method="POST"><input type="hidden" name="tipo_solicitud" value="RECLUTAMIENTO KAIROX"><input class="field" name="nombre" placeholder="Nombre / Nick" required><input class="field" type="email" name="email" placeholder="Correo electrónico" required><input class="field" name="id_free_fire" placeholder="ID de Free Fire (si aplica)"><input class="field" name="puesto" placeholder="Player / Coach / Manager" required><textarea class="field" name="presentacion" placeholder="Cuéntanos sobre ti..." required></textarea><button class="submit">ENVIAR CANDIDATURA</button></form></div></div></section>
 
-<section id="torneos"><div class="wrap"><div class="section-head"><div><div class="eyebrow">06 · COMPETICIÓN</div><h2>KAIROX<br>CUP.</h2></div><p>La primera competición organizada por Kairox Gaming: Free Fire Mobile, modalidad escuadra: 4 titulares + 1 suplente, participación gratuita y premios en diamantes por podio.</p></div>
+<section id="torneos" class="site-section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">06 · COMPETICIÓN</div><h2>KAIROX<br>CUP.</h2></div><p>La primera competición organizada por Kairox Gaming: Free Fire Mobile, modalidad escuadra: 4 titulares + 1 suplente, participación gratuita y premios en diamantes por podio.</p></div>
 <div class="cup-hero" id="inscripcion"><div class="cup-top"><div><div class="eyebrow">KAIROX GAMING PRESENTS</div><h3 class="cup-title">KAIROX <span>CUP</span><br>#001</h3><span class="tag">INSCRIPCIONES ABIERTAS</span></div><div class="cup-badge">FREE FIRE<br>SQUAD · MOBILE<br>EDICIÓN 001</div></div>
 <div class="cup-stats"><div class="cup-stat"><small>MODALIDAD</small><strong>SQUAD · MOBILE</strong></div><div class="cup-stat"><small>PLATAFORMA</small><strong>MOBILE</strong></div><div class="cup-stat"><small>PREMIOS</small><strong>💎 PODIO</strong></div><div class="cup-stat"><small>INSCRIPCIÓN</small><strong>GRATIS</strong></div></div>
 <div class="prize-title">PREMIOS · PODIO</div>
@@ -209,9 +229,9 @@ img{max-width:100%;height:auto}
 <article class="rule"><b>06 · FAIR PLAY</b><p>Prohibidos hacks, scripts, exploits intencionados, programas externos y cuentas no registradas. El incumplimiento puede suponer descalificación.</p></article>
 </div></div></section>
 
-<section id="tienda" class="shop"><div class="wrap"><div class="section-head"><div><div class="eyebrow">07 · TIENDA</div><h2>THE<br>JERSEY.</h2></div><p>La primera pieza de la nueva era Kairox. Nuestra camiseta oficial, diseñada para representar al club.</p></div><div class="product"><div class="jersey-box"><img src="kairox-jersey-front.jpeg" alt="Camiseta oficial Kairox Gaming"></div><div><div class="eyebrow">KAIROX GAMING · 2026</div><h3>OFFICIAL<br>JERSEY</h3><p>Diseño oficial en negro y blanco, con identidad Kairox y el sello de nuestra nueva era.</p><span class="soon">DISPONIBLE PRÓXIMAMENTE</span></div></div></div></section>
+<section id="tienda" class="site-section shop"><div class="wrap"><div class="section-head"><div><div class="eyebrow">07 · TIENDA</div><h2>THE<br>JERSEY.</h2></div><p>La primera pieza de la nueva era Kairox. Nuestra camiseta oficial, diseñada para representar al club.</p></div><div class="product"><div class="jersey-box"><img src="kairox-jersey-front.jpeg" alt="Camiseta oficial Kairox Gaming"></div><div><div class="eyebrow">KAIROX GAMING · 2026</div><h3>OFFICIAL<br>JERSEY</h3><p>Diseño oficial en negro y blanco, con identidad Kairox y el sello de nuestra nueva era.</p><span class="soon">DISPONIBLE PRÓXIMAMENTE</span></div></div></div></section>
 
-<section id="redes"><div class="eagle-back-label">CONNECT</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">08 · COMUNIDAD</div><h2>FOLLOW<br>THE ERA.</h2></div><p>Todo lo que pasa dentro y fuera del servidor: anuncios, jugadores, torneos, contenido y novedades.</p></div><div class="socials"><a class="social" href="https://www.instagram.com/kairoxgaminglat/" target="_blank" rel="noopener"><strong>INSTAGRAM</strong><small>@KAIROXGAMINGLAT ↗</small></a><a class="social" href="https://www.tiktok.com/@kairoxgaminglat" target="_blank" rel="noopener"><strong>TIKTOK</strong><small>@KAIROXGAMINGLAT ↗</small></a><a class="social" href="https://x.com/kairoxgaming" target="_blank" rel="noopener"><strong>X</strong><small>@KAIROXGAMING ↗</small></a><a class="social" href="https://youtube.com/@kairoxgaminglat" target="_blank" rel="noopener"><strong>YOUTUBE</strong><small>KAIROX GAMING LAT ↗</small></a></div><div class="contact"><div class="eyebrow">CONTACTO</div><a href="mailto:contacto@kairoxgaming.com">contacto@kairoxgaming.com</a></div></div><div style="margin-top:28px;color:#777;font-size:10px;line-height:1.7;letter-spacing:.4px">* La fecha, hora, premios y cualquier regla adicional se publicarán oficialmente antes del comienzo de la Kairox Cup #001.</div>
+<section id="redes" class="site-section"><div class="eagle-back-label">CONNECT</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">08 · COMUNIDAD</div><h2>FOLLOW<br>THE ERA.</h2></div><p>Todo lo que pasa dentro y fuera del servidor: anuncios, jugadores, torneos, contenido y novedades.</p></div><div class="socials"><a class="social" href="https://www.instagram.com/kairoxgaminglat/" target="_blank" rel="noopener"><strong>INSTAGRAM</strong><small>@KAIROXGAMINGLAT ↗</small></a><a class="social" href="https://www.tiktok.com/@kairoxgaminglat" target="_blank" rel="noopener"><strong>TIKTOK</strong><small>@KAIROXGAMINGLAT ↗</small></a><a class="social" href="https://x.com/kairoxgaming" target="_blank" rel="noopener"><strong>X</strong><small>@KAIROXGAMING ↗</small></a><a class="social" href="https://youtube.com/@kairoxgaminglat" target="_blank" rel="noopener"><strong>YOUTUBE</strong><small>KAIROX GAMING LAT ↗</small></a></div><div class="contact"><div class="eyebrow">CONTACTO</div><a href="mailto:contacto@kairoxgaming.com">contacto@kairoxgaming.com</a></div></div><div style="margin-top:28px;color:#777;font-size:10px;line-height:1.7;letter-spacing:.4px">* La fecha, hora, premios y cualquier regla adicional se publicarán oficialmente antes del comienzo de la Kairox Cup #001.</div>
 <div id="reglamento-completo" style="margin-top:42px;border:1px solid #292929;background:rgba(10,10,10,.72);padding:32px;position:relative;z-index:2">
 <div class="eyebrow">REGLAMENTO OFICIAL · KAIROX CUP #001</div>
 <h3 style="font-size:34px;margin:8px 0 25px">REGLAMENTO</h3>
@@ -232,13 +252,13 @@ img{max-width:100%;height:auto}
 </div></section>
 
 
-<section id="clasificacion"><div class="wrap"><div class="section-head"><div><div class="eyebrow">07 · STANDINGS</div><h2>LIVE<br>TABLE.</h2></div><p>Clasificación acumulada de la Kairox Cup. Esta tabla es provisional y se actualizará con los equipos, logos y resultados oficiales.</p></div>
+<section id="clasificacion" class="site-section"><div class="wrap"><div class="section-head"><div><div class="eyebrow">07 · STANDINGS</div><h2>LIVE<br>TABLE.</h2></div><p>Clasificación acumulada de la Kairox Cup. Esta tabla es provisional para 12 equipos y se actualizará con los nombres, logos y resultados oficiales.</p></div>
 <div class="standings-toggle"><button class="day-btn active" data-day="all">CLASIFICACIÓN</button><button class="day-btn" data-day="1">DÍA 1</button><button class="day-btn" data-day="2">DÍA 2</button><button class="day-btn" data-day="3">DÍA 3</button></div>
-<div class="standings-wrap"><div class="standings-head"><div><h3>🏆 KAIROX CUP #001</h3><p>CLASIFICACIÓN PROVISIONAL · 9 PARTIDAS</p></div><div class="standings-status">PROVISIONAL</div></div>
+<div class="standings-wrap"><div class="standings-head"><div><h3>🏆 KAIROX CUP #001</h3><p>CLASIFICACIÓN PROVISIONAL · 12 EQUIPOS · 9 PARTIDAS</p></div><div class="standings-status">PROVISIONAL</div></div>
 <table class="standings-table"><thead><tr><th>#</th><th>EQUIPO</th><th>DÍA 1</th><th>DÍA 2</th><th>DÍA 3</th><th>KILLS</th><th>TOTAL</th></tr></thead>
-<tbody id="standings-body"></tbody></table><div class="provisional-note">* Equipos y puntuaciones de ejemplo. Se sustituirán por los participantes y resultados oficiales cuando se cierre la inscripción.</div></div></div></section>
+<tbody id="standings-body"></tbody></table><div class="provisional-note">* Tabla provisional. Los nombres, logos y puntuaciones se actualizarán cuando se confirmen los 12 equipos participantes.</div></div></div></section>
 
-<section class="form-section" id="registro-cup"><div class="wrap"><div class="formbox"><div class="eyebrow">KAIROX CUP #001 · REGISTRO</div><h2>INSCRIBE TU ESCUADRA</h2><p>Rellena los datos de los 4 titulares y 1 suplente. El capitán será el contacto principal.</p><form id="inscripcion-form" action="https://formspree.io/f/xwlklend" method="POST"><input type="hidden" name="tipo" value="Kairox Cup #001"><input class="field" name="escuadra" placeholder="Nombre de la escuadra" required><input class="field" name="capitan" placeholder="Nick del capitán" required><input class="field" type="email" name="correo" placeholder="Correo del capitán" required><input class="field" name="id_capitan" placeholder="ID de Free Fire del capitán" required><input class="field" name="jugador_2" placeholder="Jugador 2 — nick + ID" required><input class="field" name="jugador_3" placeholder="Jugador 3 — nick + ID" required><input class="field" name="jugador_4" placeholder="Jugador 4 — nick + ID" required><input class="field" name="suplente" placeholder="Suplente — nick + ID" required><label style="display:block;color:#666;font-size:12px;margin:8px 0 20px"><input type="checkbox" required> Confirmo que todos los jugadores cumplen los requisitos y aceptan las bases del torneo.</label><button class="submit" id="send">ENVIAR INSCRIPCIÓN</button><div class="success" id="ok"><h3>¡INSCRIPCIÓN RECIBIDA! 🏆</h3><p>Los datos se han enviado correctamente.</p></div></form></div></div></section>
+<section class="site-section form-section" id="registro-cup"><div class="wrap"><div class="formbox"><div class="eyebrow">KAIROX CUP #001 · REGISTRO</div><h2>INSCRIBE TU ESCUADRA</h2><p>Rellena los datos de los 4 titulares y 1 suplente. El capitán será el contacto principal.</p><form id="inscripcion-form" action="https://formspree.io/f/xwlklend" method="POST"><input type="hidden" name="tipo" value="Kairox Cup #001"><input class="field" name="escuadra" placeholder="Nombre de la escuadra" required><input class="field" name="capitan" placeholder="Nick del capitán" required><input class="field" type="email" name="correo" placeholder="Correo del capitán" required><input class="field" name="id_capitan" placeholder="ID de Free Fire del capitán" required><input class="field" name="jugador_2" placeholder="Jugador 2 — nick + ID" required><input class="field" name="jugador_3" placeholder="Jugador 3 — nick + ID" required><input class="field" name="jugador_4" placeholder="Jugador 4 — nick + ID" required><input class="field" name="suplente" placeholder="Suplente — nick + ID" required><label style="display:block;color:#666;font-size:12px;margin:8px 0 20px"><input type="checkbox" required> Confirmo que todos los jugadores cumplen los requisitos y aceptan las bases del torneo.</label><button class="submit" id="send">ENVIAR INSCRIPCIÓN</button><div class="success" id="ok"><h3>¡INSCRIPCIÓN RECIBIDA! 🏆</h3><p>Los datos se han enviado correctamente.</p></div></form></div></div></section>
 
 <div class="mobile-cup-bar"><a class="primary" href="#registro-cup">INSCRIBIR ESCUADRA →</a><a class="secondary" href="#reglas-cup">REQUISITOS</a></div>
 <footer><div class="wrap foot"><strong>🦅 KAIROX GAMING</strong><span>ESPORTS CLUB · FREE FIRE · LATAM · NEW ERA 2026</span></div></footer>
@@ -270,11 +290,18 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
 <script>
 (function(){
  const rows=[
-  {team:"KAIROX A",short:"KA",d1:35,d2:0,d3:0,kills:12},
-  {team:"TEAM ALPHA",short:"TA",d1:31,d2:0,d3:0,kills:10},
-  {team:"TEAM PHOENIX",short:"TP",d1:28,d2:0,d3:0,kills:9},
-  {team:"TEAM NOVA",short:"TN",d1:25,d2:0,d3:0,kills:8},
-  {team:"TEAM X",short:"TX",d1:22,d2:0,d3:0,kills:7}
+  {team:"EQUIPO 1",short:"E1",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 2",short:"E2",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 3",short:"E3",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 4",short:"E4",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 5",short:"E5",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 6",short:"E6",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 7",short:"E7",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 8",short:"E8",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 9",short:"E9",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 10",short:"E10",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 11",short:"E11",d1:0,d2:0,d3:0,kills:0},
+  {team:"EQUIPO 12",short:"E12",d1:0,d2:0,d3:0,kills:0}
  ];
  const body=document.getElementById("standings-body"), buttons=document.querySelectorAll(".day-btn");
  if(!body)return;
@@ -287,6 +314,43 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
  }
  buttons.forEach(b=>b.addEventListener("click",()=>{buttons.forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.day)}));
  render("all");
+})();
+</script>
+
+
+<script>
+(function(){
+  const body=document.body;
+  const controls=document.querySelectorAll('[data-segment]');
+  const valid=['club','torneos','tienda','redes'];
+  const groups={
+    club:['club','historia','roster','creadores'],
+    torneos:['torneos','clasificacion','registro-cup'],
+    tienda:['tienda'],
+    redes:['redes']
+  };
+  function viewFromHash(){
+    const h=(location.hash||'').replace('#','').toLowerCase();
+    if(valid.includes(h)) return h;
+    if(['historia','roster','creadores'].includes(h)) return 'club';
+    if(['clasificacion','registro-cup'].includes(h)) return 'torneos';
+    return 'club';
+  }
+  function setView(view, push){
+    if(!valid.includes(view)) view='club';
+    body.classList.add('segmented');
+    body.dataset.view=view;
+    controls.forEach(c=>c.classList.toggle('segment-nav-active',c.dataset.segment===view));
+    if(push) history.pushState({view},'', '#'+view);
+    window.scrollTo({top:0,behavior:'smooth'});
+  }
+  controls.forEach(c=>c.addEventListener('click',e=>{
+    e.preventDefault();
+    setView(c.dataset.segment,true);
+  }));
+  window.addEventListener('popstate',()=>setView(viewFromHash(),false));
+  window.addEventListener('hashchange',()=>setView(viewFromHash(),false));
+  setView(viewFromHash(),false);
 })();
 </script>
 
