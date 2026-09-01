@@ -255,6 +255,26 @@ body.segmented[data-view="live"] #clasificacion,
 body.segmented[data-view="live"] #registro-cup,
 body.segmented[data-view="live"] #tienda,
 body.segmented[data-view="live"] #redes{display:none!important}
+
+/* V27 — LIVE DEFINITIVO: sección independiente */
+body.segmented[data-view="club"] #club,
+body.segmented[data-view="club"] #historia,
+body.segmented[data-view="club"] #roster,
+body.segmented[data-view="club"] #reclutamiento{display:block!important}
+body.segmented[data-view="club"] #live{display:none!important}
+body.segmented[data-view="torneos"] #torneos,
+body.segmented[data-view="torneos"] #clasificacion,
+body.segmented[data-view="torneos"] #registro-cup{display:block!important}
+body.segmented[data-view="live"] #live{display:block!important}
+body.segmented[data-view="live"] #club,
+body.segmented[data-view="live"] #historia,
+body.segmented[data-view="live"] #roster,
+body.segmented[data-view="live"] #reclutamiento,
+body.segmented[data-view="live"] #torneos,
+body.segmented[data-view="live"] #clasificacion,
+body.segmented[data-view="live"] #registro-cup,
+body.segmented[data-view="live"] #tienda,
+body.segmented[data-view="live"] #redes{display:none!important}
 </style>
 </head>
 <body>
@@ -262,13 +282,13 @@ body.segmented[data-view="live"] #redes{display:none!important}
 <header><div class="wrap nav">
 <a class="brand" href="#inicio"><img alt="" src="kairox-logo.png"/>KAIROX GAMING</a>
 <nav class="menu">
-<div class="nav-item"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">CLUB</a><div class="dropdown"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">Nuestro club</a><a href="#historia" data-route-target="historia" data-route-view="club">NUESTRA HISTORIA</a><a href="#roster" data-route-target="roster" data-route-view="club">JUGADORES</a><a href="#live" data-route-target="live" data-route-view="club">LIVE</a><a href="#reclutamiento" data-route-target="reclutamiento" data-route-view="club">ÚNETE A KAIROX</a></div></div>
+<div class="nav-item"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">CLUB</a><div class="dropdown"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">Nuestro club</a><a data-route-target="historia" data-route-view="club" href="#historia">NUESTRA HISTORIA</a><a data-route-target="roster" data-route-view="club" href="#roster">JUGADORES</a><a data-route-target="live" data-route-view="club" href="#live">LIVE</a><a data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">ÚNETE A KAIROX</a></div></div>
 <div class="nav-item"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">TORNEOS</a><div class="dropdown"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">Kairox Cup</a><a data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">Inscripciones</a></div></div>
 <div class="nav-item"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">TIENDA</a><div class="dropdown"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">Jersey 2026</a></div></div>
 <div class="nav-item"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">REDES</a><div class="dropdown"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Instagram</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">TikTok</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">YouTube</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">X</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Contacto</a></div></div>
-<a href="#live" class="live-nav" data-live-nav="true" data-route-target="live" data-route-view="live"><span class="live-camera" aria-hidden="true">
-<svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-<rect x="3" y="6" width="13" height="12" rx="2"></rect>
+<a class="live-nav" data-live-nav="true" data-route-target="live" data-route-view="live" href="#live"><span aria-hidden="true" class="live-camera">
+<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15">
+<rect height="12" rx="2" width="13" x="3" y="6"></rect>
 <path d="m16 10 5-3v10l-5-3z"></path>
 </svg>
 </span><span class="live-dot"></span> LIVE</a></nav></div></header>
@@ -278,55 +298,11 @@ body.segmented[data-view="live"] #redes{display:none!important}
 <div class="actions"><a aria-label="Abrir club" class="btn btn-main btn-conecticion" data-route-target="club" data-route-view="club" href="#club">ENTRAR AL CLUB</a><a aria-label="Abrir torneos" class="btn" data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">VER COMPETICIÓN</a></div>
 </div><div class="hero-mark"><img alt="Kairox Gaming" src="kairox-logo.png"/></div></div></section>
 <section class="site-section" id="club">
-<div id="live" class="live-hub route-focus">
-  <div class="section-head">
-    <div><div class="eyebrow">LIVE · KAIROX CUP</div><h2>WATCH<br>THE FLOCK.</h2></div>
-    <p>Durante la Kairox Cup podrás encontrar aquí a los creadores que estén retransmitiendo las partidas, junto con sus redes y plataforma de streaming.</p>
-  </div>
-  <div class="live-grid">
-    <article class="live-card">
-      <span class="live-badge"><span class="live-dot"></span> LIVE · PRÓXIMAMENTE</span>
-      <h3>CREADOR 1</h3>
-      <div class="role">CREADOR / STREAMER</div>
-      <p>Su canal aparecerá aquí cuando esté retransmitiendo una jornada de la Kairox Cup.</p>
-      <div class="stream-links">
-        <a href="#" aria-label="Instagram del creador 1">INSTAGRAM</a>
-        <a href="#" aria-label="TikTok del creador 1">TIKTOK</a>
-        <a href="#" aria-label="Canal de streaming del creador 1">STREAM</a>
-      </div>
-    </article>
-    <article class="live-card">
-      <span class="live-badge"><span class="live-dot"></span> LIVE · PRÓXIMAMENTE</span>
-      <h3>CREADOR 2</h3>
-      <div class="role">CREADOR / STREAMER</div>
-      <p>Su canal aparecerá aquí cuando esté retransmitiendo una jornada de la Kairox Cup.</p>
-      <div class="stream-links">
-        <a href="#" aria-label="Instagram del creador 2">INSTAGRAM</a>
-        <a href="#" aria-label="TikTok del creador 2">TIKTOK</a>
-        <a href="#" aria-label="Canal de streaming del creador 2">STREAM</a>
-      </div>
-    </article>
-    <article class="live-card">
-      <span class="live-badge"><span class="live-dot"></span> LIVE · PRÓXIMAMENTE</span>
-      <h3>CREADOR 3</h3>
-      <div class="role">CREADOR / STREAMER</div>
-      <p>Su canal aparecerá aquí cuando esté retransmitiendo una jornada de la Kairox Cup.</p>
-      <div class="stream-links">
-        <a href="#" aria-label="Instagram del creador 3">INSTAGRAM</a>
-        <a href="#" aria-label="TikTok del creador 3">TIKTOK</a>
-        <a href="#" aria-label="Canal de streaming del creador 3">STREAM</a>
-      </div>
-    </article>
-  </div>
-  <div class="live-empty" style="margin-top:14px">
-    <strong style="color:#fff">¿Todavía no hay un directo?</strong><br>
-    Cuando los creadores estén confirmados, sustituiremos estos espacios por sus nombres, fotos/logos, redes y enlaces directos a Twitch, YouTube u otra plataforma de streaming.
-  </div>
-</div>
-<div class="eagle-back-label">EAGLE</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 · CLUB</div><h2>MORE THAN<br/>A TEAM.</h2></div><p>Kairox Gaming nace con una idea clara: construir un club reconocible dentro de los esports, desarrollar talento y crear una comunidad que quiera formar parte del camino.</p></div>
+
+<div class="eagle-back-label">EAGLE</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 · CLUB</div><h2>MORE THAN<br>A TEAM.</br></h2></div><p>Kairox Gaming nace con una idea clara: construir un club reconocible dentro de los esports, desarrollar talento y crear una comunidad que quiera formar parte del camino.</p></div>
 <div class="metrics"><div class="metric"><b>01</b><span>CLUB</span></div><div class="metric"><b>FF</b><span>FREE FIRE</span></div><div class="metric"><b>LATAM</b><span>COMUNIDAD</span></div><div class="metric"><b>2026</b><span>NEW ERA</span></div></div>
 <div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a aria-label="Abrir tienda" class="btn" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" data-route-target="historia" data-route-view="club" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" data-route-target="roster" data-route-view="club" href="#roster">VER ROSTER</a></article></div><div class="eagle-quote">“VOLAMOS MÁS ALTO. <span>COMPETIMOS JUNTOS.</span>”</div></div></section>
-<section class="site-section light" id="historia"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 · HISTORIA</div><h2>THE<br/>JOURNEY.</h2></div><p>La historia real de Kairox crecerá con el club. Esta estructura queda preparada para añadir fechas, hitos, títulos y momentos importantes.</p></div>
+<section class="site-section light" id="historia"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 · HISTORIA</div><h2>THE<br>JOURNEY.</br></h2></div><p>La historia real de Kairox crecerá con el club. Esta estructura queda preparada para añadir fechas, hitos, títulos y momentos importantes.</p></div>
 <div class="timeline"><article><b>CAPÍTULO 01</b><h3>EL COMIENZO</h3><p>El nacimiento de Kairox y la visión de crear una identidad propia dentro de Free Fire.</p></article><article><b>CAPÍTULO 02</b><h3>LA NUEVA ERA</h3><p>El club toma forma: roster, staff, creadores, torneos y una comunidad alrededor de la marca.</p></article><article><b>CAPÍTULO 03</b><h3>EL FUTURO</h3><p>Competir más arriba, crecer juntos y convertir Kairox en un nombre reconocible en los esports.</p></article></div></div></section>
 <section class="site-section" id="roster"><div class="eagle-back-label">ROSTER</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">03 · COMPETITIVE</div><h2>THE NEXT<br/>PLAYERS.</h2></div><p>Nuestro roster competitivo todavía está por formar. Kairox está buscando jugadores que quieran formar parte de nuestra nueva era.</p></div>
 <div style="border:1px solid #292929;background:rgba(10,10,10,.78);backdrop-filter:blur(8px);padding:55px;text-align:center;min-height:300px;display:flex;flex-direction:column;justify-content:center;align-items:center;position:relative;overflow:hidden">
@@ -336,10 +312,53 @@ body.segmented[data-view="live"] #redes{display:none!important}
 <p style="max-width:570px;color:#999;line-height:1.8;font-size:13px;margin:0 0 25px">Estamos construyendo nuestro primer roster competitivo. Si tienes talento, compromiso y ganas de crecer con Kairox, queremos conocerte.</p>
 <a class="btn btn-main" data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">QUIERO FORMAR PARTE →</a></div>
 </div></div></section>
-
 <section class="scene"><div class="scene-title"><span class="scene-eagle"></span> THE COMPETITIVE SCENE <span class="scene-eagle"></span></div><div class="marquee"><div class="track"><span>FREE FIRE</span><i>◆</i><span>FFWS</span><i>◆</i><span>WORLD SERIES</span><i>◆</i><span>FREE FIRE ESPORTS</span><i>◆</i><span>LATAM</span><i>◆</i><span>EMEA</span><i>◆</i><span>FREE FIRE</span><i>◆</i><span>FFWS</span><i>◆</i><span>WORLD SERIES</span><i>◆</i><span>FREE FIRE ESPORTS</span><i>◆</i><span>LATAM</span><i>◆</i><span>EMEA</span><i>◆</i></div></div></section>
 <section class="recruit" id="reclutamiento"><div class="wrap"><div class="section-head"><div><div class="eyebrow">05 · TALENTO</div><h2>JOIN<br/>KAIROX.</h2></div><p>Players, coach y manager: buscamos personas que quieran crecer con el proyecto.</p></div><div class="recruit-grid"><div><p class="recruit-copy"><b>PLAYER · COACH · MANAGER</b><br/>Si tienes talento, experiencia o una visión que pueda aportar al club, queremos conocerte.</p><div class="requirements"><div>COMPROMISO</div><div>MENTALIDAD COMPETITIVA</div><div>TRABAJO EN EQUIPO</div><div>GANAS DE CRECER</div></div></div><form action="https://formspree.io/f/xwlklend" method="POST"><input name="tipo_solicitud" type="hidden" value="RECLUTAMIENTO KAIROX"/><input class="field" name="nombre" placeholder="Nombre / Nick" required=""/><input class="field" name="email" placeholder="Correo electrónico" required="" type="email"/><input class="field" name="id_free_fire" placeholder="ID de Free Fire (si aplica)"/><input class="field" name="puesto" placeholder="Player / Coach / Manager" required=""/><textarea class="field" name="presentacion" placeholder="Cuéntanos sobre ti..." required=""></textarea><button class="submit">ENVIAR CANDIDATURA</button></form></div></div></section>
-<section class="site-section" id="torneos"><div class="wrap"><div class="section-head"><div><div class="eyebrow">06 · COMPETICIÓN</div><h2>KAIROX<br/>CUP.</h2></div><p>La primera competición organizada por Kairox Gaming: Free Fire Mobile, modalidad escuadra: 4 titulares + 1 suplente, participación gratuita y premios en diamantes por podio.</p></div>
+<section class="site-section live-section" id="live"><div class="live-hub route-focus" id="live">
+<div class="section-head">
+<div><div class="eyebrow">LIVE · KAIROX CUP</div><h2>WATCH<br/>THE FLOCK.</h2></div>
+<p>Durante la Kairox Cup podrás encontrar aquí a los creadores que estén retransmitiendo las partidas, junto con sus redes y plataforma de streaming.</p>
+</div>
+<div class="live-grid">
+<article class="live-card">
+<span class="live-badge"><span class="live-dot"></span> LIVE · PRÓXIMAMENTE</span>
+<h3>CREADOR 1</h3>
+<div class="role">CREADOR / STREAMER</div>
+<p>Su canal aparecerá aquí cuando esté retransmitiendo una jornada de la Kairox Cup.</p>
+<div class="stream-links">
+<a aria-label="Instagram del creador 1" href="#">INSTAGRAM</a>
+<a aria-label="TikTok del creador 1" href="#">TIKTOK</a>
+<a aria-label="Canal de streaming del creador 1" href="#">STREAM</a>
+</div>
+</article>
+<article class="live-card">
+<span class="live-badge"><span class="live-dot"></span> LIVE · PRÓXIMAMENTE</span>
+<h3>CREADOR 2</h3>
+<div class="role">CREADOR / STREAMER</div>
+<p>Su canal aparecerá aquí cuando esté retransmitiendo una jornada de la Kairox Cup.</p>
+<div class="stream-links">
+<a aria-label="Instagram del creador 2" href="#">INSTAGRAM</a>
+<a aria-label="TikTok del creador 2" href="#">TIKTOK</a>
+<a aria-label="Canal de streaming del creador 2" href="#">STREAM</a>
+</div>
+</article>
+<article class="live-card">
+<span class="live-badge"><span class="live-dot"></span> LIVE · PRÓXIMAMENTE</span>
+<h3>CREADOR 3</h3>
+<div class="role">CREADOR / STREAMER</div>
+<p>Su canal aparecerá aquí cuando esté retransmitiendo una jornada de la Kairox Cup.</p>
+<div class="stream-links">
+<a aria-label="Instagram del creador 3" href="#">INSTAGRAM</a>
+<a aria-label="TikTok del creador 3" href="#">TIKTOK</a>
+<a aria-label="Canal de streaming del creador 3" href="#">STREAM</a>
+</div>
+</article>
+</div>
+<div class="live-empty" style="margin-top:14px">
+<strong style="color:#fff">¿Todavía no hay un directo?</strong><br/>
+    Cuando los creadores estén confirmados, sustituiremos estos espacios por sus nombres, fotos/logos, redes y enlaces directos a Twitch, YouTube u otra plataforma de streaming.
+  </div>
+</div></section><section class="site-section" id="torneos"><div class="wrap"><div class="section-head"><div><div class="eyebrow">06 · COMPETICIÓN</div><h2>KAIROX<br/>CUP.</h2></div><p>La primera competición organizada por Kairox Gaming: Free Fire Mobile, modalidad escuadra: 4 titulares + 1 suplente, participación gratuita y premios en diamantes por podio.</p></div>
 <div class="cup-hero" id="inscripcion"><div class="cup-top"><div><div class="eyebrow">KAIROX GAMING PRESENTS</div><h3 class="cup-title">KAIROX <span>CUP</span><br/>#001</h3><span class="tag">INSCRIPCIONES ABIERTAS</span></div><div class="cup-badge">FREE FIRE<br/>SQUAD · MOBILE<br/>EDICIÓN 001</div></div>
 <div class="cup-stats"><div class="cup-stat"><small>MODALIDAD</small><strong>SQUAD · MOBILE</strong></div><div class="cup-stat"><small>PLATAFORMA</small><strong>MOBILE</strong></div><div class="cup-stat"><small>PREMIOS</small><strong>💎 PODIO</strong></div><div class="cup-stat"><small>INSCRIPCIÓN</small><strong>GRATIS</strong></div></div>
 <div class="prize-title">PREMIOS · PODIO</div>
@@ -442,137 +461,55 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
  render("all");
 })();
 </script>
-<script>
+
+
+
+
+<script id="kairox-router">
 (function(){
   const body=document.body;
   const controls=document.querySelectorAll('[data-segment]');
+  const links=document.querySelectorAll('[data-route-target]');
   const valid=['club','torneos','tienda','redes','live'];
-  const groups={
-    club:['club','historia','roster','creadores'],
-    torneos:['torneos','clasificacion','registro-cup'],
-    tienda:['tienda'],
-    redes:['redes']
-  };
-  function viewFromHash(){
-    const h=(location.hash||'').replace('#','').toLowerCase();
-    if(valid.includes(h)) return h;
-    if(['historia','roster','creadores'].includes(h)) return 'club';
-    if(['clasificacion','registro-cup'].includes(h)) return 'torneos';
+
+  function viewFor(target){
+    if(target==='live') return 'live';
+    if(['tienda'].includes(target)) return 'tienda';
+    if(['redes'].includes(target)) return 'redes';
+    if(['torneos','clasificacion','registro-cup','inscripcion','reglas-cup','modalidad-cup','reglamento-completo'].includes(target)) return 'torneos';
     return 'club';
   }
-  function setView(view, push){
+
+  function show(view,target,push){
     if(!valid.includes(view)) view='club';
     body.classList.add('segmented');
     body.dataset.view=view;
     controls.forEach(c=>c.classList.toggle('segment-nav-active',c.dataset.segment===view));
-    if(push) history.pushState({view},'', '#'+view);
-    window.scrollTo({top:0,behavior:'smooth'});
-  }
-  controls.forEach(c=>c.addEventListener('click',e=>{
-    e.preventDefault();
-    setView(c.dataset.segment,true);
-  }));
-  window.addEventListener('popstate',()=>setView(viewFromHash(),false));
-  window.addEventListener('hashchange',()=>setView(viewFromHash(),false));
-  setView(viewFromHash(),false);
-})();
-</script>
-<script>
-(function(){
-  const body=document.body;
-  const valid=['club','torneos','tienda','redes','live'];
-  const links=document.querySelectorAll('[data-route-target]');
-  const controls=document.querySelectorAll('[data-segment]');
-
-  function setActive(view){
-    if(!valid.includes(view)) view='club';
-    body.classList.add('segmented');
-    body.dataset.view=view;
-    controls.forEach(c=>c.classList.toggle('segment-nav-active', c.dataset.segment===view));
-  }
-
-  function route(target, view, push){
-    setActive(view);
-    const el=document.getElementById(target);
-    if(push) history.pushState({view,target},'', '#'+target);
-    if(target && el){
-      el.classList.add('route-focus');
-      requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth', block:'start'}));
+    if(push) history.pushState({view:view,target:target||view},'', '#'+(target||view));
+    const el=target && document.getElementById(target);
+    if(el){
+      requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}));
     }else{
       window.scrollTo({top:0,behavior:'smooth'});
     }
   }
 
   links.forEach(link=>{
-    link.addEventListener('click',e=>{
-      const target=link.dataset.routeTarget;
-      const view=link.dataset.routeView;
-      if(!target || !view) return;
+    link.addEventListener('click',function(e){
+      const target=this.dataset.routeTarget;
+      if(!target) return;
       e.preventDefault();
-      route(target,view,true);
+      show(this.dataset.routeView || viewFor(target),target,true);
     });
   });
 
-  window.addEventListener('popstate',()=>{
-    const target=(location.hash||'').slice(1);
-    const view=(target==='historia'||target==='roster'||target==='club'||target==='reclutamiento')?'club':
-      (target==='tienda'?'tienda':(target==='redes'?'redes':(target==='live'?'live':'torneos')));
-    route(target || view, view, false);
-  });
-
-  const initial=(location.hash||'').slice(1);
-  const initialView=initial==='tienda'?'tienda':(initial==='redes'?'redes':(initial==='live'?'live':
-    (['torneos','inscripcion','reglas-cup','modalidad-cup','reglamento-completo','clasificacion','registro-cup'].includes(initial)?'torneos':'club')));
-  setActive(initialView);
-  if(initial && document.getElementById(initial)){
-    setTimeout(()=>document.getElementById(initial).scrollIntoView({behavior:'auto',block:'start'}),50);
-  }else{
-    window.scrollTo(0,0);
+  function loadHash(){
+    const target=(location.hash||'').slice(1).toLowerCase();
+    show(viewFor(target||'club'),target||'club',false);
   }
+  window.addEventListener('popstate',loadHash);
+  window.addEventListener('hashchange',loadHash);
+  loadHash();
 })();
-</script>
-<script data-live-route-handler>
-(function(){
-  const live=document.querySelector('[data-live-nav="true"]');
-  if(!live)return;
-  live.addEventListener('click',function(e){
-    e.preventDefault();
-    document.body.classList.add('segmented');
-    document.body.dataset.view='live';
-    document.querySelectorAll('[data-segment]').forEach(c=>c.classList.toggle('segment-nav-active',c.dataset.segment==='live'));
-    const el=document.getElementById('live');
-    if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
-    history.pushState({view:'live',target:'live'},'', '#live');
-  });
-})();
-</script>
-
-
-<script id="live-route-fix">
-(function(){
-  const liveLink=document.querySelector('[data-live-nav="true"]');
-  const showLive=function(push){
-    document.body.classList.add('segmented');
-    document.body.dataset.view='live';
-    document.querySelectorAll('[data-segment]').forEach(function(c){
-      c.classList.remove('segment-nav-active');
-    });
-    if(push) history.pushState({view:'live',target:'live'},'', '#live');
-    const target=document.getElementById('live');
-    if(target) requestAnimationFrame(function(){
-      target.scrollIntoView({behavior:'smooth',block:'start'});
-    });
-  };
-  if(liveLink){
-    liveLink.addEventListener('click',function(e){
-      e.preventDefault();
-      e.stopImmediatePropagation();
-      showLive(true);
-    },true);
-  }
-  if(location.hash==='#live') showLive(false);
-})();
-</script>
-
-</body>
+</script></body>
 </html>
