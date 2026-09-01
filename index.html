@@ -243,6 +243,18 @@ body.segmented[data-view="live"] #live{display:block!important}
 body.segmented[data-view="club"] #creadores{display:none!important}
 body.segmented[data-view="club"] #live{display:none!important}
 body.segmented[data-view="club"] #reclutamiento{display:block!important}
+
+/* V26 — LIVE ROUTE FIX */
+body.segmented[data-view="live"] #live{display:block!important}
+body.segmented[data-view="live"] #club,
+body.segmented[data-view="live"] #historia,
+body.segmented[data-view="live"] #roster,
+body.segmented[data-view="live"] #reclutamiento,
+body.segmented[data-view="live"] #torneos,
+body.segmented[data-view="live"] #clasificacion,
+body.segmented[data-view="live"] #registro-cup,
+body.segmented[data-view="live"] #tienda,
+body.segmented[data-view="live"] #redes{display:none!important}
 </style>
 </head>
 <body>
@@ -532,6 +544,33 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
     if(el) el.scrollIntoView({behavior:'smooth',block:'start'});
     history.pushState({view:'live',target:'live'},'', '#live');
   });
+})();
+</script>
+
+
+<script id="live-route-fix">
+(function(){
+  const liveLink=document.querySelector('[data-live-nav="true"]');
+  const showLive=function(push){
+    document.body.classList.add('segmented');
+    document.body.dataset.view='live';
+    document.querySelectorAll('[data-segment]').forEach(function(c){
+      c.classList.remove('segment-nav-active');
+    });
+    if(push) history.pushState({view:'live',target:'live'},'', '#live');
+    const target=document.getElementById('live');
+    if(target) requestAnimationFrame(function(){
+      target.scrollIntoView({behavior:'smooth',block:'start'});
+    });
+  };
+  if(liveLink){
+    liveLink.addEventListener('click',function(e){
+      e.preventDefault();
+      e.stopImmediatePropagation();
+      showLive(true);
+    },true);
+  }
+  if(location.hash==='#live') showLive(false);
 })();
 </script>
 
