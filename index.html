@@ -533,51 +533,75 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
   if(!body) return;
 
   let current = "all";
-  let teams = [];
-  let matches = [];
-  let results = [];
 
   async function loadStandings(){
     body.innerHTML = '<tr><td colspan="7">CARGANDO CLASIFICACIÓN...</td></tr>';
-    const [tRes, mRes, rRes] = await Promise.all([
+
+    const [lbRes, tRes, mRes, rRes] = await Promise.all([
+      sb.from("leaderboard_auto")
+        .select("team_id,team_name,placement_points,total_kills,total_points")
+        .order("total_points", {ascending:false})
+        .order("total_kills", {ascending:false}),
       sb.from("teams").select("id,name,logo_url").order("id"),
       sb.from("matches").select("id,day,match_number,map").order("match_number"),
-      sb.from("match_results").select("team_id,match_id,placement,kills,placement_points,total_points")
+      sb.from("match_results").select("team_id,match_id,kills,total_points")
     ]);
-    if(tRes.error || mRes.error || rRes.error){
+
+    if(lbRes.error || tRes.error || mRes.error || rRes.error){
       body.innerHTML = '<tr><td colspan="7">No se pudo cargar la clasificación.</td></tr>';
-      console.error(tRes.error || mRes.error || rRes.error);
+      console.error(lbRes.error || tRes.error || mRes.error || rRes.error);
       return;
     }
-    teams=tRes.data||[]; matches=mRes.data||[]; results=rRes.data||[];
-    render(current);
-  }
 
-  function render(day){
-    const stats = {};
-    teams.forEach(t => stats[t.id]={team:t, d1:0,d2:0,d3:0,kills:0,total:0});
+    const leaderboard = lbRes.data || [];
+    const teams = tRes.data || [];
+    const matches = mRes.data || [];
+    const results = rRes.data || [];
+
     const matchDay = {};
-    matches.forEach(m => matchDay[m.id]=m.day);
+    matches.forEach(m => { matchDay[m.id] = Number(m.day); });
 
+    const dayStats = {};
     results.forEach(r => {
-      const s=stats[r.team_id];
-      if(!s) return;
-      const d=matchDay[r.match_id];
-      const pts=Number(r.total_points)||0;
-      if(d>=1 && d<=3) s["d"+d]+=pts;
-      s.kills += Number(r.kills)||0;
-      s.total += pts;
+      if(!dayStats[r.team_id]) dayStats[r.team_id] = {d1:0,d2:0,d3:0};
+      const d = matchDay[r.match_id];
+      if(d >= 1 && d <= 3) {
+        dayStats[r.team_id]["d"+d] += Number(r.total_points) || 0;
+      }
     });
 
-    const sorted=Object.values(stats).sort((a,b)=>b.total-a.total || b.kills-a.kills || a.team.name.localeCompare(b.team.name));
-    body.innerHTML=sorted.map((s,i)=>{
-      const rank=i<3?["🥇","🥈","🥉"][i]:i+1;
-      const shown=day==="all"?s.total:s["d"+day];
+    const teamById = {};
+    teams.forEach(t => { teamById[t.id] = t; });
+
+    const rows = leaderboard.map(row => {
+      const ds = dayStats[row.team_id] || {d1:0,d2:0,d3:0};
+      return {
+        team_name: row.team_name || teamById[row.team_id]?.name || "Equipo",
+        d1: ds.d1,
+        d2: ds.d2,
+        d3: ds.d3,
+        kills: Number(row.total_kills) || 0,
+        total: Number(row.total_points) || 0
+      };
+    });
+
+    render(rows);
+  }
+
+  function render(rows){
+    body.innerHTML = rows.map((s,i)=>{
+      const rank = i < 3 ? ["🥇","🥈","🥉"][i] : i+1;
+      const shown = current === "all" ? s.total : s["d"+current];
+      const initials = (s.team_name || "E").slice(0,3).toUpperCase();
+
       return `<tr>
         <td class="rank">${rank}</td>
-        <td><div class="team-cell"><span class="team-logo">${(s.team.name||"E").slice(0,3).toUpperCase()}</span>${s.team.name}</div></td>
-        <td>${s.d1}</td><td>${s.d2}</td><td>${s.d3}</td>
-        <td>${s.kills}</td><td class="total">${shown}</td>
+        <td><div class="team-cell"><span class="team-logo">${initials}</span>${s.team_name}</div></td>
+        <td>${s.d1}</td>
+        <td>${s.d2}</td>
+        <td>${s.d3}</td>
+        <td>${s.kills}</td>
+        <td class="total">${shown}</td>
       </tr>`;
     }).join("");
   }
@@ -585,8 +609,8 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
   buttons.forEach(b=>b.addEventListener("click",()=>{
     buttons.forEach(x=>x.classList.remove("active"));
     b.classList.add("active");
-    current=b.dataset.day;
-    render(current);
+    current = b.dataset.day;
+    loadStandings();
   }));
 
   loadStandings();
