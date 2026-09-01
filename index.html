@@ -522,27 +522,75 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
   tick(); setInterval(tick,1000);
 })();
 </script>
-<script>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script id="kairox-supabase-standings">
 (function(){
- const rows=JSON.parse(localStorage.getItem('kairoxStandings')||'null')||[
-{team:"EQUIPO 1",short:"E1",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 2",short:"E2",d1:0,d2:0,d3:0,kills:0},
-{team:"EQUIPO 3",short:"E3",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 4",short:"E4",d1:0,d2:0,d3:0,kills:0},
-{team:"EQUIPO 5",short:"E5",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 6",short:"E6",d1:0,d2:0,d3:0,kills:0},
-{team:"EQUIPO 7",short:"E7",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 8",short:"E8",d1:0,d2:0,d3:0,kills:0},
-{team:"EQUIPO 9",short:"E9",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 10",short:"E10",d1:0,d2:0,d3:0,kills:0},
-{team:"EQUIPO 11",short:"E11",d1:0,d2:0,d3:0,kills:0},{team:"EQUIPO 12",short:"E12",d1:0,d2:0,d3:0,kills:0}
-];
- const body=document.getElementById("standings-body"), buttons=document.querySelectorAll(".day-btn");
- if(!body)return;
- function render(day){
-   const sorted=rows.map(r=>({...r,total:r.d1+r.d2+r.d3+r.kills})).sort((a,b)=>b.total-a.total);
-   body.innerHTML=sorted.map((r,i)=>{
-     const value=day==="all"?r.total:(r["d"+day]||0);
-     return `<tr><td class="rank">${i<3?["🥇","🥈","🥉"][i]:i+1}</td><td><div class="team-cell"><span class="team-logo">${r.short}</span>${r.team}</div></td><td>${r.d1}</td><td>${r.d2}</td><td>${r.d3}</td><td>${r.kills}</td><td class="total">${day==="all"?r.total:value}</td></tr>`;
-   }).join("");
- }
- buttons.forEach(b=>b.addEventListener("click",()=>{buttons.forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.day)}));
- render("all");
+  const SUPABASE_URL = 'https://nnwfeddjylekarsyndre.supabase.co';
+  const SUPABASE_KEY = 'sb_publishable_KI3zekg_05WBPwJXXzfpSA_jqVYkfES';
+  const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
+  const body = document.getElementById("standings-body");
+  const buttons = document.querySelectorAll(".day-btn");
+  if(!body) return;
+
+  let current = "all";
+  let teams = [];
+  let matches = [];
+  let results = [];
+
+  async function loadStandings(){
+    body.innerHTML = '<tr><td colspan="7">CARGANDO CLASIFICACIÓN...</td></tr>';
+    const [tRes, mRes, rRes] = await Promise.all([
+      sb.from("teams").select("id,name,logo_url").order("id"),
+      sb.from("matches").select("id,day,match_number,map").order("match_number"),
+      sb.from("match_results").select("team_id,match_id,placement,kills,placement_points,total_points")
+    ]);
+    if(tRes.error || mRes.error || rRes.error){
+      body.innerHTML = '<tr><td colspan="7">No se pudo cargar la clasificación.</td></tr>';
+      console.error(tRes.error || mRes.error || rRes.error);
+      return;
+    }
+    teams=tRes.data||[]; matches=mRes.data||[]; results=rRes.data||[];
+    render(current);
+  }
+
+  function render(day){
+    const stats = {};
+    teams.forEach(t => stats[t.id]={team:t, d1:0,d2:0,d3:0,kills:0,total:0});
+    const matchDay = {};
+    matches.forEach(m => matchDay[m.id]=m.day);
+
+    results.forEach(r => {
+      const s=stats[r.team_id];
+      if(!s) return;
+      const d=matchDay[r.match_id];
+      const pts=Number(r.total_points)||0;
+      if(d>=1 && d<=3) s["d"+d]+=pts;
+      s.kills += Number(r.kills)||0;
+      s.total += pts;
+    });
+
+    const sorted=Object.values(stats).sort((a,b)=>b.total-a.total || b.kills-a.kills || a.team.name.localeCompare(b.team.name));
+    body.innerHTML=sorted.map((s,i)=>{
+      const rank=i<3?["🥇","🥈","🥉"][i]:i+1;
+      const shown=day==="all"?s.total:s["d"+day];
+      return `<tr>
+        <td class="rank">${rank}</td>
+        <td><div class="team-cell"><span class="team-logo">${(s.team.name||"E").slice(0,3).toUpperCase()}</span>${s.team.name}</div></td>
+        <td>${s.d1}</td><td>${s.d2}</td><td>${s.d3}</td>
+        <td>${s.kills}</td><td class="total">${shown}</td>
+      </tr>`;
+    }).join("");
+  }
+
+  buttons.forEach(b=>b.addEventListener("click",()=>{
+    buttons.forEach(x=>x.classList.remove("active"));
+    b.classList.add("active");
+    current=b.dataset.day;
+    render(current);
+  }));
+
+  loadStandings();
+  setInterval(loadStandings, 30000);
 })();
 </script>
 
@@ -596,11 +644,5 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
   loadHash();
 })();
 </script><!-- Panel de resultados: admin.html -->
-<script id="kairox-standings-update">
-window.addEventListener('storage',function(e){
- if(e.key==='kairoxStandings' && typeof render==='function'){
-   try{ rows.splice(0,rows.length,...JSON.parse(e.newValue||'[]')); render('all'); }catch(_){}
- }
-});
-</script></body>
+</body>
 </html>
