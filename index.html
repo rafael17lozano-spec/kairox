@@ -279,6 +279,32 @@ body.segmented[data-view="live"] #redes{display:none!important}
 /* V28 — LIVE solo como apartado independiente */
 .dropdown a[data-route-target="live"],
 .dropdown a[href="#live"]{display:none!important}
+
+/* V29 — KAIROX CUP COMPLETE FORMAT */
+.cup-format{margin-top:34px}.cup-format-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:16px}
+.cup-format-head h3{font-size:30px;margin:7px 0 0}.cup-format-head p{max-width:500px;color:#888;font-size:11px;line-height:1.6;margin:0}
+.day-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.day-card{border:1px solid #292929;background:rgba(8,8,8,.72);padding:22px}
+.day-card .day-no{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}.day-card h4{font-size:21px;margin:9px 0 16px}
+.map-list{display:grid;gap:8px}.map-row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #292929;padding-top:10px;font-size:9px;font-weight:800}.map-row span:last-child{color:#777;letter-spacing:1px;text-align:right}
+.tournament-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.flow-item{border:1px solid #292929;padding:18px;background:rgba(10,10,10,.5)}.flow-item b{font-size:9px;letter-spacing:1.4px}.flow-item p{color:#777;font-size:9px;line-height:1.55;margin:8px 0 0}
+.scoring-box{margin-top:12px;border:1px solid #292929;background:rgba(8,8,8,.72);padding:24px}.points-line{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.point-pill{border:1px solid #333;padding:9px 11px;font-size:8px;font-weight:900}.point-pill strong{font-size:13px;margin-right:3px}.score-note{color:#777;font-size:10px;line-height:1.7;margin:0}
+@media(max-width:800px){.day-grid,.tournament-flow{grid-template-columns:1fr}.cup-format-head{display:block}.cup-format-head p{margin-top:10px}}
+
+/* V30 — MAP ROTATION / KAIROX CUP */
+.cup-map-rotation{margin-top:28px}
+.cup-map-day{border:1px solid #292929;background:rgba(8,8,8,.72);padding:20px;margin-bottom:12px}
+.cup-map-day-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cup-map-day-head h4{font-size:20px;margin:0}.cup-map-day-head span{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}
+.cup-map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cup-map-card{position:relative;min-height:145px;border:1px solid #333;overflow:hidden;background:#111}
+.cup-map-card .map-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.75) contrast(1.05);opacity:.58}
+.cup-map-card:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.28))}
+.cup-map-card .map-content{position:relative;z-index:1;padding:18px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;min-height:109px}
+.cup-map-card .map-game{font-size:7px;letter-spacing:1.8px;color:#bbb;font-weight:900;margin-bottom:5px}
+.cup-map-card h5{font-size:22px;margin:0;text-transform:uppercase}.cup-map-card p{font-size:8px;letter-spacing:1.2px;color:#999;margin:5px 0 0}
+.map-bermuda{background-image:url('kairox-map-bermuda.svg')}.map-purgatorio{background-image:url('kairox-map-purgatorio.svg')}.map-kalahari{background-image:url('kairox-map-kalahari.svg')}
+.rotation-note{border-left:2px solid #fff;padding:10px 13px;color:#777;font-size:9px;line-height:1.6;margin-top:12px}
+@media(max-width:800px){.cup-map-grid{grid-template-columns:1fr}.cup-map-day-head{display:block}.cup-map-day-head span{display:block;margin-top:5px}}
 </style>
 </head>
 <body>
@@ -376,8 +402,62 @@ body.segmented[data-view="live"] #redes{display:none!important}
 <div class="count"><strong>--</strong><span>DÍAS</span></div><div class="count"><strong>--</strong><span>HORAS</span></div><div class="count"><strong>--</strong><span>MINUTOS</span></div><div class="count"><strong>--</strong><span>SEGUNDOS</span></div>
 </div>
 <div class="notice">Único requisito anunciado: los integrantes de la escuadra deberán seguir la cuenta oficial de Kairox Gaming en Instagram. Las bases completas y la fecha del torneo se publicarán antes del inicio.</div>
-<div class="cup-actions"><a class="btn btn-main" data-route-target="registro-cup" data-route-view="torneos" href="#registro-cup">INSCRIBIR ESCUADRA →</a><a class="btn" data-requirements-link="true" data-route-target="reglamento-completo" data-route-view="torneos" href="#reglamento-completo">VER REQUISITOS</a></div><div class="cup-actions"><a class="btn" data-route-target="clasificacion" data-route-view="torneos" href="#clasificacion">🏆 VER CLASIFICACIÓN</a></div></div>
+<div class="cup-actions"><a class="btn btn-main" data-route-target="registro-cup" data-route-view="torneos" href="#registro-cup">INSCRIBIR ESCUADRA →</a><a class="btn" data-requirements-link="true" data-route-target="reglamento-completo" data-route-view="torneos" href="#reglamento-completo">VER REQUISITOS</a></div><div class="cup-actions"><a class="btn" data-route-target="clasificacion" data-route-view="torneos" href="#clasificacion">🏆 VER CLASIFICACIÓN</a><a class="btn" data-route-target="calendario-cup" data-route-view="torneos" href="#calendario-cup">VER CALENDARIO</a></div></div>
 <div id="modalidad-cup" style="margin-top:34px;border:1px solid #292929;background:rgba(10,10,10,.72);padding:30px;position:relative;overflow:hidden"><div class="eyebrow">MODALIDAD DEL TORNEO</div><h3 style="font-size:34px;margin:10px 0">SQUAD · MOBILE</h3><p style="color:#999;font-size:13px;line-height:1.8;max-width:720px;margin:0">Cada equipo estará formado por <strong>4 jugadores titulares + 1 suplente</strong>. La competición se disputará en Free Fire Mobile. La organización publicará el formato exacto de las partidas, mapa(s), número de rondas y sistema de puntuación junto con el reglamento oficial.</p></div>
+
+
+<div class="cup-format" id="calendario-cup">
+  <div class="cup-format-head">
+    <div><div class="eyebrow">KAIROX CUP · CALENDARIO</div><h3>THE ROAD TO THE FINAL.</h3></div>
+    <p>9 partidas, 3 jornadas y una clasificación acumulada. La rotación de mapas será la misma en cada jornada.</p>
+  </div>
+
+  <div class="cup-map-rotation">
+    <div class="cup-map-day">
+      <div class="cup-map-day-head"><h4>DÍA 1</h4><span>3 PARTIDAS · JORNADA 01</span></div>
+      <div class="cup-map-grid">
+        <article class="cup-map-card"><div class="map-bg map-bermuda"></div><div class="map-content"><span class="map-game">PARTIDA 01</span><h5>Bermuda</h5><p>Mapa 01</p></div></article>
+        <article class="cup-map-card"><div class="map-bg map-purgatorio"></div><div class="map-content"><span class="map-game">PARTIDA 02</span><h5>Purgatorio</h5><p>Mapa 02</p></div></article>
+        <article class="cup-map-card"><div class="map-bg map-kalahari"></div><div class="map-content"><span class="map-game">PARTIDA 03</span><h5>Kalahari</h5><p>Mapa 03</p></div></article>
+      </div>
+    </div>
+
+    <div class="cup-map-day">
+      <div class="cup-map-day-head"><h4>DÍA 2</h4><span>3 PARTIDAS · JORNADA 02</span></div>
+      <div class="cup-map-grid">
+        <article class="cup-map-card"><div class="map-bg map-bermuda"></div><div class="map-content"><span class="map-game">PARTIDA 04</span><h5>Bermuda</h5><p>Mapa 01</p></div></article>
+        <article class="cup-map-card"><div class="map-bg map-purgatorio"></div><div class="map-content"><span class="map-game">PARTIDA 05</span><h5>Purgatorio</h5><p>Mapa 02</p></div></article>
+        <article class="cup-map-card"><div class="map-bg map-kalahari"></div><div class="map-content"><span class="map-game">PARTIDA 06</span><h5>Kalahari</h5><p>Mapa 03</p></div></article>
+      </div>
+    </div>
+
+    <div class="cup-map-day">
+      <div class="cup-map-day-head"><h4>DÍA 3</h4><span>3 PARTIDAS · JORNADA FINAL</span></div>
+      <div class="cup-map-grid">
+        <article class="cup-map-card"><div class="map-bg map-bermuda"></div><div class="map-content"><span class="map-game">PARTIDA 07</span><h5>Bermuda</h5><p>Mapa 01</p></div></article>
+        <article class="cup-map-card"><div class="map-bg map-purgatorio"></div><div class="map-content"><span class="map-game">PARTIDA 08</span><h5>Purgatorio</h5><p>Mapa 02</p></div></article>
+        <article class="cup-map-card"><div class="map-bg map-kalahari"></div><div class="map-content"><span class="map-game">PARTIDA 09</span><h5>Kalahari</h5><p>Mapa 03</p></div></article>
+      </div>
+    </div>
+
+    <div class="rotation-note"><strong style="color:#fff">ROTACIÓN OFICIAL:</strong> Bermuda → Purgatorio → Kalahari. Cada día se repite la rotación y todos los puntos se acumulan en la clasificación general.</div>
+  </div>
+
+  <div class="tournament-flow">
+    <div class="flow-item"><b>01 · DÍA 1</b><p>Primeros 3 mapas y primera clasificación provisional.</p></div>
+    <div class="flow-item"><b>02 · DÍA 2</b><p>La tabla continúa acumulando puntos y kills.</p></div>
+    <div class="flow-item"><b>03 · DÍA 3</b><p>Últimas 3 partidas y cierre de la clasificación.</p></div>
+    <div class="flow-item"><b>04 · CAMPEÓN</b><p>El equipo con más puntos tras 9 partidas se proclama campeón.</p></div>
+  </div>
+
+  <div class="scoring-box" id="puntuacion-cup">
+    <div class="eyebrow">SISTEMA DE PUNTUACIÓN</div><h3 style="font-size:26px;margin:8px 0">PLACEMENT + KILLS.</h3>
+    <p class="score-note">La puntuación de cada partida se suma a la clasificación general. La posición otorga puntos y cada kill añade 1 punto adicional.</p>
+    <div class="points-line">
+      <span class="point-pill"><strong>12</strong> · 1.º</span><span class="point-pill"><strong>9</strong> · 2.º</span><span class="point-pill"><strong>8</strong> · 3.º</span><span class="point-pill"><strong>7</strong> · 4.º</span><span class="point-pill"><strong>6</strong> · 5.º</span><span class="point-pill"><strong>5</strong> · 6.º</span><span class="point-pill"><strong>4</strong> · 7.º</span><span class="point-pill"><strong>3</strong> · 8.º</span><span class="point-pill"><strong>2</strong> · 9.º</span><span class="point-pill"><strong>1</strong> · 10.º</span><span class="point-pill"><strong>0</strong> · 11.º–12.º</span><span class="point-pill"><strong>+1</strong> · KILL</span>
+    </div>
+  </div>
+</div>
 <div class="rule-grid" id="reglas-cup">
 <article class="rule"><b>01 · ESCUADRA</b><p>4 jugadores titulares + 1 suplente. El capitán será el contacto principal con la organización.</p></article>
 <article class="rule"><b>02 · MODALIDAD</b><p>Free Fire Mobile · Squad. Se jugarán 3 días, con 3 partidas por día: <strong>9 partidas en total</strong>.</p></article>
