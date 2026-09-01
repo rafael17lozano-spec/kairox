@@ -9,21 +9,32 @@
 :root{--bg:#070707;--panel:#101010;--line:#292929;--muted:#858585;--white:#fff;--danger:#d33}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:#fff;font-family:Arial,sans-serif}
 main{max-width:1180px;margin:auto;padding:38px 20px}h1{font-size:42px;margin:5px 0 8px}
-.ey{font-size:9px;letter-spacing:2px;color:#888;font-weight:900}.sub{color:#777;font-size:12px;line-height:1.6}
+h2{font-size:25px;margin:0}.ey{font-size:9px;letter-spacing:2px;color:#888;font-weight:900}.sub{color:#777;font-size:12px;line-height:1.6}
 .panel{border:1px solid var(--line);background:var(--panel);padding:24px;margin-top:20px}
 .toolbar{display:flex;gap:10px;flex-wrap:wrap;align-items:end}
 label{display:grid;gap:7px;color:#888;font-size:8px;letter-spacing:1.2px;font-weight:900}
 select,input{background:#090909;border:1px solid #333;color:#fff;padding:11px 12px;min-width:120px}
 button{background:#fff;color:#111;border:0;padding:12px 16px;font-size:8px;font-weight:900;letter-spacing:1.2px;cursor:pointer}
 button.secondary{background:#151515;color:#fff;border:1px solid #444}
-button.danger{background:#351111;color:#fff;border:1px solid #6b2222}
+button:disabled{opacity:.5;cursor:not-allowed}
 table{width:100%;border-collapse:collapse;margin-top:20px}th,td{padding:11px 8px;border-bottom:1px solid #242424;text-align:center;font-size:9px}
 th{color:#777;font-size:7px;letter-spacing:1.3px}th:nth-child(2),td:nth-child(2){text-align:left}
 .small,.msg{color:#777;font-size:9px;line-height:1.6;margin-top:12px}
 .error{color:#ff8a8a}.ok{color:#9fe3a8}
 .auth{max-width:480px;margin:80px auto}.auth input{width:100%;margin-bottom:10px}.auth button{width:100%;margin-top:8px}
 .hidden{display:none}.top{display:flex;justify-content:space-between;gap:15px;align-items:center;flex-wrap:wrap}
-@media(max-width:700px){table{min-width:800px}.panel{overflow:auto}}
+.team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:20px}
+.team-card{border:1px solid #292929;background:#0b0b0b;padding:16px}
+.team-head{display:flex;align-items:center;gap:12px;margin-bottom:13px}
+.logo-preview{width:48px;height:48px;border:1px solid #333;background:#151515;display:grid;place-items:center;overflow:hidden;flex:none;font-size:10px;color:#666}
+.logo-preview img{width:100%;height:100%;object-fit:contain}
+.team-number{font-size:8px;color:#777;letter-spacing:1.5px;font-weight:900}
+.team-name-input{width:100%;margin-bottom:10px}
+.logo-row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.logo-row input[type=file]{min-width:0;width:100%;font-size:9px}
+.team-save{margin-top:10px;width:100%}
+@media(max-width:850px){.team-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:700px){table{min-width:800px}.panel{overflow:auto}.team-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -43,21 +54,31 @@ th{color:#777;font-size:7px;letter-spacing:1.3px}th:nth-child(2),td:nth-child(2)
   <div id="app" class="hidden">
     <div class="top">
       <div>
-        <div class="ey">KAIROX GAMING · PRIVATE RESULTS PANEL</div>
-        <h1>RESULTS<br>CONTROL.</h1>
-        <p class="sub">Introduce posición y kills. Los puntos de posición se calculan automáticamente en Supabase.</p>
+        <div class="ey">KAIROX GAMING · PRIVATE ADMIN</div>
+        <h1>CONTROL<br>PANEL.</h1>
+        <p class="sub">Gestiona equipos, logos y resultados desde un solo lugar.</p>
       </div>
       <button class="secondary" id="logoutBtn">CERRAR SESIÓN</button>
     </div>
 
     <div class="panel">
-      <div class="toolbar">
+      <div class="ey">01 · EQUIPOS</div>
+      <h2>TEAM MANAGEMENT.</h2>
+      <p class="sub">Escribe el nombre de cada equipo y selecciona su logo. El nombre se guarda directamente en Supabase.</p>
+      <div id="teamGrid" class="team-grid"></div>
+      <div id="teamMsg" class="msg"></div>
+    </div>
+
+    <div class="panel">
+      <div class="ey">02 · RESULTADOS</div>
+      <h2>RESULTS CONTROL.</h2>
+      <p class="sub">Introduce posición y kills. Los puntos de posición se calculan automáticamente.</p>
+      <div class="toolbar" style="margin-top:20px">
         <label>JORNADA<select id="day"><option value="1">DÍA 1</option><option value="2">DÍA 2</option><option value="3">DÍA 3</option></select></label>
         <label>PARTIDA<select id="match"></select></label>
         <button id="calcBtn">CALCULAR PUNTOS</button>
         <button class="secondary" id="saveBtn">GUARDAR RESULTADOS</button>
       </div>
-
       <table>
         <thead><tr><th>#</th><th>EQUIPO</th><th>POSICIÓN</th><th>KILLS</th><th>PUNTOS PARTIDA</th></tr></thead>
         <tbody id="body"></tbody>
@@ -69,48 +90,30 @@ th{color:#777;font-size:7px;letter-spacing:1.3px}th:nth-child(2),td:nth-child(2)
 </main>
 
 <script>
-const SUPABASE_URL = 'https://nnwfeddjylekarsyndre.supabase.co';
-const SUPABASE_KEY = 'sb_publishable_KI3zekg_05WBPwJXXzfpSA_jqVYkfES';
-const sb = window.supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
-
+const SUPABASE_URL='https://nnwfeddjylekarsyndre.supabase.co';
+const SUPABASE_KEY='sb_publishable_KI3zekg_05WBPwJXXzfpSA_jqVYkfES';
+const sb=window.supabase.createClient(SUPABASE_URL,SUPABASE_KEY);
 const pts={1:12,2:9,3:8,4:7,5:6,6:5,7:4,8:3,9:2,10:1,11:0,12:0};
-let teams=[], matches=[], currentResults=[];
+let teams=[],matches=[],currentResults=[];
+const authView=document.getElementById('authView'),app=document.getElementById('app');
+const authMsg=document.getElementById('authMsg'),msg=document.getElementById('msg'),teamMsg=document.getElementById('teamMsg');
+const email=document.getElementById('email'),password=document.getElementById('password');
 
-const authView=document.getElementById('authView');
-const app=document.getElementById('app');
-const authMsg=document.getElementById('authMsg');
-const msg=document.getElementById('msg');
-const email=document.getElementById('email');
-const password=document.getElementById('password');
+function setAuthMessage(t,c=''){authMsg.textContent=t;authMsg.className='msg '+c}
+function setMessage(t,c=''){msg.textContent=t;msg.className='msg '+c}
+function setTeamMessage(t,c=''){teamMsg.textContent=t;teamMsg.className='msg '+c}
 
-function setAuthMessage(text, cls=''){ authMsg.textContent=text; authMsg.className='msg '+cls; }
-function setMessage(text, cls=''){ msg.textContent=text; msg.className='msg '+cls; }
-
-async function checkSession(){
-  const {data}=await sb.auth.getSession();
-  if(data.session) showApp(); else showLogin();
-}
-
-async function showApp(){
-  authView.classList.add('hidden'); app.classList.remove('hidden');
-  await loadData();
-}
-
-function showLogin(){
-  app.classList.add('hidden'); authView.classList.remove('hidden');
-}
+async function checkSession(){const {data}=await sb.auth.getSession();data.session?showApp():showLogin()}
+async function showApp(){authView.classList.add('hidden');app.classList.remove('hidden');await loadData()}
+function showLogin(){app.classList.add('hidden');authView.classList.remove('hidden')}
 
 document.getElementById('loginBtn').onclick=async()=>{
   setAuthMessage('ENTRANDO...');
   const {error}=await sb.auth.signInWithPassword({email:email.value.trim(),password:password.value});
   if(error){setAuthMessage('No se pudo iniciar sesión: '+error.message,'error');return}
-  setAuthMessage('');
-  await showApp();
+  setAuthMessage('');await showApp();
 };
-
-document.getElementById('logoutBtn').onclick=async()=>{
-  await sb.auth.signOut(); showLogin();
-};
+document.getElementById('logoutBtn').onclick=async()=>{await sb.auth.signOut();showLogin()};
 
 async function loadData(){
   setMessage('Cargando equipos y partidas...');
@@ -118,22 +121,75 @@ async function loadData(){
     sb.from('teams').select('id,name,logo_url').order('id'),
     sb.from('matches').select('id,day,match_number,map').order('match_number')
   ]);
-  if(tRes.error || mRes.error){setMessage('Error cargando datos. '+(tRes.error?.message||mRes.error?.message),'error');return}
-  teams=tRes.data||[]; matches=mRes.data||[];
-  fillMatches();
-  await draw();
-  setMessage('Panel conectado correctamente.','ok');
+  if(tRes.error||mRes.error){setMessage('Error cargando datos. '+(tRes.error?.message||mRes.error?.message),'error');return}
+  teams=tRes.data||[];matches=mRes.data||[];
+  drawTeams();fillMatches();await draw();setMessage('Panel conectado correctamente.','ok');
+}
+
+function drawTeams(){
+  const grid=document.getElementById('teamGrid');
+  const cards=teams.slice(0,12).map((t,i)=>{
+    const safeName=(t.name||('Equipo '+(i+1))).replace(/"/g,'&quot;');
+    const logo=t.logo_url||'';
+    return `<div class="team-card">
+      <div class="team-head">
+        <div class="logo-preview" id="preview-${t.id}">${logo?`<img src="${logo}" alt="">`:'LOGO'}</div>
+        <div><div class="team-number">EQUIPO ${i+1}</div><strong>${t.name||'Sin nombre'}</strong></div>
+      </div>
+      <input class="team-name-input" id="name-${t.id}" value="${safeName}" placeholder="Nombre del equipo">
+      <div class="logo-row"><input id="logo-${t.id}" type="file" accept="image/png,image/jpeg,image/webp"></div>
+      <button class="team-save" data-team="${t.id}">GUARDAR EQUIPO</button>
+    </div>`;
+  }).join('');
+  grid.innerHTML=cards||'<div class="msg">No hay equipos registrados.</div>';
+
+  teams.slice(0,12).forEach(t=>{
+    const input=document.getElementById('logo-'+t.id);
+    input?.addEventListener('change',e=>{
+      const file=e.target.files?.[0];if(!file)return;
+      const url=URL.createObjectURL(file);
+      document.getElementById('preview-'+t.id).innerHTML=`<img src="${url}" alt="">`;
+    });
+  });
+  grid.querySelectorAll('.team-save').forEach(b=>b.onclick=()=>saveTeam(Number(b.dataset.team)));
+}
+
+async function saveTeam(teamId){
+  const name=document.getElementById('name-'+teamId).value.trim();
+  const file=document.getElementById('logo-'+teamId).files?.[0];
+  if(!name){setTeamMessage('El nombre no puede estar vacío.','error');return}
+  const btn=document.querySelector(`.team-save[data-team="${teamId}"]`);
+  btn.disabled=true;btn.textContent='GUARDANDO...';setTeamMessage('Guardando equipo...');
+  try{
+    let logo_url=(teams.find(t=>t.id===teamId)?.logo_url)||null;
+
+    // Logo upload expects a Supabase Storage bucket named "team-logos".
+    // If the bucket does not exist yet, the name still saves and the page
+    // explains the Storage step instead of losing the team update.
+    if(file){
+      const ext=(file.name.split('.').pop()||'png').toLowerCase();
+      const path=`team-${teamId}-${Date.now()}.${ext}`;
+      const up=await sb.storage.from('team-logos').upload(path,file,{upsert:true,contentType:file.type});
+      if(up.error) throw new Error('No se pudo subir el logo. Crea el bucket "team-logos" en Storage de Supabase y vuelve a intentarlo. '+up.error.message);
+      const pub=sb.storage.from('team-logos').getPublicUrl(path);
+      logo_url=pub.data.publicUrl;
+    }
+
+    const up=await sb.from('teams').update({name,logo_url}).eq('id',teamId);
+    if(up.error)throw up.error;
+    const idx=teams.findIndex(t=>t.id===teamId);
+    if(idx>=0)teams[idx]={...teams[idx],name,logo_url};
+    drawTeams();setTeamMessage('✓ Equipo guardado correctamente.','ok');
+  }catch(e){setTeamMessage(e.message,'error')}
+  finally{btn.disabled=false;btn.textContent='GUARDAR EQUIPO'}
 }
 
 function fillMatches(){
-  const day=Number(document.getElementById('day').value);
-  const select=document.getElementById('match');
+  const day=Number(document.getElementById('day').value),select=document.getElementById('match');
   select.innerHTML=matches.filter(m=>m.day===day).map(m=>`<option value="${m.id}">PARTIDA ${m.match_number} · ${m.map}</option>`).join('');
 }
-
 async function draw(){
-  const matchId=Number(document.getElementById('match').value);
-  if(!matchId) return;
+  const matchId=Number(document.getElementById('match').value);if(!matchId)return;
   const {data,error}=await sb.from('match_results').select('team_id,placement,kills').eq('match_id',matchId);
   if(error){setMessage('Error cargando resultados: '+error.message,'error');return}
   const map=new Map((data||[]).map(r=>[r.team_id,r]));
@@ -141,64 +197,30 @@ async function draw(){
   document.getElementById('body').innerHTML=teams.map((t,i)=>{
     const r=currentResults[i];
     return `<tr><td>${i+1}</td><td>${t.name}</td><td><input class="pos" data-team="${t.id}" type="number" min="1" max="12" value="${r.placement||''}"></td><td><input class="kill" data-team="${t.id}" type="number" min="0" value="${r.kills||''}"></td><td class="calc">0</td></tr>`;
-  }).join('');
-  calculate();
+  }).join('');calculate();
 }
-
-function collect(){
-  return [...document.querySelectorAll('#body tr')].map((tr,i)=>({
-    team_id:teams[i].id,
-    placement:Number(tr.querySelector('.pos').value)||0,
-    kills:Number(tr.querySelector('.kill').value)||0
-  }));
-}
-
-function calculate(){
-  [...document.querySelectorAll('#body tr')].forEach(tr=>{
-    const p=Number(tr.querySelector('.pos').value)||0;
-    const k=Number(tr.querySelector('.kill').value)||0;
-    tr.querySelector('.calc').textContent=(pts[p]||0)+k;
-  });
-}
-
+function collect(){return [...document.querySelectorAll('#body tr')].map((tr,i)=>({team_id:teams[i].id,placement:Number(tr.querySelector('.pos').value)||0,kills:Number(tr.querySelector('.kill').value)||0}))}
+function calculate(){document.querySelectorAll('#body tr').forEach(tr=>{const p=Number(tr.querySelector('.pos').value)||0,k=Number(tr.querySelector('.kill').value)||0;tr.querySelector('.calc').textContent=(pts[p]||0)+k})}
 function validate(rows){
-  const invalid=rows.some(r=>r.placement<1 || r.placement>12 || r.kills<0);
-  if(invalid) return 'Todos los equipos deben tener posición 1–12 y kills desde 0.';
-  const positions=rows.map(r=>r.placement);
-  if(new Set(positions).size!==12) return 'No puede haber posiciones repetidas. Usa del 1 al 12 una sola vez.';
+  if(rows.some(r=>r.placement<1||r.placement>12||r.kills<0))return'Todos los equipos deben tener posición 1–12 y kills desde 0.';
+  if(new Set(rows.map(r=>r.placement)).size!==12)return'No puede haber posiciones repetidas. Usa del 1 al 12 una sola vez.';
   return '';
 }
-
 document.getElementById('calcBtn').onclick=()=>{calculate();setMessage('Puntos calculados.','ok')};
-
 document.getElementById('day').onchange=async()=>{fillMatches();await draw()};
 document.getElementById('match').onchange=draw;
-
 document.getElementById('saveBtn').onclick=async()=>{
-  const rows=collect(), validation=validate(rows);
-  if(validation){setMessage(validation,'error');return}
-  const matchId=Number(document.getElementById('match').value);
-  const {data:sessionData}=await sb.auth.getSession();
+  const rows=collect(),validation=validate(rows);if(validation){setMessage(validation,'error');return}
+  const matchId=Number(document.getElementById('match').value),{data:sessionData}=await sb.auth.getSession();
   if(!sessionData.session){showLogin();return}
-
-  const saveBtn=document.getElementById('saveBtn');
-  saveBtn.disabled=true; saveBtn.textContent='GUARDANDO...';
-  setMessage('Guardando resultados...');
+  const saveBtn=document.getElementById('saveBtn');saveBtn.disabled=true;saveBtn.textContent='GUARDANDO...';setMessage('Guardando resultados...');
   try{
-    const del=await sb.from('match_results').delete().eq('match_id',matchId);
-    if(del.error) throw del.error;
-    const payload=rows.map(r=>({match_id:matchId,team_id:r.team_id,placement:r.placement,kills:r.kills}));
-    const ins=await sb.from('match_results').insert(payload);
-    if(ins.error) throw ins.error;
-    await draw();
-    setMessage('✓ Resultados guardados en Supabase. La clasificación pública se actualizará automáticamente.','ok');
-  }catch(e){
-    setMessage('No se pudieron guardar los resultados: '+e.message,'error');
-  }finally{
-    saveBtn.disabled=false; saveBtn.textContent='GUARDAR RESULTADOS';
-  }
+    const del=await sb.from('match_results').delete().eq('match_id',matchId);if(del.error)throw del.error;
+    const ins=await sb.from('match_results').insert(rows.map(r=>({match_id:matchId,team_id:r.team_id,placement:r.placement,kills:r.kills})));
+    if(ins.error)throw ins.error;await draw();setMessage('✓ Resultados guardados en Supabase. La clasificación pública se actualizará automáticamente.','ok');
+  }catch(e){setMessage('No se pudieron guardar los resultados: '+e.message,'error')}
+  finally{saveBtn.disabled=false;saveBtn.textContent='GUARDAR RESULTADOS'}
 };
-
 checkSession();
 </script>
 </body>
