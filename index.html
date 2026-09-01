@@ -275,6 +275,10 @@ body.segmented[data-view="live"] #clasificacion,
 body.segmented[data-view="live"] #registro-cup,
 body.segmented[data-view="live"] #tienda,
 body.segmented[data-view="live"] #redes{display:none!important}
+
+/* V28 — LIVE solo como apartado independiente */
+.dropdown a[data-route-target="live"],
+.dropdown a[href="#live"]{display:none!important}
 </style>
 </head>
 <body>
@@ -282,7 +286,7 @@ body.segmented[data-view="live"] #redes{display:none!important}
 <header><div class="wrap nav">
 <a class="brand" href="#inicio"><img alt="" src="kairox-logo.png"/>KAIROX GAMING</a>
 <nav class="menu">
-<div class="nav-item"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">CLUB</a><div class="dropdown"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">Nuestro club</a><a data-route-target="historia" data-route-view="club" href="#historia">NUESTRA HISTORIA</a><a data-route-target="roster" data-route-view="club" href="#roster">JUGADORES</a><a data-route-target="live" data-route-view="club" href="#live">LIVE</a><a data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">ÚNETE A KAIROX</a></div></div>
+<div class="nav-item"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">CLUB</a><div class="dropdown"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">Nuestro club</a><a data-route-target="historia" data-route-view="club" href="#historia">NUESTRA HISTORIA</a><a data-route-target="roster" data-route-view="club" href="#roster">JUGADORES</a><a data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">ÚNETE A KAIROX</a></div></div>
 <div class="nav-item"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">TORNEOS</a><div class="dropdown"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">Kairox Cup</a><a data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">Inscripciones</a></div></div>
 <div class="nav-item"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">TIENDA</a><div class="dropdown"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">Jersey 2026</a></div></div>
 <div class="nav-item"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">REDES</a><div class="dropdown"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Instagram</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">TikTok</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">YouTube</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">X</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Contacto</a></div></div>
