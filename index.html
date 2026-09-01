@@ -86,6 +86,17 @@ img{max-width:100%;height:auto}
 .prize:after{content:"";position:absolute;right:-30px;bottom:-45px;width:130px;height:130px;background:url('kairox-eagle.svg') center/contain no-repeat;opacity:.025}
 .prize .place{font-size:9px;letter-spacing:2px;color:#777;font-weight:900}
 .prize strong{display:block;font-size:30px;margin-top:12px}.prize span{display:block;color:#888;font-size:9px;margin-top:7px;letter-spacing:1px}
+
+/* V16 — LIVE STANDINGS */
+.standings-wrap{margin-top:24px;border:1px solid #292929;background:rgba(8,8,8,.84);backdrop-filter:blur(8px);overflow:hidden}
+.standings-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px;border-bottom:1px solid #292929}
+.standings-head h3{margin:0;font-size:28px;letter-spacing:-1px}.standings-head p{margin:7px 0 0;color:#777;font-size:10px;letter-spacing:1px}
+.standings-status{font-size:8px;letter-spacing:2px;font-weight:900;color:#aaa;border:1px solid #444;padding:10px 12px}
+.standings-table{width:100%;border-collapse:collapse}.standings-table th,.standings-table td{padding:15px 12px;border-bottom:1px solid #242424;text-align:center;font-size:10px}.standings-table th{color:#666;font-size:8px;letter-spacing:1.5px}.standings-table th:nth-child(2),.standings-table td:nth-child(2){text-align:left}.standings-table td{font-weight:700}.standings-table tr:last-child td{border-bottom:0}.rank{font-size:18px}.team-cell{display:flex;align-items:center;gap:10px}.team-logo{width:27px;height:27px;border:1px solid #333;display:grid;place-items:center;font-size:8px;color:#777;background:#111}.total{font-size:15px!important}.provisional-note{padding:15px 25px;color:#666;font-size:9px;letter-spacing:.5px;border-top:1px solid #292929}
+.standings-toggle{margin-top:24px;display:flex;gap:9px;flex-wrap:wrap}.day-btn{cursor:pointer;border:1px solid #444;background:#111;color:#aaa;padding:13px 17px;font-size:8px;letter-spacing:1.7px;font-weight:900}.day-btn.active,.day-btn:hover{background:#fff;color:#111;border-color:#fff}
+.light .standings-wrap{background:#fff;border-color:#ddd}.light .standings-head,.light .standings-table th,.light .standings-table td,.light .provisional-note{border-color:#ddd}.light .standings-status{border-color:#ccc;color:#666}.light .team-logo{background:#f4f4f4;border-color:#ddd}.light .day-btn{background:#fff;color:#666;border-color:#ccc}.light .day-btn.active{background:#111;color:#fff;border-color:#111}
+@media(max-width:800px){.standings-head{display:block}.standings-status{display:inline-block;margin-top:14px}.standings-wrap{overflow-x:auto}.standings-table{min-width:680px}.standings-toggle{display:grid;grid-template-columns:1fr 1fr 1fr}.day-btn{width:100%}}
+
 @media(max-width:800px){.prizes{grid-template-columns:1fr}}
 
 @media(max-width:800px){
@@ -187,7 +198,7 @@ img{max-width:100%;height:auto}
 <div class="count"><strong>--</strong><span>DÍAS</span></div><div class="count"><strong>--</strong><span>HORAS</span></div><div class="count"><strong>--</strong><span>MINUTOS</span></div><div class="count"><strong>--</strong><span>SEGUNDOS</span></div>
 </div>
 <div class="notice">Único requisito anunciado: los integrantes de la escuadra deberán seguir la cuenta oficial de Kairox Gaming en Instagram. Las bases completas y la fecha del torneo se publicarán antes del inicio.</div>
-<div class="cup-actions"><a class="btn btn-main" href="#registro-cup">INSCRIBIR ESCUADRA →</a><a class="btn" href="#reglas-cup">VER REQUISITOS</a></div></div>
+<div class="cup-actions"><a class="btn btn-main" href="#registro-cup">INSCRIBIR ESCUADRA →</a><a class="btn" href="#reglas-cup">VER REQUISITOS</a></div><div class="cup-actions"><a class="btn" href="#clasificacion">🏆 VER CLASIFICACIÓN</a></div></div>
 <div id="modalidad-cup" style="margin-top:34px;border:1px solid #292929;background:rgba(10,10,10,.72);padding:30px;position:relative;overflow:hidden"><div class="eyebrow">MODALIDAD DEL TORNEO</div><h3 style="font-size:34px;margin:10px 0">SQUAD · MOBILE</h3><p style="color:#999;font-size:13px;line-height:1.8;max-width:720px;margin:0">Cada equipo estará formado por <strong>4 jugadores titulares + 1 suplente</strong>. La competición se disputará en Free Fire Mobile. La organización publicará el formato exacto de las partidas, mapa(s), número de rondas y sistema de puntuación junto con el reglamento oficial.</p></div>
 <div id="reglas-cup" class="rule-grid">
 <article class="rule"><b>01 · ESCUADRA</b><p>4 jugadores titulares + 1 suplente. El capitán será el contacto principal con la organización.</p></article>
@@ -220,6 +231,13 @@ img{max-width:100%;height:auto}
 </div>
 </div></section>
 
+
+<section id="clasificacion"><div class="wrap"><div class="section-head"><div><div class="eyebrow">07 · STANDINGS</div><h2>LIVE<br>TABLE.</h2></div><p>Clasificación acumulada de la Kairox Cup. Esta tabla es provisional y se actualizará con los equipos, logos y resultados oficiales.</p></div>
+<div class="standings-toggle"><button class="day-btn active" data-day="all">CLASIFICACIÓN</button><button class="day-btn" data-day="1">DÍA 1</button><button class="day-btn" data-day="2">DÍA 2</button><button class="day-btn" data-day="3">DÍA 3</button></div>
+<div class="standings-wrap"><div class="standings-head"><div><h3>🏆 KAIROX CUP #001</h3><p>CLASIFICACIÓN PROVISIONAL · 9 PARTIDAS</p></div><div class="standings-status">PROVISIONAL</div></div>
+<table class="standings-table"><thead><tr><th>#</th><th>EQUIPO</th><th>DÍA 1</th><th>DÍA 2</th><th>DÍA 3</th><th>KILLS</th><th>TOTAL</th></tr></thead>
+<tbody id="standings-body"></tbody></table><div class="provisional-note">* Equipos y puntuaciones de ejemplo. Se sustituirán por los participantes y resultados oficiales cuando se cierre la inscripción.</div></div></div></section>
+
 <section class="form-section" id="registro-cup"><div class="wrap"><div class="formbox"><div class="eyebrow">KAIROX CUP #001 · REGISTRO</div><h2>INSCRIBE TU ESCUADRA</h2><p>Rellena los datos de los 4 titulares y 1 suplente. El capitán será el contacto principal.</p><form id="inscripcion-form" action="https://formspree.io/f/xwlklend" method="POST"><input type="hidden" name="tipo" value="Kairox Cup #001"><input class="field" name="escuadra" placeholder="Nombre de la escuadra" required><input class="field" name="capitan" placeholder="Nick del capitán" required><input class="field" type="email" name="correo" placeholder="Correo del capitán" required><input class="field" name="id_capitan" placeholder="ID de Free Fire del capitán" required><input class="field" name="jugador_2" placeholder="Jugador 2 — nick + ID" required><input class="field" name="jugador_3" placeholder="Jugador 3 — nick + ID" required><input class="field" name="jugador_4" placeholder="Jugador 4 — nick + ID" required><input class="field" name="suplente" placeholder="Suplente — nick + ID" required><label style="display:block;color:#666;font-size:12px;margin:8px 0 20px"><input type="checkbox" required> Confirmo que todos los jugadores cumplen los requisitos y aceptan las bases del torneo.</label><button class="submit" id="send">ENVIAR INSCRIPCIÓN</button><div class="success" id="ok"><h3>¡INSCRIPCIÓN RECIBIDA! 🏆</h3><p>Los datos se han enviado correctamente.</p></div></form></div></div></section>
 
 <div class="mobile-cup-bar"><a class="primary" href="#registro-cup">INSCRIBIR ESCUADRA →</a><a class="secondary" href="#reglas-cup">REQUISITOS</a></div>
@@ -245,6 +263,30 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
     [d,h,m,s].forEach((n,i)=>values[i].textContent=String(n).padStart(2,'0'));
   }
   tick(); setInterval(tick,1000);
+})();
+</script>
+
+
+<script>
+(function(){
+ const rows=[
+  {team:"KAIROX A",short:"KA",d1:35,d2:0,d3:0,kills:12},
+  {team:"TEAM ALPHA",short:"TA",d1:31,d2:0,d3:0,kills:10},
+  {team:"TEAM PHOENIX",short:"TP",d1:28,d2:0,d3:0,kills:9},
+  {team:"TEAM NOVA",short:"TN",d1:25,d2:0,d3:0,kills:8},
+  {team:"TEAM X",short:"TX",d1:22,d2:0,d3:0,kills:7}
+ ];
+ const body=document.getElementById("standings-body"), buttons=document.querySelectorAll(".day-btn");
+ if(!body)return;
+ function render(day){
+   const sorted=rows.map(r=>({...r,total:r.d1+r.d2+r.d3+r.kills})).sort((a,b)=>b.total-a.total);
+   body.innerHTML=sorted.map((r,i)=>{
+     const value=day==="all"?r.total:(r["d"+day]||0);
+     return `<tr><td class="rank">${i<3?["🥇","🥈","🥉"][i]:i+1}</td><td><div class="team-cell"><span class="team-logo">${r.short}</span>${r.team}</div></td><td>${r.d1}</td><td>${r.d2}</td><td>${r.d3}</td><td>${r.kills}</td><td class="total">${day==="all"?r.total:value}</td></tr>`;
+   }).join("");
+ }
+ buttons.forEach(b=>b.addEventListener("click",()=>{buttons.forEach(x=>x.classList.remove("active"));b.classList.add("active");render(b.dataset.day)}));
+ render("all");
 })();
 </script>
 
