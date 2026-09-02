@@ -180,315 +180,7 @@ body.segmented[data-view="live"] #live{display:block}
   color:#000 !important;
 }
 
-/* V22 — SEGMENT NAVIGATION + CTA ROUTING */
-body.segmented .site-section{display:none!important}
-body.segmented[data-view="club"] #club,
-body.segmented[data-view="club"] #historia,
-body.segmented[data-view="club"] #roster,
-body.segmented[data-view="club"] #reclutamiento{display:block!important}
-body.segmented[data-view="torneos"] #torneos,
-body.segmented[data-view="torneos"] #torneo-kairox-cup,
-body.segmented[data-view="torneos"] #torneo-kalahari,
-body.segmented[data-view="torneos"] #torneo-1vs1,
-body.segmented[data-view="torneos"] #clasificacion,
-body.segmented[data-view="torneos"] #registro-cup{display:block!important}
-body.segmented[data-view="tienda"] #tienda{display:block!important}
-body.segmented[data-view="redes"] #redes{display:block!important}
-body.segmented[data-view="live"] #live{display:block!important}
-body.segmented[data-view="club"] #reclutamiento{display:none!important}
-.route-focus{scroll-margin-top:92px}
-@media(max-width:800px){
-  body.segmented[data-view="club"] #club,
-  body.segmented[data-view="club"] #historia,
-  body.segmented[data-view="club"] #roster,
-  body.segmented[data-view="club"] #reclutamiento{display:block!important}
-  body.segmented[data-view="torneos"] #torneos,
-  body.segmented[data-view="torneos"] #clasificacion,
-  body.segmented[data-view="torneos"] #registro-cup{display:block!important}
-  body.segmented[data-view="tienda"] #tienda,
-  body.segmented[data-view="redes"] #redes{display:block!important}
-body.segmented[data-view="live"] #live{display:block!important}
-}
 
-/* V23 — LIVE STREAM HUB */
-.live-nav{
-  display:inline-flex!important;align-items:center;gap:7px;
-  color:#fff!important;font-weight:900!important;
-}
-.live-dot{
-  width:7px;height:7px;border-radius:50%;background:#ff2b2b;
-  display:inline-block;box-shadow:0 0 0 3px rgba(255,43,43,.12),0 0 12px rgba(255,43,43,.75);
-  animation:livePulse 1.4s infinite;
-}
-.live-camera{font-size:13px;line-height:1}
-@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
-.live-hub{margin-top:30px}
-.live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
-.live-card{
-  border:1px solid #292929;background:rgba(8,8,8,.78);padding:24px;
-  position:relative;overflow:hidden;transition:.2s;
-}
-.live-card:hover{border-color:#555;transform:translateY(-2px)}
-.live-card:after{content:"";position:absolute;right:-35px;bottom:-45px;width:150px;height:150px;background:url('kairox-eagle.svg') center/contain no-repeat;opacity:.025}
-.live-badge{display:inline-flex;align-items:center;gap:7px;border:1px solid #3a3a3a;padding:7px 9px;font-size:7px;letter-spacing:1.8px;font-weight:900}
-.live-card h3{font-size:23px;margin:18px 0 5px}.live-card .role{color:#777;font-size:8px;letter-spacing:1.5px}
-.live-card p{color:#888;font-size:11px;line-height:1.65;margin:15px 0 18px}
-.stream-links{display:flex;gap:7px;flex-wrap:wrap}.stream-links a{border:1px solid #444;padding:9px 11px;color:#fff;text-decoration:none;font-size:7px;letter-spacing:1.2px;font-weight:900}
-.stream-links a:hover{background:#fff;color:#111}
-.live-empty{border:1px dashed #333;padding:28px;color:#666;font-size:10px;line-height:1.7}
-@media(max-width:800px){.live-grid{grid-template-columns:1fr}.live-nav{padding:9px 5px!important}.stream-links a{padding:11px 12px}}
-
-/* V24 — LIVE CAMERA ICON */
-.live-camera{display:inline-flex;align-items:center;justify-content:center}
-.live-camera svg{display:block}
-.live-dot{width:7px;height:7px;border-radius:50%;background:#ff2020;display:inline-block;box-shadow:0 0 0 3px rgba(255,32,32,.12),0 0 12px rgba(255,32,32,.8);animation:livePulse 1.25s ease-in-out infinite}
-@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.78)}}
-
-/* V25 — CLUB / LIVE SEPARATION */
-body.segmented[data-view="club"] #creadores{display:none!important}
-body.segmented[data-view="club"] #live{display:none!important}
-body.segmented[data-view="club"] #reclutamiento{display:block!important}
-
-/* V26 — LIVE ROUTE FIX */
-body.segmented[data-view="live"] #live{display:block!important}
-body.segmented[data-view="live"] #club,
-body.segmented[data-view="live"] #historia,
-body.segmented[data-view="live"] #roster,
-body.segmented[data-view="live"] #reclutamiento,
-body.segmented[data-view="live"] #torneos,
-body.segmented[data-view="live"] #clasificacion,
-body.segmented[data-view="live"] #registro-cup,
-body.segmented[data-view="live"] #tienda,
-body.segmented[data-view="live"] #redes{display:none!important}
-
-/* V27 — LIVE DEFINITIVO: sección independiente */
-body.segmented[data-view="club"] #club,
-body.segmented[data-view="club"] #historia,
-body.segmented[data-view="club"] #roster,
-body.segmented[data-view="club"] #reclutamiento{display:block!important}
-body.segmented[data-view="club"] #live{display:none!important}
-body.segmented[data-view="torneos"] #torneos,
-body.segmented[data-view="torneos"] #torneo-kairox-cup,
-body.segmented[data-view="torneos"] #torneo-kalahari,
-body.segmented[data-view="torneos"] #torneo-1vs1,
-body.segmented[data-view="torneos"] #clasificacion,
-body.segmented[data-view="torneos"] #registro-cup{display:block!important}
-body.segmented[data-view="live"] #live{display:block!important}
-body.segmented[data-view="live"] #club,
-body.segmented[data-view="live"] #historia,
-body.segmented[data-view="live"] #roster,
-body.segmented[data-view="live"] #reclutamiento,
-body.segmented[data-view="live"] #torneos,
-body.segmented[data-view="live"] #clasificacion,
-body.segmented[data-view="live"] #registro-cup,
-body.segmented[data-view="live"] #tienda,
-body.segmented[data-view="live"] #redes{display:none!important}
-
-/* V28 — LIVE solo como apartado independiente */
-.dropdown a[data-route-target="live"],
-.dropdown a[href="#live"]{display:none!important}
-
-/* V29 — KAIROX CUP COMPLETE FORMAT */
-.cup-format{margin-top:34px}.cup-format-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:16px}
-.cup-format-head h3{font-size:30px;margin:7px 0 0}.cup-format-head p{max-width:500px;color:#888;font-size:11px;line-height:1.6;margin:0}
-.day-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.day-card{border:1px solid #292929;background:rgba(8,8,8,.72);padding:22px}
-.day-card .day-no{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}.day-card h4{font-size:21px;margin:9px 0 16px}
-.map-list{display:grid;gap:8px}.map-row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #292929;padding-top:10px;font-size:9px;font-weight:800}.map-row span:last-child{color:#777;letter-spacing:1px;text-align:right}
-.tournament-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.flow-item{border:1px solid #292929;padding:18px;background:rgba(10,10,10,.5)}.flow-item b{font-size:9px;letter-spacing:1.4px}.flow-item p{color:#777;font-size:9px;line-height:1.55;margin:8px 0 0}
-.scoring-box{margin-top:12px;border:1px solid #292929;background:rgba(8,8,8,.72);padding:24px}.points-line{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.point-pill{border:1px solid #333;padding:9px 11px;font-size:8px;font-weight:900}.point-pill strong{font-size:13px;margin-right:3px}.score-note{color:#777;font-size:10px;line-height:1.7;margin:0}
-@media(max-width:800px){.day-grid,.tournament-flow{grid-template-columns:1fr}.cup-format-head{display:block}.cup-format-head p{margin-top:10px}}
-
-/* V30 — MAP ROTATION / KAIROX CUP */
-.cup-map-rotation{margin-top:28px}
-.cup-map-day{border:1px solid #292929;background:rgba(8,8,8,.72);padding:20px;margin-bottom:12px}
-.cup-map-day-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
-.cup-map-day-head h4{font-size:20px;margin:0}.cup-map-day-head span{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}
-.cup-map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
-.cup-map-card{position:relative;min-height:145px;border:1px solid #333;overflow:hidden;background:#111}
-.cup-map-card .map-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.75) contrast(1.05);opacity:.58}
-.cup-map-card:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.28))}
-.cup-map-card .map-content{position:relative;z-index:1;padding:18px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;min-height:109px}
-.cup-map-card .map-game{font-size:7px;letter-spacing:1.8px;color:#bbb;font-weight:900;margin-bottom:5px}
-.cup-map-card h5{font-size:22px;margin:0;text-transform:uppercase}.cup-map-card p{font-size:8px;letter-spacing:1.2px;color:#999;margin:5px 0 0}
-.map-bermuda{background-image:url('kairox-map-bermuda.png')}.map-purgatorio{background-image:url('kairox-map-purgatorio.png')}.map-kalahari{background-image:url('kairox-map-kalahari.png')}
-.rotation-note{border-left:2px solid #fff;padding:10px 13px;color:#777;font-size:9px;line-height:1.6;margin-top:12px}
-@media(max-width:800px){.cup-map-grid{grid-template-columns:1fr}.cup-map-day-head{display:block}.cup-map-day-head span{display:block;margin-top:5px}}
-
-/* V31 — FULL COLOR MAP PNGS */
-.map-bermuda{background-color:#183f55}
-.map-purgatorio{background-color:#3b3b3b}
-.map-kalahari{background-color:#6b4525}
-.cup-map-card .map-bg{background-repeat:no-repeat;background-size:cover;background-position:center}
-
-/* V32 — COMPETITIONS + WHATSAPP COMMUNITY */
-.competitions{margin-top:34px}
-.competitions-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:16px}
-.competitions-head h3{font-size:30px;margin:7px 0 0}
-.competitions-head p{max-width:540px;color:#888;font-size:11px;line-height:1.7;margin:0}
-.competition-grid{display:grid;grid-template-columns:1.35fr repeat(3,1fr);gap:12px}
-.competition-card{position:relative;border:1px solid #292929;background:rgba(8,8,8,.78);padding:26px;min-height:220px;overflow:hidden}
-.competition-card:after{content:"";position:absolute;right:-35px;bottom:-45px;width:155px;height:155px;background:url('kairox-eagle.svg') center/contain no-repeat;opacity:.025;pointer-events:none}
-.competition-card.main-game{min-height:260px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(8,8,8,.9))}
-.competition-card .game-label{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}
-.competition-card h4{font-size:27px;margin:18px 0 9px}
-.competition-card p{color:#888;font-size:11px;line-height:1.7;margin:0}
-.competition-card .game-status{display:inline-block;margin-top:22px;border:1px solid #444;padding:8px 10px;color:#aaa;font-size:7px;letter-spacing:1.7px;font-weight:900}
-.competition-card.main-game h4{font-size:38px}
-.competition-note{margin-top:12px;border-left:2px solid #fff;padding:11px 14px;color:#777;font-size:9px;line-height:1.7}
-.whatsapp-community{
-  position:fixed;right:22px;bottom:22px;z-index:1100;
-  display:flex;align-items:center;gap:10px;
-  background:#fff;color:#111;border:1px solid #fff;
-  padding:13px 17px;font-size:9px;letter-spacing:1.5px;font-weight:900;
-  box-shadow:0 12px 35px rgba(0,0,0,.45);transition:.2s;
-}
-.whatsapp-community:hover{transform:translateY(-3px);background:#e9e9e9}
-.whatsapp-community .wa-icon{width:19px;height:19px;display:grid;place-items:center;font-size:16px;line-height:1}
-@media(max-width:800px){
-  .competitions-head{display:block}
-  .competitions-head p{margin-top:10px}
-  .competition-grid{grid-template-columns:1fr}
-  .competition-card,.competition-card.main-game{min-height:190px}
-  .competition-card.main-game h4{font-size:34px}
-  .whatsapp-community{right:12px;bottom:82px;padding:12px 14px;font-size:8px}
-}
-
-
-/* V33 — PREMIUM SECTIONS */
-.quick-links{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin-top:28px}
-.quick-card{position:relative;overflow:hidden;border:1px solid #292929;background:rgba(10,10,10,.72);padding:26px;min-height:145px;transition:.2s}
-.quick-card:hover{transform:translateY(-3px);border-color:#555}
-.quick-card:after{content:"";position:absolute;right:-30px;bottom:-45px;width:150px;height:150px;background:url('kairox-eagle.svg') center/contain no-repeat;opacity:.025;pointer-events:none}
-.quick-card .eyebrow{margin-bottom:10px}.quick-card h3{font-size:25px;margin:0 0 8px}.quick-card p{color:#888;font-size:11px;line-height:1.65;margin:0 0 17px;max-width:430px}
-.events-strip{margin-top:28px;border-top:1px solid #292929;border-bottom:1px solid #292929}
-.events-strip-head{display:flex;align-items:end;justify-content:space-between;gap:20px;padding:24px 0 16px}
-.events-strip-head h3{margin:0;font-size:28px}.events-strip-head p{margin:0;color:#777;font-size:9px;letter-spacing:1px}
-.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#292929}
-.event-card{background:#0b0b0b;padding:23px;min-height:145px}
-.event-card .month{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}.event-card h4{font-size:19px;margin:10px 0 6px}.event-card p{color:#777;font-size:10px;margin:0;line-height:1.6}
-.event-card.featured{background:#fff;color:#111}.event-card.featured .month,.event-card.featured p{color:#666}
-.community-banner{margin-top:30px;border:1px solid #292929;background:linear-gradient(90deg,#0a0a0a,#151515);padding:28px;display:flex;align-items:center;justify-content:space-between;gap:25px}
-.community-banner h3{font-size:27px;margin:0 0 6px}.community-banner p{color:#888;font-size:11px;margin:0;line-height:1.6}
-@media(max-width:800px){
- .quick-links{grid-template-columns:1fr}
- .events-strip-head{display:block}.events-strip-head p{margin-top:9px}
- .events-grid{grid-template-columns:1fr}
- .community-banner{display:block}.community-banner .btn{display:inline-flex;margin-top:18px}
-}
-
-
-/* V34 — TORNEOS COMO SUBSECCIONES */
-body.segmented[data-view="torneos"] .tournament-detail{display:none!important}
-body.segmented[data-view="torneos"] #torneos{display:block!important}
-body.segmented[data-view="torneos"] #clasificacion,body.segmented[data-view="torneos"] #registro-cup{display:none!important}
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneo-kairox-cup{display:block!important}
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #registro-cup{display:block!important}
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #clasificacion{display:block!important}
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneos{display:none!important}
-body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneo-kalahari{display:block!important}
-body.segmented[data-view="torneos"][data-tournament="torneos"] #torneos{display:block!important}
-body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneo-1vs1{display:block!important}
-.tournament-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#292929;margin-top:28px}
-.tournament-card{background:#0b0b0b;padding:28px;min-height:290px;display:flex;flex-direction:column;align-items:flex-start;cursor:pointer;transition:transform .2s ease,background .2s ease}
-.tournament-card:hover{transform:translateY(-3px);background:#121212}.tournament-card.featured{background:#fff;color:#111}.tournament-card .tournament-status{font-size:8px;letter-spacing:2px;font-weight:900;border:1px solid #444;padding:9px 11px;margin-bottom:30px}.tournament-card.featured .tournament-status{border-color:#111}.tournament-game{font-size:9px;letter-spacing:2px;color:#777;font-weight:900}.tournament-card h3{font-size:28px;line-height:1;margin:10px 0 12px;letter-spacing:-1px}.tournament-card h3 span{display:block;font-size:15px;letter-spacing:1px;margin-top:5px}.tournament-card p{font-size:11px;line-height:1.7;color:#777;max-width:380px;margin:0 0 25px}.tournament-card .btn{margin-top:auto}.tournament-info-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:#292929;margin-top:28px}.tournament-info-grid article{background:#0b0b0b;padding:22px}.tournament-info-grid span,.format-grid span{display:block;font-size:8px;letter-spacing:2px;color:#666;font-weight:900;margin-bottom:9px}.tournament-info-grid strong{font-size:15px}.detail-box{margin-top:18px;border:1px solid #292929;background:#0b0b0b;padding:30px}.detail-box h3{font-size:28px;margin:8px 0 10px}.detail-box p{color:#888;font-size:11px;line-height:1.7;max-width:760px}.tournament-back{margin-top:18px}.format-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#292929;margin-top:28px}.format-grid article{background:#0b0b0b;padding:28px}.format-grid b{display:block;font-size:30px;margin-bottom:7px}.format-grid span{margin:0}@media(max-width:800px){.tournament-grid,.tournament-info-grid,.format-grid{grid-template-columns:1fr}.tournament-card{min-height:240px}}
-
-/* V35 — TORNEO DETAIL ROUTES */
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneos,
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneo-kairox-cup{display:block!important}
-body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneos,
-body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneo-kalahari{display:block!important}
-body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneos,
-body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneo-1vs1{display:block!important}
-body.segmented[data-view="torneos"][data-tournament="reglamento-completo"] #torneos,
-body.segmented[data-view="torneos"][data-tournament="reglamento-completo"] #torneo-kairox-cup{display:block!important}
-
-/* V37 — SEGMENTOS LIMPIOS: cada menú muestra únicamente su contenido */
-body.segmented .hero,
-body.segmented .scene,
-body.segmented #live,
-body.segmented #tienda,
-body.segmented #redes,
-body.segmented #clasificacion,
-body.segmented #registro-cup,
-body.segmented #torneo-kairox-cup,
-body.segmented #torneo-kalahari,
-body.segmented #torneo-1vs1,
-body.segmented #historia,
-body.segmented #roster,
-body.segmented #reclutamiento,
-body.segmented #club,
-body.segmented #torneos { display:none!important; }
-
-/* CLUB: solo contenido del Club */
-body.segmented[data-view="club"] #club,
-body.segmented[data-view="club"] #historia,
-body.segmented[data-view="club"] #roster,
-body.segmented[data-view="club"] #reclutamiento { display:block!important; }
-
-/* TORNEOS: primero solo el índice de torneos */
-body.segmented[data-view="torneos"] #torneos { display:block!important; }
-
-/* TORNEOS: al abrir una competición, ocultamos el índice y mostramos solo esa competición */
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneos { display:none!important; }
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneo-kairox-cup,
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #clasificacion,
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #registro-cup { display:block!important; }
-
-body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneos,
-body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneos { display:none!important; }
-body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneo-kalahari,
-body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneo-1vs1 { display:block!important; }
-
-/* TIENDA / REDES / LIVE: un solo apartado visible */
-body.segmented[data-view="tienda"] #tienda { display:block!important; }
-body.segmented[data-view="redes"] #redes { display:block!important; }
-body.segmented[data-view="live"] #live { display:block!important; }
-
-/* La navegación sigue fija; el pie se mantiene al final */
-body.segmented footer { display:block!important; }
-</style>
-
-<style id="kairox-v38-clean-routing">
-/* V38 — NAVEGACIÓN POR SEGMENTOS REALMENTE AISLADOS */
-body.segmented > .hero,
-body.segmented > .scene,
-body.segmented > .recruit,
-body.segmented > footer { display:none !important; }
-
-/* Por defecto, al entrar en un segmento se oculta TODO el contenido de secciones */
-body.segmented .site-section { display:none !important; }
-
-/* CLUB: solo contenido del Club */
-body.segmented[data-view="club"] #club,
-body.segmented[data-view="club"] #historia,
-body.segmented[data-view="club"] #roster,
-body.segmented[data-view="club"] #reclutamiento { display:block !important; }
-body.segmented[data-view="club"] .recruit { display:block !important; }
-
-/* TORNEOS: solo listado de torneos cuando se entra a TORNEOS */
-body.segmented[data-view="torneos"] #torneos { display:block !important; }
-
-/* Al abrir un torneo concreto, mostrar SOLO ese torneo */
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneos,
-body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneos,
-body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneos { display:none !important; }
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneo-kairox-cup,
-body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneo-kalahari,
-body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneo-1vs1 { display:block !important; }
-
-/* Tienda, Redes y LIVE: solo su propio contenido */
-body.segmented[data-view="tienda"] #tienda { display:block !important; }
-body.segmented[data-view="redes"] #redes { display:block !important; }
-body.segmented[data-view="live"] #live { display:block !important; }
-
-/* Enlaces internos del Club abren solo la página seleccionada */
-body.segmented[data-view="club"][data-club="historia"] #club,
-body.segmented[data-view="club"][data-club="roster"] #club,
-body.segmented[data-view="club"][data-club="reclutamiento"] #club { display:none !important; }
-body.segmented[data-view="club"][data-club="historia"] #historia { display:block !important; }
-body.segmented[data-view="club"][data-club="roster"] #roster { display:block !important; }
-body.segmented[data-view="club"][data-club="reclutamiento"] #reclutamiento { display:block !important; }
-</style>
 <script id="kairox-v38-router-fix">
 (function(){
   const body=document.body;
@@ -532,6 +224,50 @@ body.segmented[data-view="club"][data-club="reclutamiento"] #reclutamiento { dis
 })();
 </script>
 
+<style id="kairox-v39-clean-routing">
+/* V39 — SEGMENTOS AISLADOS: una sola vista a la vez */
+body.segmented > .hero,
+body.segmented > .scene,
+body.segmented > .recruit,
+body.segmented > footer { display:none !important; }
+body.segmented .site-section { display:none !important; }
+
+/* CLUB */
+body.segmented[data-view="club"][data-clubtarget="club"] #club { display:block !important; }
+body.segmented[data-view="club"][data-clubtarget="historia"] #historia { display:block !important; }
+body.segmented[data-view="club"][data-clubtarget="roster"] #roster { display:block !important; }
+body.segmented[data-view="club"][data-clubtarget="reclutamiento"] #reclutamiento { display:block !important; }
+
+/* TORNEOS — listado */
+body.segmented[data-view="torneos"][data-tournament="torneos"] #torneos { display:block !important; }
+
+/* TORNEOS — una competición concreta */
+body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneo-kairox-cup { display:block !important; }
+body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #clasificacion,
+body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #registro-cup { display:none !important; }
+body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneo-kalahari { display:block !important; }
+body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneo-1vs1 { display:block !important; }
+
+/* Subpáginas de Kairox Cup */
+body.segmented[data-view="torneos"][data-tournament="clasificacion"] #clasificacion { display:block !important; }
+body.segmented[data-view="torneos"][data-tournament="registro-cup"] #registro-cup { display:block !important; }
+body.segmented[data-view="torneos"][data-tournament="calendario-cup"] #torneo-kairox-cup { display:block !important; }
+body.segmented[data-view="torneos"][data-tournament="modalidad-cup"] #torneo-kairox-cup { display:block !important; }
+body.segmented[data-view="torneos"][data-tournament="reglas-cup"] #torneo-kairox-cup { display:block !important; }
+
+/* TIENDA / REDES / LIVE */
+body.segmented[data-view="tienda"] #tienda { display:block !important; }
+body.segmented[data-view="redes"] #redes { display:block !important; }
+body.segmented[data-view="live"] #live { display:block !important; }
+
+body.segmented footer { display:block !important; }
+@media(max-width:800px){ body.segmented footer{display:block!important;} }
+</style>
+<style id="kairox-v39-club-clean">
+body.segmented[data-view="club"] .quick-links,
+body.segmented[data-view="club"] .events-strip,
+body.segmented[data-view="club"] .community-banner { display:none !important; }
+</style>
 </head>
 <body>
 <div class="progress"></div>
@@ -544,7 +280,7 @@ body.segmented[data-view="club"][data-club="reclutamiento"] #reclutamiento { dis
 <nav class="menu">
 <div class="nav-item"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">CLUB</a><div class="dropdown"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">Nuestro club</a><a data-route-target="historia" data-route-view="club" href="#historia">NUESTRA HISTORIA</a><a data-route-target="roster" data-route-view="club" href="#roster">JUGADORES</a><a data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">RECLUTAMIENTO</a></div></div>
 <div class="nav-item"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">TORNEOS</a><div class="dropdown"><a data-route-target="torneo-kairox-cup" data-route-view="torneos" href="#torneo-kairox-cup">Kairox Cup</a><a data-route-target="torneo-kalahari" data-route-view="torneos" href="#torneo-kalahari">Liga Kalahari</a><a data-route-target="torneo-1vs1" data-route-view="torneos" href="#torneo-1vs1">1VS1 · 2VS2 · 4VS4</a></div></div>
-<div class="nav-item"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">TIENDA</a><div class="dropdown"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">Jersey 2026</a></div></div>
+<div class="nav-item"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" href="#tienda">TIENDA</a><div class="dropdown"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" href="#tienda">Jersey 2026</a></div></div>
 <div class="nav-item"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">REDES</a><div class="dropdown"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Instagram</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">TikTok</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">YouTube</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">X</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Contacto</a></div></div>
 <a class="live-nav" data-live-nav="true" data-route-target="live" data-route-view="live" href="#live"><span aria-hidden="true" class="live-camera">
 <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15">
@@ -561,7 +297,7 @@ body.segmented[data-view="club"][data-club="reclutamiento"] #reclutamiento { dis
 
 <div class="eagle-back-label">EAGLE</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 · CLUB</div><h2>MORE THAN<br>A TEAM.</br></h2></div><p>Kairox Gaming nace con una idea clara: construir un club reconocible dentro de los esports, desarrollar talento y crear una comunidad que quiera formar parte del camino.</p></div>
 <div class="metrics"><div class="metric"><b>01</b><span>CLUB</span></div><div class="metric"><b>FF</b><span>FREE FIRE</span></div><div class="metric"><b>LATAM</b><span>COMUNIDAD</span></div><div class="metric"><b>2026</b><span>NEW ERA</span></div></div>
-<div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a aria-label="Abrir tienda" class="btn" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" data-route-target="historia" data-route-view="club" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" data-route-target="roster" data-route-view="club" href="#roster">VER ROSTER</a></article><article class="club-card recruitment-card"><div class="eyebrow">RECLUTAMIENTO</div><h3>ÚNETE A KAIROX</h3><p>Buscamos jugadores, equipos, creadores, casters y staff para formar parte de Kairox Gaming.</p><a class="btn btn-main" data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">VER RECLUTAMIENTO →</a></article>
+<div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><img src="kairox-jersey-front.jpeg" alt="Jersey oficial Kairox Gaming" style="width:100%;height:150px;object-fit:contain;background:#080808;margin:8px 0 18px"><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a aria-label="Abrir tienda" class="btn" data-route-target="tienda" data-route-view="tienda" href="#tienda">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" data-route-target="historia" data-route-view="club" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" data-route-target="roster" data-route-view="club" href="#roster">VER ROSTER</a></article><article class="club-card recruitment-card"><div class="eyebrow">RECLUTAMIENTO</div><h3>ÚNETE A KAIROX</h3><p>Buscamos jugadores, equipos, creadores, casters y staff para formar parte de Kairox Gaming.</p><a class="btn btn-main" data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">VER RECLUTAMIENTO →</a></article>
 </div>
 
 <div class="competitions">
@@ -977,54 +713,62 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
 <script id="kairox-router">
 (function(){
   const body=document.body;
-  const controls=document.querySelectorAll('[data-segment]');
-  const links=document.querySelectorAll('[data-route-target]');
-  const cards=document.querySelectorAll('.tournament-card');
-  cards.forEach(card=>card.addEventListener('click',()=>{ const target=card.dataset.routeTarget; show('torneos',target,true); }));
-  const valid=['club','torneos','tienda','redes','live'];
+  const validViews=['club','torneos','tienda','redes','live'];
+  const tournamentTargets=['torneo-kairox-cup','torneo-kalahari','torneo-1vs1','clasificacion','registro-cup','calendario-cup','modalidad-cup','reglas-cup'];
+  const clubTargets=['club','historia','roster','reclutamiento'];
 
-  function viewFor(target){
+  function getView(target){
     if(target==='live') return 'live';
-    if(['tienda'].includes(target)) return 'tienda';
-    if(['redes'].includes(target)) return 'redes';
-    if(['torneos','torneo-kairox-cup','torneo-kalahari','torneo-1vs1','clasificacion','registro-cup','inscripcion','reglas-cup','modalidad-cup','calendario-cup'].includes(target)) return 'torneos';
+    if(target==='tienda') return 'tienda';
+    if(target==='redes') return 'redes';
+    if(tournamentTargets.includes(target) || target==='torneos') return 'torneos';
     return 'club';
   }
 
   function show(view,target,push){
-    if(!valid.includes(view)) view='club';
+    if(!validViews.includes(view)) view='club';
     body.classList.add('segmented');
     body.dataset.view=view;
-    if(view==='torneos') body.dataset.tournament = (target && ['torneo-kairox-cup','torneo-kalahari','torneo-1vs1','calendario-cup','modalidad-cup','reglas-cup'].includes(target)) ? target : 'torneos';
-    else delete body.dataset.tournament;
-    controls.forEach(c=>c.classList.toggle('segment-nav-active',c.dataset.segment===view));
-    if(push) history.pushState({view:view,target:target||view},'', '#'+(target||view));
-    const el=target && document.getElementById(target);
-    if(el){
-      requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}));
-    }else{
-      window.scrollTo({top:0,behavior:'smooth'});
+    delete body.dataset.tournament;
+    delete body.dataset.clubtarget;
+
+    if(view==='torneos'){
+      body.dataset.tournament = (target && tournamentTargets.includes(target)) ? target : 'torneos';
+    } else if(view==='club'){
+      body.dataset.clubtarget = (target && clubTargets.includes(target)) ? target : 'club';
     }
+
+    document.querySelectorAll('[data-segment]').forEach(el=>{
+      el.classList.toggle('segment-nav-active', el.dataset.segment===view);
+    });
+
+    if(push) history.pushState({view,target},'', '#'+(target||view));
+    window.scrollTo({top:0,behavior:'smooth'});
   }
 
-  links.forEach(link=>{
+  document.querySelectorAll('[data-route-target]').forEach(link=>{
     link.addEventListener('click',function(e){
-      const target=this.dataset.routeTarget;
+      const target=(this.dataset.routeTarget||'').toLowerCase();
       if(!target) return;
       e.preventDefault();
-      show(this.dataset.routeView || viewFor(target),target,true);
-    });
-  });
+      show(this.dataset.routeView || getView(target),target,true);
     });
   });
 
-  function loadHash(){
-    const target=(location.hash||'').slice(1).toLowerCase();
-    show(viewFor(target||'club'),target||'club',false);
+  document.querySelectorAll('.tournament-card').forEach(card=>{
+    card.addEventListener('click',function(e){
+      if(e.target.closest('a')) return;
+      show('torneos',this.dataset.routeTarget,true);
+    });
+  });
+
+  function load(){
+    const target=(location.hash||'').replace('#','').toLowerCase();
+    show(getView(target||'club'),target||'club',false);
   }
-  window.addEventListener('popstate',loadHash);
-  window.addEventListener('hashchange',loadHash);
-  loadHash();
+  window.addEventListener('popstate',load);
+  window.addEventListener('hashchange',load);
+  load();
 })();
 </script><!-- Panel de resultados: admin.html -->
 </body>
