@@ -93,9 +93,9 @@ img{max-width:100%;height:auto}
 .standings-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px;border-bottom:1px solid #292929}
 .standings-head h3{margin:0;font-size:28px;letter-spacing:-1px}.standings-head p{margin:7px 0 0;color:#777;font-size:10px;letter-spacing:1px}
 .standings-status{font-size:8px;letter-spacing:2px;font-weight:900;color:#aaa;border:1px solid #444;padding:10px 12px}
-.standings-table{width:100%;border-collapse:collapse}.standings-table th,.standings-table td{padding:15px 12px;border-bottom:1px solid #242424;text-align:center;font-size:10px}.standings-table th{color:#666;font-size:8px;letter-spacing:1.5px}.standings-table th:nth-child(2),.standings-table td:nth-child(2){text-align:left}.standings-table td{font-weight:700}.standings-table tr:last-child td{border-bottom:0}.rank{font-size:18px}.team-cell{display:flex;align-items:center;gap:10px}.team-logo{width:27px;height:27px;border:none;display:grid;place-items:center;font-size:8px;color:#777;background:transparent}.total{font-size:15px!important}.provisional-note{padding:15px 25px;color:#666;font-size:9px;letter-spacing:.5px;border-top:1px solid #292929}
+.standings-table{width:100%;border-collapse:collapse}.standings-table th,.standings-table td{padding:15px 12px;border-bottom:1px solid #242424;text-align:center;font-size:10px}.standings-table th{color:#666;font-size:8px;letter-spacing:1.5px}.standings-table th:nth-child(2),.standings-table td:nth-child(2){text-align:left}.standings-table td{font-weight:700}.standings-table tr:last-child td{border-bottom:0}.rank{font-size:18px}.team-cell{display:flex;align-items:center;gap:10px}.team-logo{width:27px;height:27px;border:nane;display:grid;place-items:center;font-size:8px;color:#777;background:transparent}.total{font-size:15px!important}.provisional-note{padding:15px 25px;color:#666;font-size:9px;letter-spacing:.5px;border-top:1px solid #292929}
 .standings-toggle{margin-top:24px;display:flex;gap:9px;flex-wrap:wrap}.day-btn{cursor:pointer;border:1px solid #444;background:#111;color:#aaa;padding:13px 17px;font-size:8px;letter-spacing:1.7px;font-weight:900}.day-btn.active,.day-btn:hover{background:#fff;color:#111;border-color:#fff}
-.light .standings-wrap{background:#fff;border-color:#ddd}.light .standings-head,.light .standings-table th,.light .standings-table td,.light .provisional-note{border-color:#ddd}.light .standings-status{border-color:#ccc;color:#666}.light .team-logo {width: 36px;height: 36px;border: none;background: transparent;display: flex;align-items: center;justify-content: center;overflow: hidden;font-weight: 900;}.team-logo img {width: 100%;height: 100%;object-fit: contain;display: block;}.light .day-btn{background:#fff;color:#666;border-color:#ccc}.light .day-btn.active{background:#111;color:#fff;border-color:#111}
+.light .standings-wrap{background:#fff;border-color:#ddd}.light .standings-head,.light .standings-table th,.light .standings-table td,.light .provisional-note{border-color:#ddd}.light .standings-status{border-color:#ccc;color:#666}.light .team-logo {width: 36px;height: 36px;border: nane;background: transparent;display: flex;align-items: center;justify-content: center;overflow: hidden;font-weight: 900;}.team-logo img {width: 100%;height: 100%;object-fit: contain;display: block;}.light .day-btn{background:#fff;color:#666;border-color:#ccc}.light .day-btn.active{background:#111;color:#fff;border-color:#111}
 
 /* V17 — SEGMENTED SECTIONS */
 body.segmented .site-section{display:none}
@@ -112,8 +112,8 @@ body.segmented[data-view="live"] #live{display:block}
 .segment-nav-active{color:#fff!important}
 
 /* V18 — 12 TEAM STANDINGS */
-.standings-table .team-logo{border-radius:0}
-.standings-table img.team-logo{width:27px;height:27px;object-fit:contain;display:block;background:transparent;padding:0}
+.standings-table .team-logo{border-radius:3px}
+.standings-table img.team-logo{width:27px;height:27px;object-fit:contain;display:block;background:#111;padding:2px}
 .standings-table .team-logo-fallback{flex:0 0 27px}
 .standings-table .top-row td{background:rgba(255,255,255,.035)}
 
@@ -180,152 +180,187 @@ body.segmented[data-view="live"] #live{display:block}
   color:#000 !important;
 }
 
+/* V22 — SEGMENT NAVIGATION + CTA ROUTING */
+body.segmented .site-section{display:none!important}
+body.segmented[data-view="club"] #club,
+body.segmented[data-view="club"] #historia,
+body.segmented[data-view="club"] #roster,
+body.segmented[data-view="club"] #reclutamiento{display:block!important}
+body.segmented[data-view="torneos"] #torneos,
+body.segmented[data-view="torneos"] #clasificacion,
+body.segmented[data-view="torneos"] #registro-cup{display:block!important}
+body.segmented[data-view="tienda"] #tienda{display:block!important}
+body.segmented[data-view="redes"] #redes{display:block!important}
+body.segmented[data-view="live"] #live{display:block!important}
+body.segmented[data-view="club"] #reclutamiento{display:none!important}
+.route-focus{scroll-margin-top:92px}
+@media(max-width:800px){
+  body.segmented[data-view="club"] #club,
+  body.segmented[data-view="club"] #historia,
+  body.segmented[data-view="club"] #roster,
+  body.segmented[data-view="club"] #reclutamiento{display:block!important}
+  body.segmented[data-view="torneos"] #torneos,
+  body.segmented[data-view="torneos"] #clasificacion,
+  body.segmented[data-view="torneos"] #registro-cup{display:block!important}
+  body.segmented[data-view="tienda"] #tienda,
+  body.segmented[data-view="redes"] #redes{display:block!important}
+body.segmented[data-view="live"] #live{display:block!important}
+}
 
-<script id="kairox-v38-router-fix">
-(function(){
-  const body=document.body;
-  const links=document.querySelectorAll('[data-route-target]');
-  function setView(view,target,push){
-    const valid=['club','torneos','tienda','redes','live'];
-    if(!valid.includes(view)) view='club';
-    body.classList.add('segmented');
-    body.dataset.view=view;
-    delete body.dataset.club;
-    delete body.dataset.tournament;
-    if(view==='club' && ['historia','roster','reclutamiento'].includes(target)) body.dataset.club=target;
-    if(view==='torneos' && ['torneo-kairox-cup','torneo-kalahari','torneo-1vs1'].includes(target)) body.dataset.tournament=target;
-    if(push) history.pushState({view,target},'', '#'+(target||view));
-    const el=document.getElementById(target||view);
-    window.scrollTo({top:0,behavior:'smooth'});
-    if(el) setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),80);
-  }
-  links.forEach(a=>{
-    a.addEventListener('click',function(e){
-      const target=this.dataset.routeTarget; if(!target) return;
-      e.preventDefault();
-      const view=this.dataset.routeView || (['torneos','torneo-kairox-cup','torneo-kalahari','torneo-1vs1'].includes(target)?'torneos':target);
-      setView(view,target,true);
-    });
-  });
-  function load(){
-    const target=(location.hash||'').slice(1).toLowerCase();
-    const map={
-      'club':'club','historia':'historia','roster':'roster','reclutamiento':'reclutamiento',
-      'torneos':'torneos','torneo-kairox-cup':'torneo-kairox-cup','torneo-kalahari':'torneo-kalahari','torneo-1vs1':'torneo-1vs1',
-      'tienda':'tienda','redes':'redes','live':'live'
-    };
-    const t=map[target]||'club';
-    const v=['historia','roster','reclutamiento'].includes(t)?'club':(['torneos','torneo-kairox-cup','torneo-kalahari','torneo-1vs1'].includes(t)?'torneos':t);
-    setView(v,t,false);
-  }
-  window.addEventListener('popstate',load);
-  window.addEventListener('hashchange',load);
-  load();
-})();
-</script>
+/* V23 — LIVE STREAM HUB */
+.live-nav{
+  display:inline-flex!important;align-items:center;gap:7px;
+  color:#fff!important;font-weight:900!important;
+}
+.live-dot{
+  width:7px;height:7px;border-radius:50%;background:#ff2b2b;
+  display:inline-block;box-shadow:0 0 0 3px rgba(255,43,43,.12),0 0 12px rgba(255,43,43,.75);
+  animation:livePulse 1.4s infinite;
+}
+.live-camera{font-size:13px;line-height:1}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.8)}}
+.live-hub{margin-top:30px}
+.live-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.live-card{
+  border:1px solid #292929;background:rgba(8,8,8,.78);padding:24px;
+  position:relative;overflow:hidden;transition:.2s;
+}
+.live-card:hover{border-color:#555;transform:translateY(-2px)}
+.live-card:after{content:"";position:absolute;right:-35px;bottom:-45px;width:150px;height:150px;background:url('kairox-eagle.svg') center/contain no-repeat;opacity:.025}
+.live-badge{display:inline-flex;align-items:center;gap:7px;border:1px solid #3a3a3a;padding:7px 9px;font-size:7px;letter-spacing:1.8px;font-weight:900}
+.live-card h3{font-size:23px;margin:18px 0 5px}.live-card .role{color:#777;font-size:8px;letter-spacing:1.5px}
+.live-card p{color:#888;font-size:11px;line-height:1.65;margin:15px 0 18px}
+.stream-links{display:flex;gap:7px;flex-wrap:wrap}.stream-links a{border:1px solid #444;padding:9px 11px;color:#fff;text-decoration:none;font-size:7px;letter-spacing:1.2px;font-weight:900}
+.stream-links a:hover{background:#fff;color:#111}
+.live-empty{border:1px dashed #333;padding:28px;color:#666;font-size:10px;line-height:1.7}
+@media(max-width:800px){.live-grid{grid-template-columns:1fr}.live-nav{padding:9px 5px!important}.stream-links a{padding:11px 12px}}
 
-<style id="kairox-v39-clean-routing">
-/* V39 — SEGMENTOS AISLADOS: una sola vista a la vez */
-body.segmented > .hero,
-body.segmented > .scene,
-body.segmented > .recruit,
-body.segmented > footer { display:none !important; }
-body.segmented .site-section { display:none !important; }
+/* V24 — LIVE CAMERA ICON */
+.live-camera{display:inline-flex;align-items:center;justify-content:center}
+.live-camera svg{display:block}
+.live-dot{width:7px;height:7px;border-radius:50%;background:#ff2020;display:inline-block;box-shadow:0 0 0 3px rgba(255,32,32,.12),0 0 12px rgba(255,32,32,.8);animation:livePulse 1.25s ease-in-out infinite}
+@keyframes livePulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.45;transform:scale(.78)}}
 
-/* CLUB */
-body.segmented[data-view="club"][data-clubtarget="club"] #club { display:block !important; }
-body.segmented[data-view="club"][data-clubtarget="historia"] #historia { display:block !important; }
-body.segmented[data-view="club"][data-clubtarget="roster"] #roster { display:block !important; }
-body.segmented[data-view="club"][data-clubtarget="reclutamiento"] #reclutamiento { display:block !important; }
+/* V25 — CLUB / LIVE SEPARATION */
+body.segmented[data-view="club"] #creadores{display:none!important}
+body.segmented[data-view="club"] #live{display:none!important}
+body.segmented[data-view="club"] #reclutamiento{display:block!important}
 
-/* TORNEOS — listado */
-body.segmented[data-view="torneos"][data-tournament="torneos"] #torneos { display:block !important; }
+/* V26 — LIVE ROUTE FIX */
+body.segmented[data-view="live"] #live{display:block!important}
+body.segmented[data-view="live"] #club,
+body.segmented[data-view="live"] #historia,
+body.segmented[data-view="live"] #roster,
+body.segmented[data-view="live"] #reclutamiento,
+body.segmented[data-view="live"] #torneos,
+body.segmented[data-view="live"] #clasificacion,
+body.segmented[data-view="live"] #registro-cup,
+body.segmented[data-view="live"] #tienda,
+body.segmented[data-view="live"] #redes{display:none!important}
 
-/* TORNEOS — una competición concreta */
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneo-kairox-cup { display:block !important; }
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #clasificacion,
-body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #registro-cup { display:none !important; }
-body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneo-kalahari { display:block !important; }
-body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneo-1vs1 { display:block !important; }
+/* V27 — LIVE DEFINITIVO: sección independiente */
+body.segmented[data-view="club"] #club,
+body.segmented[data-view="club"] #historia,
+body.segmented[data-view="club"] #roster,
+body.segmented[data-view="club"] #reclutamiento{display:block!important}
+body.segmented[data-view="club"] #live{display:none!important}
+body.segmented[data-view="torneos"] #torneos,
+body.segmented[data-view="torneos"] #clasificacion,
+body.segmented[data-view="torneos"] #registro-cup{display:block!important}
+body.segmented[data-view="live"] #live{display:block!important}
+body.segmented[data-view="live"] #club,
+body.segmented[data-view="live"] #historia,
+body.segmented[data-view="live"] #roster,
+body.segmented[data-view="live"] #reclutamiento,
+body.segmented[data-view="live"] #torneos,
+body.segmented[data-view="live"] #clasificacion,
+body.segmented[data-view="live"] #registro-cup,
+body.segmented[data-view="live"] #tienda,
+body.segmented[data-view="live"] #redes{display:none!important}
 
-/* Subpáginas de Kairox Cup */
-body.segmented[data-view="torneos"][data-tournament="clasificacion"] #clasificacion { display:block !important; }
-body.segmented[data-view="torneos"][data-tournament="registro-cup"] #registro-cup { display:block !important; }
-body.segmented[data-view="torneos"][data-tournament="calendario-cup"] #torneo-kairox-cup { display:block !important; }
-body.segmented[data-view="torneos"][data-tournament="modalidad-cup"] #torneo-kairox-cup { display:block !important; }
-body.segmented[data-view="torneos"][data-tournament="reglas-cup"] #torneo-kairox-cup { display:block !important; }
+/* V28 — LIVE solo como apartado independiente */
+.dropdown a[data-route-target="live"],
+.dropdown a[href="#live"]{display:none!important}
 
-/* TIENDA / REDES / LIVE */
-body.segmented[data-view="tienda"] #tienda { display:block !important; }
-body.segmented[data-view="redes"] #redes { display:block !important; }
-body.segmented[data-view="live"] #live { display:block !important; }
+/* V29 — KAIROX CUP COMPLETE FORMAT */
+.cup-format{margin-top:34px}.cup-format-head{display:flex;justify-content:space-between;align-items:end;gap:20px;margin-bottom:16px}
+.cup-format-head h3{font-size:30px;margin:7px 0 0}.cup-format-head p{max-width:500px;color:#888;font-size:11px;line-height:1.6;margin:0}
+.day-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.day-card{border:1px solid #292929;background:rgba(8,8,8,.72);padding:22px}
+.day-card .day-no{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}.day-card h4{font-size:21px;margin:9px 0 16px}
+.map-list{display:grid;gap:8px}.map-row{display:flex;justify-content:space-between;gap:10px;border-top:1px solid #292929;padding-top:10px;font-size:9px;font-weight:800}.map-row span:last-child{color:#777;letter-spacing:1px;text-align:right}
+.tournament-flow{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-top:12px}.flow-item{border:1px solid #292929;padding:18px;background:rgba(10,10,10,.5)}.flow-item b{font-size:9px;letter-spacing:1.4px}.flow-item p{color:#777;font-size:9px;line-height:1.55;margin:8px 0 0}
+.scoring-box{margin-top:12px;border:1px solid #292929;background:rgba(8,8,8,.72);padding:24px}.points-line{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}.point-pill{border:1px solid #333;padding:9px 11px;font-size:8px;font-weight:900}.point-pill strong{font-size:13px;margin-right:3px}.score-note{color:#777;font-size:10px;line-height:1.7;margin:0}
+@media(max-width:800px){.day-grid,.tournament-flow{grid-template-columns:1fr}.cup-format-head{display:block}.cup-format-head p{margin-top:10px}}
 
-body.segmented footer { display:block !important; }
-@media(max-width:800px){ body.segmented footer{display:block!important;} }
-</style>
-<style id="kairox-v39-club-clean">
-body.segmented[data-view="club"] .quick-links,
-body.segmented[data-view="club"] .events-strip,
-body.segmented[data-view="club"] .community-banner { display:none !important; }
-</style>
+/* V30 — MAP ROTATION / KAIROX CUP */
+.cup-map-rotation{margin-top:28px}
+.cup-map-day{border:1px solid #292929;background:rgba(8,8,8,.72);padding:20px;margin-bottom:12px}
+.cup-map-day-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.cup-map-day-head h4{font-size:20px;margin:0}.cup-map-day-head span{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}
+.cup-map-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.cup-map-card{position:relative;min-height:145px;border:1px solid #333;overflow:hidden;background:#111}
+.cup-map-card .map-bg{position:absolute;inset:0;background-size:cover;background-position:center;filter:saturate(.75) contrast(1.05);opacity:.58}
+.cup-map-card:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(0,0,0,.88),rgba(0,0,0,.28))}
+.cup-map-card .map-content{position:relative;z-index:1;padding:18px;height:100%;display:flex;flex-direction:column;justify-content:flex-end;min-height:109px}
+.cup-map-card .map-game{font-size:7px;letter-spacing:1.8px;color:#bbb;font-weight:900;margin-bottom:5px}
+.cup-map-card h5{font-size:22px;margin:0;text-transform:uppercase}.cup-map-card p{font-size:8px;letter-spacing:1.2px;color:#999;margin:5px 0 0}
+.map-bermuda{background-image:url('kairox-map-bermuda.png')}.map-purgatorio{background-image:url('kairox-map-purgatorio.png')}.map-kalahari{background-image:url('kairox-map-kalahari.png')}
+.rotation-note{border-left:2px solid #fff;padding:10px 13px;color:#777;font-size:9px;line-height:1.6;margin-top:12px}
+@media(max-width:800px){.cup-map-grid{grid-template-columns:1fr}.cup-map-day-head{display:block}.cup-map-day-head span{display:block;margin-top:5px}}
 
-<style id="whatsapp-button-fix">
+/* V31 — FULL COLOR MAP PNGS */
+.map-bermuda{background-color:#183f55}
+.map-purgatorio{background-color:#3b3b3b}
+.map-kalahari{background-color:#6b4525}
+.cup-map-card .map-bg{background-repeat:no-repeat;background-size:cover;background-position:center}
+
+/* V32 — COMPETITIONS + WHATSAPP COMMUNITY */
+.competitions{margin-top:34px}
+.competitions-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:16px}
+.competitions-head h3{font-size:30px;margin:7px 0 0}
+.competitions-head p{max-width:540px;color:#888;font-size:11px;line-height:1.7;margin:0}
+.competition-grid{display:grid;grid-template-columns:1.35fr repeat(3,1fr);gap:12px}
+.competition-card{position:relative;border:1px solid #292929;background:rgba(8,8,8,.78);padding:26px;min-height:220px;overflow:hidden}
+.competition-card:after{content:"";position:absolute;right:-35px;bottom:-45px;width:155px;height:155px;background:url('kairox-eagle.svg') center/contain no-repeat;opacity:.025;pointer-events:none}
+.competition-card.main-game{min-height:260px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(8,8,8,.9))}
+.competition-card .game-label{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}
+.competition-card h4{font-size:27px;margin:18px 0 9px}
+.competition-card p{color:#888;font-size:11px;line-height:1.7;margin:0}
+.competition-card .game-status{display:inline-block;margin-top:22px;border:1px solid #444;padding:8px 10px;color:#aaa;font-size:7px;letter-spacing:1.7px;font-weight:900}
+.competition-card.main-game h4{font-size:38px}
+.competition-note{margin-top:12px;border-left:2px solid #fff;padding:11px 14px;color:#777;font-size:9px;line-height:1.7}
 .whatsapp-community{
-  position:fixed;
-  right:22px;
-  bottom:22px;
-  z-index:9999;
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  width:auto;
-  max-width:calc(100vw - 44px);
-  padding:12px 16px;
-  border-radius:999px;
-  text-decoration:none;
-  font-size:12px;
-  font-weight:900;
-  letter-spacing:.5px;
-  line-height:1;
-  background:#111;
-  color:#fff;
-  border:1px solid rgba(255,255,255,.18);
-  box-shadow:0 10px 30px rgba(0,0,0,.35);
+  position:fixed;right:22px;bottom:22px;z-index:1100;
+  display:flex;align-items:center;gap:10px;
+  background:#fff;color:#111;border:1px solid #fff;
+  padding:13px 17px;font-size:9px;letter-spacing:1.5px;font-weight:900;
+  box-shadow:0 12px 35px rgba(0,0,0,.45);transition:.2s;
 }
-.whatsapp-community .wa-icon{
-  width:25px;
-  height:25px;
-  min-width:25px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
+.whatsapp-community:hover{transform:translateY(-3px);background:#e9e9e9}
+.whatsapp-community .wa-icon{width:19px;height:19px;display:grid;place-items:center;font-size:16px;line-height:1}
+@media(max-width:800px){
+  .competitions-head{display:block}
+  .competitions-head p{margin-top:10px}
+  .competition-grid{grid-template-columns:1fr}
+  .competition-card,.competition-card.main-game{min-height:190px}
+  .competition-card.main-game h4{font-size:34px}
+  .whatsapp-community{right:12px;bottom:82px;padding:12px 14px;font-size:8px}
 }
-.whatsapp-community .wa-icon svg{
-  display:block;
-  width:25px;
-  height:25px;
-  max-width:25px;
-  max-height:25px;
-}
-.whatsapp-community:hover{transform:translateY(-2px);}
-@media(max-width:600px){
-  .whatsapp-community{right:14px;bottom:14px;padding:11px 13px;font-size:10px;gap:8px;}
-  .whatsapp-community .wa-icon,.whatsapp-community .wa-icon svg{width:22px;height:22px;min-width:22px;max-width:22px;max-height:22px;}
-}
+
 </style>
 </head>
 <body>
 <div class="progress"></div>
 <a class="whatsapp-community" href="https://chat.whatsapp.com/IafHymzQ5Ob5wkFkDcr5DU" rel="noopener" target="_blank" aria-label="Unirse a la comunidad oficial de WhatsApp">
-  <span class="wa-icon" aria-hidden="true"><svg viewBox="0 0 32 32" role="img"><path fill="currentColor" d="M19.11 17.39c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.33-.8-.71-1.33-1.59-1.49-1.86-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.52-.45-.45-.61-.46h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.92 2.93 4.65 4.11.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/><path fill="currentColor" d="M16.02 3.2C9 3.2 3.3 8.9 3.3 15.92c0 2.24.58 4.35 1.7 6.23L3.2 28.8l6.83-1.75a12.67 12.67 0 0 0 6 1.52h.01c7.02 0 12.72-5.7 12.72-12.72S23.04 3.2 16.02 3.2zm0 23.16h-.01a10.48 10.48 0 0 1-5.34-1.46l-.38-.23-4.05 1.04 1.08-3.94-.25-.4a10.47 10.47 0 1 1 8.95 4.99z"/></svg></span>
+  <span class="wa-icon">◉</span>
   <span>UNIRSE A LA COMUNIDAD</span>
 </a>
 <header><div class="wrap nav">
 <a class="brand" href="#inicio"><img alt="" src="kairox-logo.png"/>KAIROX GAMING</a>
 <nav class="menu">
-<div class="nav-item"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">CLUB</a><div class="dropdown"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">Nuestro club</a><a data-route-target="historia" data-route-view="club" href="#historia">NUESTRA HISTORIA</a><a data-route-target="roster" data-route-view="club" href="#roster">JUGADORES</a><a data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">RECLUTAMIENTO</a></div></div>
-<div class="nav-item"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">TORNEOS</a><div class="dropdown"><a data-route-target="torneo-kairox-cup" data-route-view="torneos" href="#torneo-kairox-cup">Kairox Cup</a><a data-route-target="torneo-kalahari" data-route-view="torneos" href="#torneo-kalahari">Liga Kalahari</a><a data-route-target="torneo-1vs1" data-route-view="torneos" href="#torneo-1vs1">1VS1 · 2VS2 · 4VS4</a></div></div>
-<div class="nav-item"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" href="#tienda">TIENDA</a><div class="dropdown"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" href="#tienda">Jersey 2026</a></div></div>
+<div class="nav-item"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">CLUB</a><div class="dropdown"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">Nuestro club</a><a data-route-target="historia" data-route-view="club" href="#historia">NUESTRA HISTORIA</a><a data-route-target="roster" data-route-view="club" href="#roster">JUGADORES</a><a data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">ÚNETE A KAIROX</a></div></div>
+<div class="nav-item"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">TORNEOS</a><div class="dropdown"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">Kairox Cup</a><a data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">Inscripciones</a></div></div>
+<div class="nav-item"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">TIENDA</a><div class="dropdown"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">Jersey 2026</a></div></div>
 <div class="nav-item"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">REDES</a><div class="dropdown"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Instagram</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">TikTok</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">YouTube</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">X</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Contacto</a></div></div>
 <a class="live-nav" data-live-nav="true" data-route-target="live" data-route-view="live" href="#live"><span aria-hidden="true" class="live-camera">
 <svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15">
@@ -335,14 +370,14 @@ body.segmented[data-view="club"] .community-banner { display:none !important; }
 </span><span class="live-dot"></span> LIVE</a></nav></div></header>
 <section class="hero" id="inicio"><div class="eagle-glow"></div><div class="hero-eagle"><img alt="" aria-hidden="true" src="kairox-eagle.svg"/></div><div class="wrap hero-grid"><div>
 <div class="eyebrow">ESPORTS CLUB · FREE FIRE · VALORANT · PUBG MOBILE · FIFA · LATAM · EAGLE IDENTITY</div><h1>KAIROX<br/><span>NEW ERA</span></h1>
-<p class="hero-copy">Competición, talento, creadores y comunidad. Bienvenidos a la nueva era de Kairox Gaming.</p><div class="eagle-line">SÍMBOLO DEL CLUB · FUERZA · VISIÓN · ALTURA</div>
-<div class="actions"><a aria-label="Abrir club" class="btn btn-main btn-conecticion" data-route-target="club" data-route-view="club" href="#club">ENTRAR AL CLUB</a><a aria-label="Abrir torneos" class="btn" data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">VER COMPETICIÓN</a><a aria-label="Unirse a la comunidad de WhatsApp" class="btn" href="https://chat.whatsapp.com/IafHymzQ5Ob5wkFkDcr5DU" target="_blank" rel="noopener">COMUNIDAD WHATSAPP</a></div>
+<p class="hero-copy">Más que un equipo. Somos un club de esports que une competición, talento, creadores y comunidad. Esta es nuestra nueva era.</p><div class="eagle-line">SÍMBOLO DEL CLUB · FUERZA · VISIÓN · ALTURA</div>
+<div class="actions"><a aria-label="Abrir club" class="btn btn-main btn-conecticion" data-route-target="club" data-route-view="club" href="#club">ENTRAR AL CLUB</a><a aria-label="Abrir torneos" class="btn" data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">VER COMPETICIÓN</a></div>
 </div><div class="hero-mark"><img alt="Kairox Gaming" src="kairox-logo.png"/></div></div></section>
 <section class="site-section" id="club">
 
 <div class="eagle-back-label">EAGLE</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 · CLUB</div><h2>MORE THAN<br>A TEAM.</br></h2></div><p>Kairox Gaming nace con una idea clara: construir un club reconocible dentro de los esports, desarrollar talento y crear una comunidad que quiera formar parte del camino.</p></div>
 <div class="metrics"><div class="metric"><b>01</b><span>CLUB</span></div><div class="metric"><b>FF</b><span>FREE FIRE</span></div><div class="metric"><b>LATAM</b><span>COMUNIDAD</span></div><div class="metric"><b>2026</b><span>NEW ERA</span></div></div>
-<div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><img src="kairox-jersey-front.jpeg" alt="Jersey oficial Kairox Gaming" style="width:100%;height:150px;object-fit:contain;background:#080808;margin:8px 0 18px"><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a aria-label="Abrir tienda" class="btn" data-route-target="tienda" data-route-view="tienda" href="#tienda">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" data-route-target="historia" data-route-view="club" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" data-route-target="roster" data-route-view="club" href="#roster">VER ROSTER</a></article><article class="club-card recruitment-card"><div class="eyebrow">RECLUTAMIENTO</div><h3>ÚNETE A KAIROX</h3><p>Buscamos jugadores, equipos, creadores, casters y staff para formar parte de Kairox Gaming.</p><a class="btn btn-main" data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">VER RECLUTAMIENTO →</a></article>
+<div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a aria-label="Abrir tienda" class="btn" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" data-route-target="historia" data-route-view="club" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" data-route-target="roster" data-route-view="club" href="#roster">VER ROSTER</a></article>
 </div>
 
 <div class="competitions">
@@ -385,36 +420,9 @@ body.segmented[data-view="club"] .community-banner { display:none !important; }
   </div>
 
   <div class="competition-note">
-    <strong style="color:#fff">FREE FIRE · TÍTULO PRINCIPAL</strong><br/>
-    Valorant, PUBG Mobile y FIFA forman parte de las competiciones que abarcamos.
+    <strong style="color:#fff">KAIROX GAMING · MULTIGAME</strong><br/>
+    Nuestra prioridad es construir primero una comunidad sólida en Free Fire y, posteriormente, crecer hacia nuevas competiciones y juegos.
   </div>
-</div>
-
-<div class="quick-links">
-  <article class="quick-card">
-    <div class="eyebrow">01 · TORNEO ACTUAL</div>
-    <h3>KAIROX CUP #001</h3>
-    <p>Free Fire · Squad · Inscripción gratuita · Premios para el podio.</p>
-    <a class="btn btn-main" data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">INSCRIBIR ESCUADRA →</a>
-  </article>
-  <article class="quick-card">
-    <div class="eyebrow">02 · TALENTO</div>
-    <h3>ÚNETE A KAIROX</h3>
-    <p>Jugadores, equipos, creadores, casters y staff.</p>
-    <a class="btn" data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">VER RECLUTAMIENTO</a>
-  </article>
-  <article class="quick-card">
-    <div class="eyebrow">03 · COMUNIDAD</div>
-    <h3>WHATSAPP</h3>
-    <p>Únete para recibir anuncios, torneos y novedades de Kairox.</p>
-    <a class="btn" href="https://chat.whatsapp.com/IafHymzQ5Ob5wkFkDcr5DU" target="_blank" rel="noopener">ENTRAR AL GRUPO</a>
-  </article>
-</div>
-
-
-<div class="community-banner">
-  <div><div class="eyebrow">KAIROX COMMUNITY</div><h3>ÚNETE A LA COMUNIDAD.</h3><p>Información de torneos, reclutamiento, anuncios y nuevas oportunidades.</p></div>
-  <a class="btn btn-main" href="https://chat.whatsapp.com/IafHymzQ5Ob5wkFkDcr5DU" target="_blank" rel="noopener">💬 ENTRAR A WHATSAPP →</a>
 </div>
 
 <div class="eagle-quote">“VOLAMOS MÁS ALTO. <span>COMPETIMOS JUNTOS.</span>”</div></div></section>
@@ -429,7 +437,7 @@ body.segmented[data-view="club"] .community-banner { display:none !important; }
 <a class="btn btn-main" data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">QUIERO FORMAR PARTE →</a></div>
 </div></div></section>
 <section class="scene"><div class="scene-title"><span class="scene-eagle"></span> THE COMPETITIVE SCENE <span class="scene-eagle"></span></div><div class="marquee"><div class="track"><span>FREE FIRE</span><i>◆</i><span>FFWS</span><i>◆</i><span>WORLD SERIES</span><i>◆</i><span>FREE FIRE ESPORTS</span><i>◆</i><span>LATAM</span><i>◆</i><span>EMEA</span><i>◆</i><span>FREE FIRE</span><i>◆</i><span>FFWS</span><i>◆</i><span>WORLD SERIES</span><i>◆</i><span>FREE FIRE ESPORTS</span><i>◆</i><span>LATAM</span><i>◆</i><span>EMEA</span><i>◆</i></div></div></section>
-<section class="recruit" id="reclutamiento"><div class="wrap"><div class="section-head"><div><div class="eyebrow">05 · TALENTO</div><h2>JOIN<br/>KAIROX.</h2></div><p>Jugadores, equipos, creadores, casters y staff: buscamos personas que quieran crecer con el proyecto.</p></div><div class="recruit-grid"><div><p class="recruit-copy"><b>PLAYER · TEAM · CREATOR · CASTER · STAFF</b><br/>Si tienes talento, experiencia o una visión que pueda aportar al club, queremos conocerte.</p><div class="requirements"><div>COMPROMISO</div><div>MENTALIDAD COMPETITIVA</div><div>TRABAJO EN EQUIPO</div><div>GANAS DE CRECER</div></div></div><form action="https://formspree.io/f/xwlklend" method="POST"><input name="tipo_solicitud" type="hidden" value="RECLUTAMIENTO KAIROX"/><input class="field" name="nombre" placeholder="Nombre / Nick" required=""/><input class="field" name="email" placeholder="Correo electrónico" required="" type="email"/><input class="field" name="id_free_fire" placeholder="ID de Free Fire (si aplica)"/><input class="field" name="puesto" placeholder="Jugador / Equipo / Creador / Caster / Staff" required=""/><textarea class="field" name="presentacion" placeholder="Cuéntanos sobre ti..." required=""></textarea><button class="submit">ENVIAR CANDIDATURA</button></form></div></div></section>
+<section class="recruit" id="reclutamiento"><div class="wrap"><div class="section-head"><div><div class="eyebrow">05 · TALENTO</div><h2>JOIN<br/>KAIROX.</h2></div><p>Players, coach y manager: buscamos personas que quieran crecer con el proyecto.</p></div><div class="recruit-grid"><div><p class="recruit-copy"><b>PLAYER · COACH · MANAGER</b><br/>Si tienes talento, experiencia o una visión que pueda aportar al club, queremos conocerte.</p><div class="requirements"><div>COMPROMISO</div><div>MENTALIDAD COMPETITIVA</div><div>TRABAJO EN EQUIPO</div><div>GANAS DE CRECER</div></div></div><form action="https://formspree.io/f/xwlklend" method="POST"><input name="tipo_solicitud" type="hidden" value="RECLUTAMIENTO KAIROX"/><input class="field" name="nombre" placeholder="Nombre / Nick" required=""/><input class="field" name="email" placeholder="Correo electrónico" required="" type="email"/><input class="field" name="id_free_fire" placeholder="ID de Free Fire (si aplica)"/><input class="field" name="puesto" placeholder="Player / Coach / Manager" required=""/><textarea class="field" name="presentacion" placeholder="Cuéntanos sobre ti..." required=""></textarea><button class="submit">ENVIAR CANDIDATURA</button></form></div></div></section>
 <section class="site-section live-section" id="live"><div class="live-hub route-focus" id="live">
 <div class="section-head">
 <div><div class="eyebrow">LIVE · KAIROX CUP</div><h2>WATCH<br/>THE FLOCK.</h2></div>
@@ -474,59 +482,7 @@ body.segmented[data-view="club"] .community-banner { display:none !important; }
 <strong style="color:#fff">¿Todavía no hay un directo?</strong><br/>
     Cuando los creadores estén confirmados, sustituiremos estos espacios por sus nombres, fotos/logos, redes y enlaces directos a Twitch, YouTube u otra plataforma de streaming.
   </div>
-</div></section><section class="site-section" id="torneos">
-<div class="wrap">
-  <div class="section-head">
-    <div><div class="eyebrow">06 · TORNEOS</div><h2>PRÓXIMOS<br/>EVENTOS.</h2></div>
-    <p>Consulta nuestras competiciones y entra en cada torneo para ver su formato, fechas, premios, calendario y toda la información oficial.</p>
-  </div>
-  <div class="tournament-grid">
-    <article class="tournament-card featured" data-route-target="torneo-kairox-cup" data-route-view="torneos">
-      <div class="tournament-status">INSCRIPCIONES ABIERTAS</div>
-      <div class="tournament-game">FREE FIRE · MOBILE</div>
-      <h3>KAIROX CUP <span>#001</span></h3>
-      <p>Squad · 4 titulares + 1 suplente · 9 partidas · premios en diamantes.</p>
-      <button class="btn btn-main" type="button">VER TORNEO →</button>
-    </article>
-    <article class="tournament-card" data-route-target="torneo-kalahari" data-route-view="torneos">
-      <div class="tournament-status">PRÓXIMAMENTE</div>
-      <div class="tournament-game">FREE FIRE</div>
-      <h3>LIGA KALAHARI <span>SESSION 1</span></h3>
-      <p>Competición de Free Fire con formato competitivo y clasificación por jornada.</p>
-      <button class="btn" type="button">VER TORNEO →</button>
-    </article>
-    <article class="tournament-card" data-route-target="torneo-1vs1" data-route-view="torneos">
-      <div class="tournament-status">PRÓXIMAMENTE</div>
-      <div class="tournament-game">FREE FIRE</div>
-      <h3>COPA <span>1VS1 · 2VS2 · 4VS4</span></h3>
-      <p>Formatos individuales y por parejas o escuadras para diferentes estilos de competición.</p>
-      <button class="btn" type="button">VER TORNEO →</button>
-    </article>
-  </div>
-</div>
-</section>
-
-<section class="site-section tournament-detail" id="torneo-kalahari">
-<div class="wrap">
-  <div class="section-head"><div><div class="eyebrow">FREE FIRE · COMPETICIÓN</div><h2>LIGA<br/>KALAHARI.</h2></div><p>Información de la Liga Kalahari Session 1. Aquí aparecerán todos los detalles oficiales del torneo cuando estén definidos.</p></div>
-  <div class="tournament-info-grid">
-    <article><span>JUEGO</span><strong>FREE FIRE</strong></article><article><span>EDICIÓN</span><strong>SESSION 1</strong></article><article><span>ESTADO</span><strong>PRÓXIMAMENTE</strong></article><article><span>INFORMACIÓN</span><strong>POR ANUNCIAR</strong></article>
-  </div>
-  <div class="detail-box"><div class="eyebrow">DETALLES DEL TORNEO</div><h3>TODO LO QUE NECESITAS SABER.</h3><p>Las fechas, modalidad, número de partidas, sistema de puntuación, premios e inscripciones se publicarán aquí cuando la competición quede oficialmente configurada.</p></div>
-  <button class="btn tournament-back" type="button" data-route-target="torneos" data-route-view="torneos">← VOLVER A TORNEOS</button>
-</div>
-</section>
-
-<section class="site-section tournament-detail" id="torneo-1vs1">
-<div class="wrap">
-  <div class="section-head"><div><div class="eyebrow">FREE FIRE · FORMATOS</div><h2>COPA<br/>1VS1 · 2VS2 · 4VS4.</h2></div><p>Una competición con varios formatos para poner a prueba diferentes estilos de juego. Toda la información oficial se mostrará dentro de este apartado.</p></div>
-  <div class="format-grid"><article><b>1VS1</b><span>Duelo individual</span></article><article><b>2VS2</b><span>Duelo por parejas</span></article><article><b>4VS4</b><span>Competición por equipo</span></article></div>
-  <div class="detail-box"><div class="eyebrow">DETALLES DEL TORNEO</div><h3>PRÓXIMAMENTE.</h3><p>Fechas, inscripción, mapas, reglas, premios y sistema de competición se anunciarán oficialmente antes de abrir cada formato.</p></div>
-  <button class="btn tournament-back" type="button" data-route-target="torneos" data-route-view="torneos">← VOLVER A TORNEOS</button>
-</div>
-</section>
-
-<section class="site-section tournament-detail" id="torneo-kairox-cup"><div class="wrap"><div class="section-head"><div><div class="eyebrow">KAIROX CUP · COMPETICIÓN</div><h2>KAIROX<br/>CUP.</h2></div><p>La primera competición organizada por Kairox Gaming: Free Fire Mobile, modalidad escuadra: 4 titulares + 1 suplente, participación gratuita y premios en diamantes por podio.</p></div>
+</div></section><section class="site-section" id="torneos"><div class="wrap"><div class="section-head"><div><div class="eyebrow">06 · COMPETICIÓN</div><h2>KAIROX<br/>CUP.</h2></div><p>La primera competición organizada por Kairox Gaming: Free Fire Mobile, modalidad escuadra: 4 titulares + 1 suplente, participación gratuita y premios en diamantes por podio.</p></div>
 <div class="cup-hero" id="inscripcion"><div class="cup-top"><div><div class="eyebrow">KAIROX GAMING PRESENTS</div><h3 class="cup-title">KAIROX <span>CUP</span><br/>#001</h3><span class="tag">INSCRIPCIONES ABIERTAS</span></div><div class="cup-badge">FREE FIRE<br/>SQUAD · MOBILE<br/>EDICIÓN 001</div></div>
 <div class="cup-stats"><div class="cup-stat"><small>MODALIDAD</small><strong>SQUAD · MOBILE</strong></div><div class="cup-stat"><small>PLATAFORMA</small><strong>MOBILE</strong></div><div class="cup-stat"><small>PREMIOS</small><strong>💎 PODIO</strong></div><div class="cup-stat"><small>INSCRIPCIÓN</small><strong>GRATIS</strong></div></div>
 <div class="prize-title">PREMIOS · PODIO</div>
@@ -540,7 +496,7 @@ body.segmented[data-view="club"] .community-banner { display:none !important; }
 <div class="count"><strong>--</strong><span>DÍAS</span></div><div class="count"><strong>--</strong><span>HORAS</span></div><div class="count"><strong>--</strong><span>MINUTOS</span></div><div class="count"><strong>--</strong><span>SEGUNDOS</span></div>
 </div>
 <div class="notice">Único requisito anunciado: los integrantes de la escuadra deberán seguir la cuenta oficial de Kairox Gaming en Instagram. Las bases completas y la fecha del torneo se publicarán antes del inicio.</div>
-<div class="cup-actions"><a class="btn btn-main" data-route-target="registro-cup" data-route-view="torneos" href="#registro-cup">INSCRIBIR ESCUADRA →</a></div><div class="cup-actions"><a class="btn" data-route-target="clasificacion" data-route-view="torneos" href="#clasificacion">🏆 VER CLASIFICACIÓN</a><a class="btn" data-route-target="calendario-cup" data-route-view="torneos" href="#calendario-cup">VER CALENDARIO</a></div></div>
+<div class="cup-actions"><a class="btn btn-main" data-route-target="registro-cup" data-route-view="torneos" href="#registro-cup">INSCRIBIR ESCUADRA →</a><a class="btn" data-requirements-link="true" data-route-target="reglamento-completo" data-route-view="torneos" href="#reglamento-completo">VER REQUISITOS</a></div><div class="cup-actions"><a class="btn" data-route-target="clasificacion" data-route-view="torneos" href="#clasificacion">🏆 VER CLASIFICACIÓN</a><a class="btn" data-route-target="calendario-cup" data-route-view="torneos" href="#calendario-cup">VER CALENDARIO</a></div></div>
 <div id="modalidad-cup" style="margin-top:34px;border:1px solid #292929;background:rgba(10,10,10,.72);padding:30px;position:relative;overflow:hidden"><div class="eyebrow">MODALIDAD DEL TORNEO</div><h3 style="font-size:34px;margin:10px 0">SQUAD · MOBILE</h3><p style="color:#999;font-size:13px;line-height:1.8;max-width:720px;margin:0">Cada equipo estará formado por <strong>4 jugadores titulares + 1 suplente</strong>. La competición se disputará en Free Fire Mobile. La organización publicará el formato exacto de las partidas, mapa(s), número de rondas y sistema de puntuación junto con el reglamento oficial.</p></div>
 
 
@@ -603,7 +559,24 @@ body.segmented[data-view="club"] .community-banner { display:none !important; }
 <article class="rule"><b>04 · PUNTUACIÓN</b><p>12/9/8/7/6/5/4/3/2/1 puntos por posición, 0 desde el 11.º, más <strong>1 punto por kill</strong>.</p></article>
 <article class="rule"><b>05 · SUPLENTE</b><p>Puede sustituir a un titular únicamente entre partidas. Para cobrar el premio deberá haber jugado <strong>mínimo 3 mapas</strong>.</p></article>
 <article class="rule"><b>06 · FAIR PLAY</b><p>Prohibidos hacks, scripts, exploits intencionados, programas externos y cuentas no registradas. El incumplimiento puede suponer descalificación.</p></article>
-</div></section>
+</div><div id="reglamento-completo" style="margin-top:42px;border:1px solid #292929;background:rgba(10,10,10,.72);padding:32px;position:relative;z-index:2">
+<div class="eyebrow">REGLAMENTO OFICIAL · KAIROX CUP #001</div>
+<h3 style="font-size:34px;margin:8px 0 25px">REGLAMENTO</h3>
+<div style="display:grid;gap:18px;color:#999;font-size:12px;line-height:1.75">
+<div><strong style="color:#fff">1. Formato.</strong> La Kairox Cup se disputará en Free Fire Mobile, modalidad Squad, durante 3 días. Se jugarán 3 partidas por día, para un total de 9 partidas.</div>
+<div><strong style="color:#fff">2. Composición.</strong> Cada equipo estará formado por 4 jugadores titulares y 1 suplente. Todos deberán estar registrados antes del inicio.</div>
+<div><strong style="color:#fff">3. Sustituciones.</strong> El suplente solo podrá entrar entre partidas. No se permiten cambios durante una partida. Para tener derecho al premio, el suplente deberá haber disputado al menos 3 mapas.</div>
+<div><strong style="color:#fff">4. Puntuación.</strong> La clasificación se calculará sumando los puntos obtenidos en las 9 partidas. La posición otorga 12, 9, 8, 7, 6, 5, 4, 3, 2, 1 puntos del 1.º al 10.º puesto; 11.º y 12.º otorgan 0 puntos. Cada kill suma 1 punto adicional.</div>
+<div><strong style="color:#fff">5. Clasificación final.</strong> Tras cada jornada se publicará una clasificación provisional. Después de las 9 partidas se publicará la clasificación final y se determinará el campeón.</div>
+<div><strong style="color:#fff">6. Desempates.</strong> En caso de empate a puntos se utilizarán, en este orden: mayor número de Booyahs, mayor número de kills y mejor posición en la última partida.</div>
+<div><strong style="color:#fff">7. Redes sociales.</strong> Todos los integrantes de cada escuadra deberán seguir las cuentas oficiales de Kairox Gaming indicadas en la web.</div>
+<div><strong style="color:#fff">8. Fair Play.</strong> Está prohibido utilizar hacks, scripts, exploits intencionados, software externo que proporcione ventaja o cuentas no registradas. También se exige comportamiento respetuoso.</div>
+<div><strong style="color:#fff">9. Salas y horarios.</strong> Los códigos de sala y horarios serán comunicados por los canales oficiales de Kairox Gaming. Los equipos deberán estar disponibles a la hora indicada.</div>
+<div><strong style="color:#fff">10. Desconexiones.</strong> Una desconexión individual no implica automáticamente la repetición de una partida. La organización valorará cada incidencia según las circunstancias.</div>
+<div><strong style="color:#fff">11. Premios.</strong> 1.º: 500 💎 por jugador; 2.º: 300 💎 por jugador; 3.º: 100 💎 por jugador. El suplente recibirá el premio correspondiente si ha jugado un mínimo de 3 mapas.</div>
+<div><strong style="color:#fff">12. Organización.</strong> Kairox Gaming podrá resolver situaciones no contempladas en este reglamento buscando preservar la integridad y el juego limpio de la competición.</div>
+</div>
+</div></div></section>
 <section class="site-section shop" id="tienda"><div class="wrap"><div class="section-head"><div><div class="eyebrow">07 · TIENDA</div><h2>THE<br/>JERSEY.</h2></div><p>La primera pieza de la nueva era Kairox. Nuestra camiseta oficial, diseñada para representar al club.</p></div><div class="product"><div class="jersey-box"><img alt="Camiseta oficial Kairox Gaming" src="kairox-jersey-front.jpeg"/></div><div><div class="eyebrow">KAIROX GAMING · 2026</div><h3>OFFICIAL<br/>JERSEY</h3><p>Diseño oficial en negro y blanco, con identidad Kairox y el sello de nuestra nueva era.</p><span class="soon">DISPONIBLE PRÓXIMAMENTE</span></div></div></div></section>
 <section class="site-section" id="redes"><div class="eagle-back-label">CONNECT</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">08 · COMUNIDAD</div><h2>FOLLOW<br/>THE ERA.</h2></div><p>Sigue a Kairox Gaming en nuestras redes oficiales.</p></div><div class="socials"><a class="social" href="https://www.instagram.com/kairoxgaminglat/" rel="noopener" target="_blank"><strong>INSTAGRAM</strong><small>@KAIROXGAMINGLAT ↗</small></a><a class="social" href="https://www.tiktok.com/@kairoxgaminglat" rel="noopener" target="_blank"><strong>TIKTOK</strong><small>@KAIROXGAMINGLAT ↗</small></a><a class="social" href="https://x.com/kairoxgaming" rel="noopener" target="_blank"><strong>X</strong><small>@KAIROXGAMING ↗</small></a><a class="social" href="https://youtube.com/@kairoxgaminglat" rel="noopener" target="_blank"><strong>YOUTUBE</strong><small>KAIROX GAMING LAT ↗</small></a></div></div>
 </section>
@@ -612,8 +585,8 @@ body.segmented[data-view="club"] .community-banner { display:none !important; }
 <div class="standings-wrap"><div class="standings-head"><div><h3>🏆 KAIROX CUP #001</h3><p>CLASIFICACIÓN PROVISIONAL · 12 EQUIPOS · 9 PARTIDAS</p></div><div class="standings-status">PROVISIONAL</div></div>
 <table class="standings-table"><thead><tr><th>#</th><th>EQUIPO</th><th>DÍA 1</th><th>DÍA 2</th><th>DÍA 3</th><th>KILLS</th><th>TOTAL</th></tr></thead>
 <tbody id="standings-body"></tbody></table><div class="provisional-note">* Tabla provisional. Los nombres, logos y puntuaciones se actualizarán cuando se confirmen los 12 equipos participantes.</div></div></div></section>
-<section class="site-section form-section tournament-detail" id="registro-cup"><div class="wrap"><div class="formbox"><div class="eyebrow">KAIROX CUP #001 · REGISTRO</div><h2>INSCRIBE TU ESCUADRA</h2><p>Rellena los datos de los 4 titulares y 1 suplente. El capitán será el contacto principal.</p><form action="https://formspree.io/f/xwlklend" id="inscripcion-form" method="POST"><input name="tipo" type="hidden" value="Kairox Cup #001"/><input class="field" name="escuadra" placeholder="Nombre de la escuadra" required=""/><input class="field" name="capitan" placeholder="Nick del capitán" required=""/><input class="field" name="correo" placeholder="Correo del capitán" required="" type="email"/><input class="field" name="id_capitan" placeholder="ID de Free Fire del capitán" required=""/><input class="field" name="jugador_2" placeholder="Jugador 2 — nick + ID" required=""/><input class="field" name="jugador_3" placeholder="Jugador 3 — nick + ID" required=""/><input class="field" name="jugador_4" placeholder="Jugador 4 — nick + ID" required=""/><input class="field" name="suplente" placeholder="Suplente — nick + ID" required=""/><label style="display:block;color:#666;font-size:12px;margin:8px 0 20px"><input required="" type="checkbox"/> Confirmo que todos los jugadores cumplen los requisitos y aceptan las bases del torneo.</label><button class="submit" id="send">ENVIAR INSCRIPCIÓN</button><div class="success" id="ok"><h3>¡INSCRIPCIÓN RECIBIDA! 🏆</h3><p>Los datos se han enviado correctamente.</p></div></form></div></div></section>
-<div class="mobile-cup-bar"><a class="primary" data-route-target="registro-cup" data-route-view="torneos" href="#registro-cup">INSCRIBIR ESCUADRA →</a></div>
+<section class="site-section form-section" id="registro-cup"><div class="wrap"><div class="formbox"><div class="eyebrow">KAIROX CUP #001 · REGISTRO</div><h2>INSCRIBE TU ESCUADRA</h2><p>Rellena los datos de los 4 titulares y 1 suplente. El capitán será el contacto principal.</p><form action="https://formspree.io/f/xwlklend" id="inscripcion-form" method="POST"><input name="tipo" type="hidden" value="Kairox Cup #001"/><input class="field" name="escuadra" placeholder="Nombre de la escuadra" required=""/><input class="field" name="capitan" placeholder="Nick del capitán" required=""/><input class="field" name="correo" placeholder="Correo del capitán" required="" type="email"/><input class="field" name="id_capitan" placeholder="ID de Free Fire del capitán" required=""/><input class="field" name="jugador_2" placeholder="Jugador 2 — nick + ID" required=""/><input class="field" name="jugador_3" placeholder="Jugador 3 — nick + ID" required=""/><input class="field" name="jugador_4" placeholder="Jugador 4 — nick + ID" required=""/><input class="field" name="suplente" placeholder="Suplente — nick + ID" required=""/><label style="display:block;color:#666;font-size:12px;margin:8px 0 20px"><input required="" type="checkbox"/> Confirmo que todos los jugadores cumplen los requisitos y aceptan las bases del torneo.</label><button class="submit" id="send">ENVIAR INSCRIPCIÓN</button><div class="success" id="ok"><h3>¡INSCRIPCIÓN RECIBIDA! 🏆</h3><p>Los datos se han enviado correctamente.</p></div></form></div></div></section>
+<div class="mobile-cup-bar"><a class="primary" data-route-target="registro-cup" data-route-view="torneos" href="#registro-cup">INSCRIBIR ESCUADRA →</a><a class="secondary" data-requirements-link="true" data-route-target="reglamento-completo" data-route-view="torneos" href="#reglamento-completo">REQUISITOS</a></div>
 <footer><div class="wrap foot"><strong>🦅 KAIROX GAMING</strong><span>ESPORTS CLUB · FREE FIRE · LATAM · NEW ERA 2026</span></div></footer>
 <script>
 const progress=document.querySelector('.progress');addEventListener('scroll',()=>{const max=document.documentElement.scrollHeight-innerHeight;progress.style.width=max?(scrollY/max*100)+'%':'0%'});
@@ -758,62 +731,48 @@ form.addEventListener('submit',async e=>{e.preventDefault();if(!form.checkValidi
 <script id="kairox-router">
 (function(){
   const body=document.body;
-  const validViews=['club','torneos','tienda','redes','live'];
-  const tournamentTargets=['torneo-kairox-cup','torneo-kalahari','torneo-1vs1','clasificacion','registro-cup','calendario-cup','modalidad-cup','reglas-cup'];
-  const clubTargets=['club','historia','roster','reclutamiento'];
+  const controls=document.querySelectorAll('[data-segment]');
+  const links=document.querySelectorAll('[data-route-target]');
+  const valid=['club','torneos','tienda','redes','live'];
 
-  function getView(target){
+  function viewFor(target){
     if(target==='live') return 'live';
-    if(target==='tienda') return 'tienda';
-    if(target==='redes') return 'redes';
-    if(tournamentTargets.includes(target) || target==='torneos') return 'torneos';
+    if(['tienda'].includes(target)) return 'tienda';
+    if(['redes'].includes(target)) return 'redes';
+    if(['torneos','clasificacion','registro-cup','inscripcion','reglas-cup','modalidad-cup','reglamento-completo'].includes(target)) return 'torneos';
     return 'club';
   }
 
   function show(view,target,push){
-    if(!validViews.includes(view)) view='club';
+    if(!valid.includes(view)) view='club';
     body.classList.add('segmented');
     body.dataset.view=view;
-    delete body.dataset.tournament;
-    delete body.dataset.clubtarget;
-
-    if(view==='torneos'){
-      body.dataset.tournament = (target && tournamentTargets.includes(target)) ? target : 'torneos';
-    } else if(view==='club'){
-      body.dataset.clubtarget = (target && clubTargets.includes(target)) ? target : 'club';
+    controls.forEach(c=>c.classList.toggle('segment-nav-active',c.dataset.segment===view));
+    if(push) history.pushState({view:view,target:target||view},'', '#'+(target||view));
+    const el=target && document.getElementById(target);
+    if(el){
+      requestAnimationFrame(()=>el.scrollIntoView({behavior:'smooth',block:'start'}));
+    }else{
+      window.scrollTo({top:0,behavior:'smooth'});
     }
-
-    document.querySelectorAll('[data-segment]').forEach(el=>{
-      el.classList.toggle('segment-nav-active', el.dataset.segment===view);
-    });
-
-    if(push) history.pushState({view,target},'', '#'+(target||view));
-    window.scrollTo({top:0,behavior:'smooth'});
   }
 
-  document.querySelectorAll('[data-route-target]').forEach(link=>{
+  links.forEach(link=>{
     link.addEventListener('click',function(e){
-      const target=(this.dataset.routeTarget||'').toLowerCase();
+      const target=this.dataset.routeTarget;
       if(!target) return;
       e.preventDefault();
-      show(this.dataset.routeView || getView(target),target,true);
+      show(this.dataset.routeView || viewFor(target),target,true);
     });
   });
 
-  document.querySelectorAll('.tournament-card').forEach(card=>{
-    card.addEventListener('click',function(e){
-      if(e.target.closest('a')) return;
-      show('torneos',this.dataset.routeTarget,true);
-    });
-  });
-
-  function load(){
-    const target=(location.hash||'').replace('#','').toLowerCase();
-    show(getView(target||'club'),target||'club',false);
+  function loadHash(){
+    const target=(location.hash||'').slice(1).toLowerCase();
+    show(viewFor(target||'club'),target||'club',false);
   }
-  window.addEventListener('popstate',load);
-  window.addEventListener('hashchange',load);
-  load();
+  window.addEventListener('popstate',loadHash);
+  window.addEventListener('hashchange',loadHash);
+  loadHash();
 })();
 </script><!-- Panel de resultados: admin.html -->
 </body>
