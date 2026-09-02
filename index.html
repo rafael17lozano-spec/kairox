@@ -93,9 +93,9 @@ img{max-width:100%;height:auto}
 .standings-head{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:25px;border-bottom:1px solid #292929}
 .standings-head h3{margin:0;font-size:28px;letter-spacing:-1px}.standings-head p{margin:7px 0 0;color:#777;font-size:10px;letter-spacing:1px}
 .standings-status{font-size:8px;letter-spacing:2px;font-weight:900;color:#aaa;border:1px solid #444;padding:10px 12px}
-.standings-table{width:100%;border-collapse:collapse}.standings-table th,.standings-table td{padding:15px 12px;border-bottom:1px solid #242424;text-align:center;font-size:10px}.standings-table th{color:#666;font-size:8px;letter-spacing:1.5px}.standings-table th:nth-child(2),.standings-table td:nth-child(2){text-align:left}.standings-table td{font-weight:700}.standings-table tr:last-child td{border-bottom:0}.rank{font-size:18px}.team-cell{display:flex;align-items:center;gap:10px}.team-logo{width:27px;height:27px;border:nane;display:grid;place-items:center;font-size:8px;color:#777;background:transparent}.total{font-size:15px!important}.provisional-note{padding:15px 25px;color:#666;font-size:9px;letter-spacing:.5px;border-top:1px solid #292929}
+.standings-table{width:100%;border-collapse:collapse}.standings-table th,.standings-table td{padding:15px 12px;border-bottom:1px solid #242424;text-align:center;font-size:10px}.standings-table th{color:#666;font-size:8px;letter-spacing:1.5px}.standings-table th:nth-child(2),.standings-table td:nth-child(2){text-align:left}.standings-table td{font-weight:700}.standings-table tr:last-child td{border-bottom:0}.rank{font-size:18px}.team-cell{display:flex;align-items:center;gap:10px}.team-logo{width:27px;height:27px;border:none;display:grid;place-items:center;font-size:8px;color:#777;background:transparent}.total{font-size:15px!important}.provisional-note{padding:15px 25px;color:#666;font-size:9px;letter-spacing:.5px;border-top:1px solid #292929}
 .standings-toggle{margin-top:24px;display:flex;gap:9px;flex-wrap:wrap}.day-btn{cursor:pointer;border:1px solid #444;background:#111;color:#aaa;padding:13px 17px;font-size:8px;letter-spacing:1.7px;font-weight:900}.day-btn.active,.day-btn:hover{background:#fff;color:#111;border-color:#fff}
-.light .standings-wrap{background:#fff;border-color:#ddd}.light .standings-head,.light .standings-table th,.light .standings-table td,.light .provisional-note{border-color:#ddd}.light .standings-status{border-color:#ccc;color:#666}.light .team-logo {width: 36px;height: 36px;border: nane;background: transparent;display: flex;align-items: center;justify-content: center;overflow: hidden;font-weight: 900;}.team-logo img {width: 100%;height: 100%;object-fit: contain;display: block;}.light .day-btn{background:#fff;color:#666;border-color:#ccc}.light .day-btn.active{background:#111;color:#fff;border-color:#111}
+.light .standings-wrap{background:#fff;border-color:#ddd}.light .standings-head,.light .standings-table th,.light .standings-table td,.light .provisional-note{border-color:#ddd}.light .standings-status{border-color:#ccc;color:#666}.light .team-logo {width: 36px;height: 36px;border: none;background: transparent;display: flex;align-items: center;justify-content: center;overflow: hidden;font-weight: 900;}.team-logo img {width: 100%;height: 100%;object-fit: contain;display: block;}.light .day-btn{background:#fff;color:#666;border-color:#ccc}.light .day-btn.active{background:#111;color:#fff;border-color:#111}
 
 /* V17 — SEGMENTED SECTIONS */
 body.segmented .site-section{display:none}
@@ -112,8 +112,8 @@ body.segmented[data-view="live"] #live{display:block}
 .segment-nav-active{color:#fff!important}
 
 /* V18 — 12 TEAM STANDINGS */
-.standings-table .team-logo{border-radius:3px}
-.standings-table img.team-logo{width:27px;height:27px;object-fit:contain;display:block;background:#111;padding:2px}
+.standings-table .team-logo{border-radius:0}
+.standings-table img.team-logo{width:27px;height:27px;object-fit:contain;display:block;background:transparent;padding:0}
 .standings-table .team-logo-fallback{flex:0 0 27px}
 .standings-table .top-row td{background:rgba(255,255,255,.035)}
 
@@ -347,12 +347,35 @@ body.segmented[data-view="live"] #redes{display:none!important}
   .whatsapp-community{right:12px;bottom:82px;padding:12px 14px;font-size:8px}
 }
 
+
+/* V33 — PREMIUM SECTIONS */
+.quick-links{display:grid;grid-template-columns:1.35fr 1fr 1fr;gap:12px;margin-top:28px}
+.quick-card{position:relative;overflow:hidden;border:1px solid #292929;background:rgba(10,10,10,.72);padding:26px;min-height:145px;transition:.2s}
+.quick-card:hover{transform:translateY(-3px);border-color:#555}
+.quick-card:after{content:"";position:absolute;right:-30px;bottom:-45px;width:150px;height:150px;background:url('kairox-eagle.svg') center/contain no-repeat;opacity:.025;pointer-events:none}
+.quick-card .eyebrow{margin-bottom:10px}.quick-card h3{font-size:25px;margin:0 0 8px}.quick-card p{color:#888;font-size:11px;line-height:1.65;margin:0 0 17px;max-width:430px}
+.events-strip{margin-top:28px;border-top:1px solid #292929;border-bottom:1px solid #292929}
+.events-strip-head{display:flex;align-items:end;justify-content:space-between;gap:20px;padding:24px 0 16px}
+.events-strip-head h3{margin:0;font-size:28px}.events-strip-head p{margin:0;color:#777;font-size:9px;letter-spacing:1px}
+.events-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#292929}
+.event-card{background:#0b0b0b;padding:23px;min-height:145px}
+.event-card .month{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}.event-card h4{font-size:19px;margin:10px 0 6px}.event-card p{color:#777;font-size:10px;margin:0;line-height:1.6}
+.event-card.featured{background:#fff;color:#111}.event-card.featured .month,.event-card.featured p{color:#666}
+.community-banner{margin-top:30px;border:1px solid #292929;background:linear-gradient(90deg,#0a0a0a,#151515);padding:28px;display:flex;align-items:center;justify-content:space-between;gap:25px}
+.community-banner h3{font-size:27px;margin:0 0 6px}.community-banner p{color:#888;font-size:11px;margin:0;line-height:1.6}
+@media(max-width:800px){
+ .quick-links{grid-template-columns:1fr}
+ .events-strip-head{display:block}.events-strip-head p{margin-top:9px}
+ .events-grid{grid-template-columns:1fr}
+ .community-banner{display:block}.community-banner .btn{display:inline-flex;margin-top:18px}
+}
+
 </style>
 </head>
 <body>
 <div class="progress"></div>
 <a class="whatsapp-community" href="https://chat.whatsapp.com/IafHymzQ5Ob5wkFkDcr5DU" rel="noopener" target="_blank" aria-label="Unirse a la comunidad oficial de WhatsApp">
-  <span class="wa-icon">◉</span>
+  <span class="wa-icon" aria-hidden="true"><svg viewBox="0 0 32 32" role="img"><path fill="currentColor" d="M19.11 17.39c-.27-.14-1.6-.79-1.85-.88-.25-.09-.43-.14-.61.14-.18.27-.7.88-.86 1.06-.16.18-.32.2-.59.07-.27-.14-1.13-.42-2.15-1.33-.8-.71-1.33-1.59-1.49-1.86-.16-.27-.02-.42.12-.56.12-.12.27-.32.41-.48.14-.16.18-.27.27-.45.09-.18.05-.34-.02-.48-.07-.14-.61-1.47-.84-2.01-.22-.52-.45-.45-.61-.46h-.52c-.18 0-.48.07-.73.34-.25.27-.95.93-.95 2.27s.98 2.63 1.11 2.81c.14.18 1.92 2.93 4.65 4.11.65.28 1.16.45 1.56.58.65.21 1.24.18 1.71.11.52-.08 1.6-.65 1.82-1.28.23-.63.23-1.17.16-1.28-.07-.11-.25-.18-.52-.32z"/><path fill="currentColor" d="M16.02 3.2C9 3.2 3.3 8.9 3.3 15.92c0 2.24.58 4.35 1.7 6.23L3.2 28.8l6.83-1.75a12.67 12.67 0 0 0 6 1.52h.01c7.02 0 12.72-5.7 12.72-12.72S23.04 3.2 16.02 3.2zm0 23.16h-.01a10.48 10.48 0 0 1-5.34-1.46l-.38-.23-4.05 1.04 1.08-3.94-.25-.4a10.47 10.47 0 1 1 8.95 4.99z"/></svg></span>
   <span>UNIRSE A LA COMUNIDAD</span>
 </a>
 <header><div class="wrap nav">
@@ -370,8 +393,8 @@ body.segmented[data-view="live"] #redes{display:none!important}
 </span><span class="live-dot"></span> LIVE</a></nav></div></header>
 <section class="hero" id="inicio"><div class="eagle-glow"></div><div class="hero-eagle"><img alt="" aria-hidden="true" src="kairox-eagle.svg"/></div><div class="wrap hero-grid"><div>
 <div class="eyebrow">ESPORTS CLUB · FREE FIRE · VALORANT · PUBG MOBILE · FIFA · LATAM · EAGLE IDENTITY</div><h1>KAIROX<br/><span>NEW ERA</span></h1>
-<p class="hero-copy">Más que un equipo. Somos un club de esports que une competición, talento, creadores y comunidad. Esta es nuestra nueva era.</p><div class="eagle-line">SÍMBOLO DEL CLUB · FUERZA · VISIÓN · ALTURA</div>
-<div class="actions"><a aria-label="Abrir club" class="btn btn-main btn-conecticion" data-route-target="club" data-route-view="club" href="#club">ENTRAR AL CLUB</a><a aria-label="Abrir torneos" class="btn" data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">VER COMPETICIÓN</a></div>
+<p class="hero-copy">Competición, talento, creadores y comunidad. Bienvenidos a la nueva era de Kairox Gaming.</p><div class="eagle-line">SÍMBOLO DEL CLUB · FUERZA · VISIÓN · ALTURA</div>
+<div class="actions"><a aria-label="Abrir club" class="btn btn-main btn-conecticion" data-route-target="club" data-route-view="club" href="#club">ENTRAR AL CLUB</a><a aria-label="Abrir torneos" class="btn" data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">VER COMPETICIÓN</a><a aria-label="Unirse a la comunidad de WhatsApp" class="btn" href="https://chat.whatsapp.com/IafHymzQ5Ob5wkFkDcr5DU" target="_blank" rel="noopener">COMUNIDAD WHATSAPP</a></div>
 </div><div class="hero-mark"><img alt="Kairox Gaming" src="kairox-logo.png"/></div></div></section>
 <section class="site-section" id="club">
 
@@ -420,9 +443,47 @@ body.segmented[data-view="live"] #redes{display:none!important}
   </div>
 
   <div class="competition-note">
-    <strong style="color:#fff">KAIROX GAMING · MULTIGAME</strong><br/>
-    Nuestra prioridad es construir primero una comunidad sólida en Free Fire y, posteriormente, crecer hacia nuevas competiciones y juegos.
+    <strong style="color:#fff">FREE FIRE · TÍTULO PRINCIPAL</strong><br/>
+    Valorant, PUBG Mobile y FIFA forman parte de las competiciones que abarcamos.
   </div>
+</div>
+
+<div class="quick-links">
+  <article class="quick-card">
+    <div class="eyebrow">01 · TORNEO ACTUAL</div>
+    <h3>KAIROX CUP #001</h3>
+    <p>Free Fire · Squad · Inscripción gratuita · Premios para el podio.</p>
+    <a class="btn btn-main" data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">INSCRIBIR ESCUADRA →</a>
+  </article>
+  <article class="quick-card">
+    <div class="eyebrow">02 · TALENTO</div>
+    <h3>ÚNETE A KAIROX</h3>
+    <p>Jugadores, equipos, creadores, casters y staff.</p>
+    <a class="btn" data-route-target="reclutamiento" data-route-view="club" href="#reclutamiento">VER RECLUTAMIENTO</a>
+  </article>
+  <article class="quick-card">
+    <div class="eyebrow">03 · COMUNIDAD</div>
+    <h3>WHATSAPP</h3>
+    <p>Únete para recibir anuncios, torneos y novedades de Kairox.</p>
+    <a class="btn" href="https://chat.whatsapp.com/IafHymzQ5Ob5wkFkDcr5DU" target="_blank" rel="noopener">ENTRAR AL GRUPO</a>
+  </article>
+</div>
+
+<div class="events-strip">
+  <div class="events-strip-head">
+    <div><div class="eyebrow">CALENDARIO</div><h3>PRÓXIMOS EVENTOS.</h3></div>
+    <p>COMPETICIÓN · COMUNIDAD · KAIROX GAMING</p>
+  </div>
+  <div class="events-grid">
+    <article class="event-card featured"><div class="month">SEPTIEMBRE</div><h4>KAIROX CUP #001</h4><p>FREE FIRE · SQUAD · INSCRIPCIONES ABIERTAS</p></article>
+    <article class="event-card"><div class="month">OCTUBRE</div><h4>LIGA KALAHARI · SESSION 1</h4><p>FREE FIRE · PRÓXIMAMENTE</p></article>
+    <article class="event-card"><div class="month">NOVIEMBRE</div><h4>COPA 1VS1 · 2VS2 · 4VS4</h4><p>FREE FIRE · PRÓXIMAMENTE</p></article>
+  </div>
+</div>
+
+<div class="community-banner">
+  <div><div class="eyebrow">KAIROX COMMUNITY</div><h3>ÚNETE A LA COMUNIDAD.</h3><p>Información de torneos, reclutamiento, anuncios y nuevas oportunidades.</p></div>
+  <a class="btn btn-main" href="https://chat.whatsapp.com/IafHymzQ5Ob5wkFkDcr5DU" target="_blank" rel="noopener">💬 ENTRAR A WHATSAPP →</a>
 </div>
 
 <div class="eagle-quote">“VOLAMOS MÁS ALTO. <span>COMPETIMOS JUNTOS.</span>”</div></div></section>
