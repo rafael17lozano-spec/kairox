@@ -346,6 +346,33 @@ body.segmented[data-view="live"] #redes{display:none!important}
 /* KAIROX — WEB INFORMATIVA / RESULTADOS */
 .results-notice{margin-top:24px;border-left:2px solid #fff;padding:15px 18px;color:#888;font-size:11px;line-height:1.7}
 .results-notice strong{color:#fff}
+
+/* V31 — HEADER CLEAN / FINAL */
+.site-header{position:sticky;top:0;z-index:1000;background:rgba(5,5,5,.94);backdrop-filter:blur(18px);border-bottom:1px solid #222}
+.site-header .nav{height:76px;display:flex;align-items:center;justify-content:space-between;gap:35px}
+.site-header .brand{display:flex;align-items:center;gap:11px;min-width:max-content;font-size:11px;font-weight:900;letter-spacing:2.5px}
+.site-header .brand img{width:38px;height:38px;object-fit:contain;filter:brightness(0) invert(1);opacity:1}
+.site-header .menu{display:flex;align-items:center;justify-content:flex-end;gap:5px;margin-left:auto}
+.site-header .top-link{height:76px;display:inline-flex;align-items:center;padding:0 15px;color:#777;font-size:8px;letter-spacing:2px;font-weight:900;white-space:nowrap;position:relative;transition:.2s}
+.site-header .top-link:hover,.site-header .top-link.segment-nav-active{color:#fff}
+.site-header .top-link.segment-nav-active:after{content:"";position:absolute;left:15px;right:15px;bottom:0;height:2px;background:#fff}
+.site-header .live-nav{gap:7px;color:#aaa!important}
+.site-header .live-nav:hover,.site-header .live-nav.segment-nav-active{color:#fff!important}
+.site-header .live-nav.segment-nav-active:after{background:#fff}
+@media(max-width:800px){
+ .site-header .nav{height:68px;gap:10px;padding-left:16px;padding-right:16px}
+ .site-header .brand span{display:none}
+ .site-header .brand img{width:34px;height:34px}
+ .site-header .menu{gap:0;width:100%;justify-content:space-between}
+ .site-header .top-link{height:68px;padding:0 7px;font-size:7px;letter-spacing:1.2px}
+ .site-header .top-link.segment-nav-active:after{left:7px;right:7px}
+}
+@media(max-width:480px){
+ .site-header .nav{padding-left:10px;padding-right:10px}
+ .site-header .brand img{width:30px;height:30px}
+ .site-header .top-link{padding:0 5px;font-size:6.5px;letter-spacing:.8px}
+ .site-header .top-link.segment-nav-active:after{left:5px;right:5px}
+}
 </style>
 </head>
 <body>
@@ -354,19 +381,15 @@ body.segmented[data-view="live"] #redes{display:none!important}
   <span class="wa-icon">◉</span>
   <span>UNIRSE A LA COMUNIDAD</span>
 </a>
-<header><div class="wrap nav">
-<a class="brand" href="#inicio"><img alt="" src="kairox-logo.png"/>KAIROX GAMING</a>
-<nav class="menu">
-<div class="nav-item"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">CLUB</a><div class="dropdown"><a aria-label="Abrir club" data-route-target="club" data-route-view="club" data-segment="club" href="#">Nuestro club</a><a data-route-target="historia" data-route-view="club" href="#historia">NUESTRA HISTORIA</a><a data-route-target="roster" data-route-view="club" href="#roster">JUGADORES</a></div></div>
-<div class="nav-item"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">TORNEOS</a><div class="dropdown"><a aria-label="Abrir torneos" data-route-target="torneos" data-route-view="torneos" data-segment="torneos" href="#">RESULTADOS</a></div></div></div></div>
-<div class="nav-item"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">TIENDA</a><div class="dropdown"><a aria-label="Abrir tienda" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">Jersey 2026</a></div></div>
-<div class="nav-item"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">REDES</a><div class="dropdown"><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Instagram</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">TikTok</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">YouTube</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">X</a><a aria-label="Abrir redes" data-route-target="redes" data-route-view="redes" data-segment="redes" href="#">Contacto</a></div></div>
-<a class="live-nav" data-live-nav="true" data-route-target="live" data-route-view="live" href="#live"><span aria-hidden="true" class="live-camera">
-<svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15">
-<rect height="12" rx="2" width="13" x="3" y="6"></rect>
-<path d="m16 10 5-3v10l-5-3z"></path>
-</svg>
-</span><span class="live-dot"></span> LIVE</a></nav></div></header>
+<header class="site-header"><div class="wrap nav">
+<a class="brand" href="#club" data-route-target="club" data-route-view="club"><img alt="Kairox Gaming" src="kairox-logo.png"/><span>KAIROX GAMING</span></a>
+<nav class="menu" aria-label="Navegación principal">
+<a class="top-link" data-segment="club" data-route-target="club" data-route-view="club" href="#club">CLUB</a>
+<a class="top-link" data-segment="torneos" data-route-target="torneos" data-route-view="torneos" href="#torneos">TORNEOS</a>
+<a class="top-link" data-segment="tienda" data-route-target="tienda" data-route-view="tienda" href="#tienda">TIENDA</a>
+<a class="top-link" data-segment="redes" data-route-target="redes" data-route-view="redes" href="#redes">REDES</a>
+<a class="top-link live-nav" data-route-target="live" data-route-view="live" href="#live"><span class="live-camera" aria-hidden="true"><svg fill="none" height="15" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewbox="0 0 24 24" width="15"><rect height="12" rx="2" width="13" x="3" y="6"></rect><path d="m16 10 5-3v10l-5-3z"></path></svg></span><span class="live-dot"></span> LIVE</a>
+</nav></div></header>
 <section class="hero" id="inicio"><div class="eagle-glow"></div><div class="hero-eagle"><img alt="" aria-hidden="true" src="kairox-eagle.svg"/></div><div class="wrap hero-grid"><div>
 <div class="eyebrow">ESPORTS CLUB · FREE FIRE · VALORANT · PUBG MOBILE · FIFA · LATAM · EAGLE IDENTITY</div><h1>KAIROX<br/><span>NEW ERA</span></h1>
 <p class="hero-copy">Más que un equipo. Somos un club de esports que une competición, talento, creadores y comunidad. Esta es nuestra nueva era.</p><div class="eagle-line">SÍMBOLO DEL CLUB · FUERZA · VISIÓN · ALTURA</div>
