@@ -447,6 +447,91 @@ body.segmented[data-view="live"] #live { display:block!important; }
 /* La navegación sigue fija; el pie se mantiene al final */
 body.segmented footer { display:block!important; }
 </style>
+
+<style id="kairox-v38-clean-routing">
+/* V38 — NAVEGACIÓN POR SEGMENTOS REALMENTE AISLADOS */
+body.segmented > .hero,
+body.segmented > .scene,
+body.segmented > .recruit,
+body.segmented > footer { display:none !important; }
+
+/* Por defecto, al entrar en un segmento se oculta TODO el contenido de secciones */
+body.segmented .site-section { display:none !important; }
+
+/* CLUB: solo contenido del Club */
+body.segmented[data-view="club"] #club,
+body.segmented[data-view="club"] #historia,
+body.segmented[data-view="club"] #roster,
+body.segmented[data-view="club"] #reclutamiento { display:block !important; }
+body.segmented[data-view="club"] .recruit { display:block !important; }
+
+/* TORNEOS: solo listado de torneos cuando se entra a TORNEOS */
+body.segmented[data-view="torneos"] #torneos { display:block !important; }
+
+/* Al abrir un torneo concreto, mostrar SOLO ese torneo */
+body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneos,
+body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneos,
+body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneos { display:none !important; }
+body.segmented[data-view="torneos"][data-tournament="torneo-kairox-cup"] #torneo-kairox-cup,
+body.segmented[data-view="torneos"][data-tournament="torneo-kalahari"] #torneo-kalahari,
+body.segmented[data-view="torneos"][data-tournament="torneo-1vs1"] #torneo-1vs1 { display:block !important; }
+
+/* Tienda, Redes y LIVE: solo su propio contenido */
+body.segmented[data-view="tienda"] #tienda { display:block !important; }
+body.segmented[data-view="redes"] #redes { display:block !important; }
+body.segmented[data-view="live"] #live { display:block !important; }
+
+/* Enlaces internos del Club abren solo la página seleccionada */
+body.segmented[data-view="club"][data-club="historia"] #club,
+body.segmented[data-view="club"][data-club="roster"] #club,
+body.segmented[data-view="club"][data-club="reclutamiento"] #club { display:none !important; }
+body.segmented[data-view="club"][data-club="historia"] #historia { display:block !important; }
+body.segmented[data-view="club"][data-club="roster"] #roster { display:block !important; }
+body.segmented[data-view="club"][data-club="reclutamiento"] #reclutamiento { display:block !important; }
+</style>
+<script id="kairox-v38-router-fix">
+(function(){
+  const body=document.body;
+  const links=document.querySelectorAll('[data-route-target]');
+  function setView(view,target,push){
+    const valid=['club','torneos','tienda','redes','live'];
+    if(!valid.includes(view)) view='club';
+    body.classList.add('segmented');
+    body.dataset.view=view;
+    delete body.dataset.club;
+    delete body.dataset.tournament;
+    if(view==='club' && ['historia','roster','reclutamiento'].includes(target)) body.dataset.club=target;
+    if(view==='torneos' && ['torneo-kairox-cup','torneo-kalahari','torneo-1vs1'].includes(target)) body.dataset.tournament=target;
+    if(push) history.pushState({view,target},'', '#'+(target||view));
+    const el=document.getElementById(target||view);
+    window.scrollTo({top:0,behavior:'smooth'});
+    if(el) setTimeout(()=>el.scrollIntoView({behavior:'smooth',block:'start'}),80);
+  }
+  links.forEach(a=>{
+    a.addEventListener('click',function(e){
+      const target=this.dataset.routeTarget; if(!target) return;
+      e.preventDefault();
+      const view=this.dataset.routeView || (['torneos','torneo-kairox-cup','torneo-kalahari','torneo-1vs1'].includes(target)?'torneos':target);
+      setView(view,target,true);
+    });
+  });
+  function load(){
+    const target=(location.hash||'').slice(1).toLowerCase();
+    const map={
+      'club':'club','historia':'historia','roster':'roster','reclutamiento':'reclutamiento',
+      'torneos':'torneos','torneo-kairox-cup':'torneo-kairox-cup','torneo-kalahari':'torneo-kalahari','torneo-1vs1':'torneo-1vs1',
+      'tienda':'tienda','redes':'redes','live':'live'
+    };
+    const t=map[target]||'club';
+    const v=['historia','roster','reclutamiento'].includes(t)?'club':(['torneos','torneo-kairox-cup','torneo-kalahari','torneo-1vs1'].includes(t)?'torneos':t);
+    setView(v,t,false);
+  }
+  window.addEventListener('popstate',load);
+  window.addEventListener('hashchange',load);
+  load();
+})();
+</script>
+
 </head>
 <body>
 <div class="progress"></div>
