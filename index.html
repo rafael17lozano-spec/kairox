@@ -5,7 +5,7 @@
 <meta charset="utf-8"/>
 <meta content="width=device-width,initial-scale=1" name="viewport"/>
 <title>KAIROX GAMING — New Era</title>
-<meta content="Kairox Gaming — Club de esports de Free Fire. Competición, roster, creadores, torneos y comunidad." name="description"/>
+<meta content="Kairox Gaming — Club multigame de esports. Free Fire como título principal, además de Valorant, PUBG Mobile y FIFA." name="description"/>
 <link href="kairox-logo.png" rel="icon"/>
 <style>
 :root{--bg:#070707;--panel:#101010;--line:#252525;--muted:#8a8a8a;--white:#fff;--black:#111}
@@ -313,10 +313,48 @@ body.segmented[data-view="live"] #redes{display:none!important}
 .map-purgatorio{background-color:#3b3b3b}
 .map-kalahari{background-color:#6b4525}
 .cup-map-card .map-bg{background-repeat:no-repeat;background-size:cover;background-position:center}
+
+/* V32 — COMPETITIONS + WHATSAPP COMMUNITY */
+.competitions{margin-top:34px}
+.competitions-head{display:flex;justify-content:space-between;align-items:end;gap:25px;margin-bottom:16px}
+.competitions-head h3{font-size:30px;margin:7px 0 0}
+.competitions-head p{max-width:540px;color:#888;font-size:11px;line-height:1.7;margin:0}
+.competition-grid{display:grid;grid-template-columns:1.35fr repeat(3,1fr);gap:12px}
+.competition-card{position:relative;border:1px solid #292929;background:rgba(8,8,8,.78);padding:26px;min-height:220px;overflow:hidden}
+.competition-card:after{content:"";position:absolute;right:-35px;bottom:-45px;width:155px;height:155px;background:url('kairox-eagle.svg') center/contain no-repeat;opacity:.025;pointer-events:none}
+.competition-card.main-game{min-height:260px;background:linear-gradient(135deg,rgba(255,255,255,.08),rgba(8,8,8,.9))}
+.competition-card .game-label{font-size:8px;letter-spacing:2px;color:#777;font-weight:900}
+.competition-card h4{font-size:27px;margin:18px 0 9px}
+.competition-card p{color:#888;font-size:11px;line-height:1.7;margin:0}
+.competition-card .game-status{display:inline-block;margin-top:22px;border:1px solid #444;padding:8px 10px;color:#aaa;font-size:7px;letter-spacing:1.7px;font-weight:900}
+.competition-card.main-game h4{font-size:38px}
+.competition-note{margin-top:12px;border-left:2px solid #fff;padding:11px 14px;color:#777;font-size:9px;line-height:1.7}
+.whatsapp-community{
+  position:fixed;right:22px;bottom:22px;z-index:1100;
+  display:flex;align-items:center;gap:10px;
+  background:#fff;color:#111;border:1px solid #fff;
+  padding:13px 17px;font-size:9px;letter-spacing:1.5px;font-weight:900;
+  box-shadow:0 12px 35px rgba(0,0,0,.45);transition:.2s;
+}
+.whatsapp-community:hover{transform:translateY(-3px);background:#e9e9e9}
+.whatsapp-community .wa-icon{width:19px;height:19px;display:grid;place-items:center;font-size:16px;line-height:1}
+@media(max-width:800px){
+  .competitions-head{display:block}
+  .competitions-head p{margin-top:10px}
+  .competition-grid{grid-template-columns:1fr}
+  .competition-card,.competition-card.main-game{min-height:190px}
+  .competition-card.main-game h4{font-size:34px}
+  .whatsapp-community{right:12px;bottom:82px;padding:12px 14px;font-size:8px}
+}
+
 </style>
 </head>
 <body>
 <div class="progress"></div>
+<a class="whatsapp-community" href="https://chat.whatsapp.com/IafHymzQ5Ob5wkFkDcr5DU" rel="noopener" target="_blank" aria-label="Unirse a la comunidad oficial de WhatsApp">
+  <span class="wa-icon">◉</span>
+  <span>UNIRSE A LA COMUNIDAD</span>
+</a>
 <header><div class="wrap nav">
 <a class="brand" href="#inicio"><img alt="" src="kairox-logo.png"/>KAIROX GAMING</a>
 <nav class="menu">
@@ -331,7 +369,7 @@ body.segmented[data-view="live"] #redes{display:none!important}
 </svg>
 </span><span class="live-dot"></span> LIVE</a></nav></div></header>
 <section class="hero" id="inicio"><div class="eagle-glow"></div><div class="hero-eagle"><img alt="" aria-hidden="true" src="kairox-eagle.svg"/></div><div class="wrap hero-grid"><div>
-<div class="eyebrow">ESPORTS CLUB · FREE FIRE · LATAM · EAGLE IDENTITY</div><h1>KAIROX<br/><span>NEW ERA</span></h1>
+<div class="eyebrow">ESPORTS CLUB · FREE FIRE · VALORANT · PUBG MOBILE · FIFA · LATAM · EAGLE IDENTITY</div><h1>KAIROX<br/><span>NEW ERA</span></h1>
 <p class="hero-copy">Más que un equipo. Somos un club de esports que une competición, talento, creadores y comunidad. Esta es nuestra nueva era.</p><div class="eagle-line">SÍMBOLO DEL CLUB · FUERZA · VISIÓN · ALTURA</div>
 <div class="actions"><a aria-label="Abrir club" class="btn btn-main btn-conecticion" data-route-target="club" data-route-view="club" href="#club">ENTRAR AL CLUB</a><a aria-label="Abrir torneos" class="btn" data-route-target="inscripcion" data-route-view="torneos" href="#inscripcion">VER COMPETICIÓN</a></div>
 </div><div class="hero-mark"><img alt="Kairox Gaming" src="kairox-logo.png"/></div></div></section>
@@ -339,7 +377,55 @@ body.segmented[data-view="live"] #redes{display:none!important}
 
 <div class="eagle-back-label">EAGLE</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">01 · CLUB</div><h2>MORE THAN<br>A TEAM.</br></h2></div><p>Kairox Gaming nace con una idea clara: construir un club reconocible dentro de los esports, desarrollar talento y crear una comunidad que quiera formar parte del camino.</p></div>
 <div class="metrics"><div class="metric"><b>01</b><span>CLUB</span></div><div class="metric"><b>FF</b><span>FREE FIRE</span></div><div class="metric"><b>LATAM</b><span>COMUNIDAD</span></div><div class="metric"><b>2026</b><span>NEW ERA</span></div></div>
-<div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a aria-label="Abrir tienda" class="btn" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" data-route-target="historia" data-route-view="club" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" data-route-target="roster" data-route-view="club" href="#roster">VER ROSTER</a></article></div><div class="eagle-quote">“VOLAMOS MÁS ALTO. <span>COMPETIMOS JUNTOS.</span>”</div></div></section>
+<div class="club-grid" style="margin-top:18px"><article class="club-card eagle-card"><div class="eyebrow">IDENTIDAD</div><h3>NUESTRA PIEL</h3><p>La jersey oficial representa nuestra identidad: negro, blanco, precisión y una nueva etapa para Kairox.</p><a aria-label="Abrir tienda" class="btn" data-route-target="tienda" data-route-view="tienda" data-segment="tienda" href="#">VER JERSEY</a></article><article class="club-card"><div class="eyebrow">LEGADO</div><h3>NUESTRA HISTORIA</h3><p>Un proyecto que se construye con cada persona que entra en el club, cada competición y cada momento compartido.</p><a class="btn" data-route-target="historia" data-route-view="club" href="#historia">CONOCER HISTORIA</a></article><article class="club-card"><div class="eyebrow">TALENTO</div><h3>ROSTER + CREATORS</h3><p>Competidores y creadores forman parte del mismo ecosistema Kairox.</p><a class="btn" data-route-target="roster" data-route-view="club" href="#roster">VER ROSTER</a></article>
+</div>
+
+<div class="competitions">
+  <div class="competitions-head">
+    <div>
+      <div class="eyebrow">COMPETITIVE ECOSYSTEM</div>
+      <h3>COMPETICIONES QUE ABARCAMOS.</h3>
+    </div>
+    <p>Free Fire es el título principal de Kairox Gaming. A medida que crezcamos, ampliaremos nuestra presencia a diferentes escenas competitivas y comunidades.</p>
+  </div>
+
+  <div class="competition-grid">
+    <article class="competition-card main-game">
+      <div class="game-label">01 · PRINCIPAL</div>
+      <h4>FREE FIRE</h4>
+      <p>Nuestra competición principal. Torneos, equipos, jugadores, creadores y proyectos alrededor de la escena competitiva de Free Fire.</p>
+      <span class="game-status">KAIROX MAIN GAME</span>
+    </article>
+
+    <article class="competition-card">
+      <div class="game-label">02 · ESPORTS</div>
+      <h4>VALORANT</h4>
+      <p>Competición táctica, equipos y futuros proyectos dentro de la escena de Valorant.</p>
+      <span class="game-status">EXPANSIÓN</span>
+    </article>
+
+    <article class="competition-card">
+      <div class="game-label">03 · MOBILE</div>
+      <h4>PUBG MOBILE</h4>
+      <p>Participación en competiciones, torneos y oportunidades para líneas competitivas.</p>
+      <span class="game-status">EXPANSIÓN</span>
+    </article>
+
+    <article class="competition-card">
+      <div class="game-label">04 · FOOTBALL</div>
+      <h4>FIFA</h4>
+      <p>Competiciones de fútbol, 1VS1 y futuros formatos competitivos bajo la identidad Kairox.</p>
+      <span class="game-status">EXPANSIÓN</span>
+    </article>
+  </div>
+
+  <div class="competition-note">
+    <strong style="color:#fff">KAIROX GAMING · MULTIGAME</strong><br/>
+    Nuestra prioridad es construir primero una comunidad sólida en Free Fire y, posteriormente, crecer hacia nuevas competiciones y juegos.
+  </div>
+</div>
+
+<div class="eagle-quote">“VOLAMOS MÁS ALTO. <span>COMPETIMOS JUNTOS.</span>”</div></div></section>
 <section class="site-section light" id="historia"><div class="wrap"><div class="section-head"><div><div class="eyebrow">02 · HISTORIA</div><h2>THE<br>JOURNEY.</br></h2></div><p>La historia real de Kairox crecerá con el club. Esta estructura queda preparada para añadir fechas, hitos, títulos y momentos importantes.</p></div>
 <div class="timeline"><article><b>CAPÍTULO 01</b><h3>EL COMIENZO</h3><p>El nacimiento de Kairox y la visión de crear una identidad propia dentro de Free Fire.</p></article><article><b>CAPÍTULO 02</b><h3>LA NUEVA ERA</h3><p>El club toma forma: roster, staff, creadores, torneos y una comunidad alrededor de la marca.</p></article><article><b>CAPÍTULO 03</b><h3>EL FUTURO</h3><p>Competir más arriba, crecer juntos y convertir Kairox en un nombre reconocible en los esports.</p></article></div></div></section>
 <section class="site-section" id="roster"><div class="eagle-back-label">ROSTER</div><div class="wrap"><div class="section-head"><div><div class="eyebrow">03 · COMPETITIVE</div><h2>THE NEXT<br/>PLAYERS.</h2></div><p>Nuestro roster competitivo todavía está por formar. Kairox está buscando jugadores que quieran formar parte de nuestra nueva era.</p></div>
